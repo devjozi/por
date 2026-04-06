@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>What do you need help with?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════
+   TOKENS & RESET
+═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0a0a08;
+  --surface:   #111110;
+  --surface2:  #1a1a17;
+  --border:    rgba(255,255,255,0.08);
+  --border2:   rgba(255,255,255,0.14);
+  --gold:      #e8c44a;
+  --gold2:     #f5d76e;
+  --text:      #f0ede6;
+  --muted:     #7a7870;
+  --muted2:    #a8a59c;
+  --white:     #ffffff;
+  --radius:    16px;
+  --radius-sm: 10px;
+
+  /* Path colors */
+  --career-c:  #4a9eff;
+  --career-bg: rgba(74,158,255,0.08);
+  --biz-c:     #52d08a;
+  --biz-bg:    rgba(82,208,138,0.08);
+  --partner-c: #c084fc;
+  --partner-bg:rgba(192,132,252,0.08);
+  --refer-c:   #e8c44a;
+  --refer-bg:  rgba(232,196,74,0.08);
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+
+
+/* ═══════════════════════════════════════
+   NOISE TEXTURE OVERLAY
+═══════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* ═══════════════════════════════════════
+   STICKY NAV
+═══════════════════════════════════════ */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(10,10,8,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+#nav.visible { transform: translateY(0); }
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.nav-logo span { color: var(--gold); }
+
+.nav-pills {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.nav-pills::-webkit-scrollbar { display: none; }
+
+.nav-pill {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 5px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.nav-pill:hover, .nav-pill.active {
+  color: var(--text);
+  border-color: var(--border2);
+  background: var(--surface);
+}
+
+.nav-pill[data-path="career"].active   { color: var(--career-c);  border-color: var(--career-c);  background: var(--career-bg);  }
+.nav-pill[data-path="business"].active { color: var(--biz-c);     border-color: var(--biz-c);     background: var(--biz-bg);     }
+.nav-pill[data-path="partner"].active  { color: var(--partner-c); border-color: var(--partner-c); background: var(--partner-bg); }
+.nav-pill[data-path="refer"].active    { color: var(--refer-c);   border-color: var(--refer-c);   background: var(--refer-bg);   }
+
+
+/* ═══════════════════════════════════════
+   HERO / ROUTER SECTION
+═══════════════════════════════════════ */
+#hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 60px;
+  text-align: center;
+}
+
+/* animated glow behind headline */
+.hero-glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(232,196,74,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fade-up 0.6s ease 0.1s forwards;
+}
+
+.hero-headline {
+  font-size: clamp(32px, 8vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fade-up 0.6s ease 0.2s forwards;
+}
+
+.hero-headline em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--muted2);
+  margin-bottom: 52px;
+  font-weight: 300;
+  opacity: 0;
+  animation: fade-up 0.6s ease 0.3s forwards;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ═══════════════════════════════════════
+   ROUTE BUTTONS (THE CORE INTERACTION)
+═══════════════════════════════════════ */
+.route-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+  opacity: 0;
+  animation: fade-up 0.6s ease 0.4s forwards;
+}
+
+.route-btn {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 18px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.22s ease;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.route-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  border-radius: var(--radius);
+}
+
+.route-btn[data-path="career"]::before   { background: var(--career-bg); }
+.route-btn[data-path="business"]::before { background: var(--biz-bg); }
+.route-btn[data-path="partner"]::before  { background: var(--partner-bg); }
+.route-btn[data-path="refer"]::before    { background: var(--refer-bg); }
+
+.route-btn:hover::before,
+.route-btn.selected::before { opacity: 1; }
+
+.route-btn:hover {
+  border-color: var(--border2);
+  transform: translateY(-2px);
+}
+.route-btn:active { transform: translateY(0) scale(0.98); }
+
+.route-btn.selected { transform: translateY(-2px); }
+.route-btn[data-path="career"].selected   { border-color: var(--career-c);  }
+.route-btn[data-path="business"].selected { border-color: var(--biz-c);     }
+.route-btn[data-path="partner"].selected  { border-color: var(--partner-c); }
+.route-btn[data-path="refer"].selected    { border-color: var(--refer-c);   }
+
+.route-icon {
+  font-size: 26px;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.route-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  display: block;
+  position: relative;
+  z-index: 1;
+  line-height: 1.3;
+}
+
+.route-hint {
+  font-size: 11px;
+  color: var(--muted);
+  display: block;
+  margin-top: 4px;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}
+
+.route-btn[data-path="career"].selected   .route-label { color: var(--career-c);  }
+.route-btn[data-path="business"].selected .route-label { color: var(--biz-c);     }
+.route-btn[data-path="partner"].selected  .route-label { color: var(--partner-c); }
+.route-btn[data-path="refer"].selected    .route-label { color: var(--refer-c);   }
+
+.hero-arrow {
+  margin-top: 40px;
+  color: var(--muted);
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.hero-arrow.show { opacity: 1; }
+.hero-arrow svg { animation: bounce 1.5s ease-in-out infinite; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+
+/* ═══════════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════════ */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 80px 24px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: none;
+}
+
+.section.visible {
+  display: block;
+  animation: section-in 0.5s ease forwards;
+}
+
+@keyframes section-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.section-tag[data-path="career"]   { color: var(--career-c);  background: var(--career-bg);  border: 1px solid rgba(74,158,255,0.2);  }
+.section-tag[data-path="business"] { color: var(--biz-c);     background: var(--biz-bg);     border: 1px solid rgba(82,208,138,0.2);  }
+.section-tag[data-path="partner"]  { color: var(--partner-c); background: var(--partner-bg); border: 1px solid rgba(192,132,252,0.2); }
+.section-tag[data-path="refer"]    { color: var(--refer-c);   background: var(--refer-bg);   border: 1px solid rgba(232,196,74,0.2);  }
+
+.section-headline {
+  font-size: clamp(26px, 6vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.section-body {
+  font-size: 16px;
+  color: var(--muted2);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.section-body strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+
+/* ═══════════════════════════════════════
+   PROOF PILLS / FEATURE LIST
+═══════════════════════════════════════ */
+.proof-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.proof-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--muted2);
+  font-weight: 300;
+}
+
+.proof-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 11px;
+}
+
+[data-path="career"]  .proof-dot { background: var(--career-bg);  color: var(--career-c);  border: 1px solid rgba(74,158,255,0.3);  }
+[data-path="business"] .proof-dot { background: var(--biz-bg);    color: var(--biz-c);     border: 1px solid rgba(82,208,138,0.3);  }
+[data-path="partner"]  .proof-dot { background: var(--partner-bg); color: var(--partner-c); border: 1px solid rgba(192,132,252,0.3); }
+[data-path="refer"]    .proof-dot { background: var(--refer-bg);   color: var(--refer-c);   border: 1px solid rgba(232,196,74,0.3);  }
+
+.proof-text strong { color: var(--text); font-weight: 500; }
+
+
+/* ═══════════════════════════════════════
+   CTA BUTTONS
+═══════════════════════════════════════ */
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 380px;
+  padding: 18px 28px;
+  border-radius: var(--radius);
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cta-primary:active { transform: scale(0.97); }
+
+.cta-career  { background: var(--career-c);  color: #020f1e; }
+.cta-career:hover  { background: #6aadff; box-shadow: 0 0 32px rgba(74,158,255,0.35); }
+
+.cta-business { background: var(--biz-c);    color: #021509; }
+.cta-business:hover { background: #6fdfa0; box-shadow: 0 0 32px rgba(82,208,138,0.35); }
+
+.cta-partner { background: var(--partner-c); color: #120824; }
+.cta-partner:hover { background: #d0a0ff; box-shadow: 0 0 32px rgba(192,132,252,0.35); }
+
+.cta-refer   { background: var(--gold);      color: #1a1400; }
+.cta-refer:hover   { background: var(--gold2); box-shadow: 0 0 32px rgba(232,196,74,0.35); }
+
+.cta-icon { font-size: 18px; }
+
+.cta-secondary {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+
+/* ═══════════════════════════════════════
+   TRUST STRIP
+═══════════════════════════════════════ */
+.trust-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.trust-strip-icon { font-size: 20px; }
+.trust-strip-text { font-size: 13px; color: var(--muted2); font-weight: 300; }
+.trust-strip-text strong { color: var(--text); font-weight: 500; }
+
+
+/* ═══════════════════════════════════════
+   REFERRAL FORM (inline)
+═══════════════════════════════════════ */
+.refer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.form-input {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 15px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  transition: border-color 0.2s ease;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.form-input:focus { border-color: var(--refer-c); }
+.form-input::placeholder { color: var(--muted); }
+
+.form-select {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 15px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  outline: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7870' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+
+.form-select:focus { border-color: var(--refer-c); }
+.form-select option { background: #1a1a17; color: var(--text); }
+
+.form-submit-msg {
+  display: none;
+  text-align: center;
+  padding: 20px;
+  background: var(--refer-bg);
+  border: 1px solid rgba(232,196,74,0.25);
+  border-radius: var(--radius-sm);
+  color: var(--refer-c);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  animation: fade-up 0.4s ease forwards;
+}
+
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+#footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+.footer-text {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.footer-text strong {
+  color: var(--gold);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+}
+
+
+/* ═══════════════════════════════════════
+   SCROLL PROGRESS BAR
+═══════════════════════════════════════ */
+#progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--career-c));
+  width: 0%;
+  z-index: 200;
+  transition: width 0.1s linear;
+}
+
+
+/* ═══════════════════════════════════════
+   RESPONSIVE TWEAKS
+═══════════════════════════════════════ */
+@media (max-width: 380px) {
+  .route-grid { grid-template-columns: 1fr; }
+  .route-btn { padding: 18px 16px; }
+  .section-headline { font-size: 26px; }
+}
+
+@media (min-width: 600px) {
+  .route-grid { gap: 16px; }
+  .section { padding: 100px 40px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="progress"></div>
+
+<!-- ═══ STICKY NAV (appears after scroll) ═══ -->
+<nav id="nav" role="navigation" aria-label="Quick navigation">
+  <div class="nav-logo">por<span>.</span></div>
+  <div class="nav-pills">
+    <button class="nav-pill" data-path="career"   onclick="selectPath('career',true)">Career</button>
+    <button class="nav-pill" data-path="business" onclick="selectPath('business',true)">Business</button>
+    <button class="nav-pill" data-path="partner"  onclick="selectPath('partner',true)">Partner</button>
+    <button class="nav-pill" data-path="refer"    onclick="selectPath('refer',true)">Earn</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO / ROUTER
+═══════════════════════════════════════ -->
+<section id="hero" aria-label="Choose your path">
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <p class="hero-eyebrow">Personal Opportunity Router</p>
+
+  <h1 class="hero-headline">
+    What do you need<br><em>help with?</em>
+  </h1>
+
+  <p class="hero-sub">Pick your path — I'll show you exactly what's possible.</p>
+
+  <!-- THE 4 ROUTE BUTTONS -->
+  <div class="route-grid" role="group" aria-label="Path selection">
+
+    <button class="route-btn" data-path="career"
+            onclick="selectPath('career')"
+            aria-label="Start a career in tech">
+      <span class="route-icon" aria-hidden="true">🚀</span>
+      <span class="route-label">Start a career<br>in tech</span>
+      <span class="route-hint">Break in, earn well</span>
+    </button>
+
+    <button class="route-btn" data-path="business"
+            onclick="selectPath('business')"
+            aria-label="Improve my business">
+      <span class="route-icon" aria-hidden="true">⚡</span>
+      <span class="route-label">Improve my<br>business</span>
+      <span class="route-hint">Fix it, automate it</span>
+    </button>
+
+    <button class="route-btn" data-path="partner"
+            onclick="selectPath('partner')"
+            aria-label="Partner or build something together">
+      <span class="route-icon" aria-hidden="true">🤝</span>
+      <span class="route-label">Partner /<br>build something</span>
+      <span class="route-hint">Collaborate, create</span>
+    </button>
+
+    <button class="route-btn" data-path="refer"
+            onclick="selectPath('refer')"
+            aria-label="Earn commissions by referring people">
+      <span class="route-icon" aria-hidden="true">💰</span>
+      <span class="route-label">Earn with<br>me</span>
+      <span class="route-hint">Refer, get paid</span>
+    </button>
+
+  </div>
+
+  <!-- Appears after selection -->
+  <div class="hero-arrow" id="heroArrow" aria-hidden="true">
+    <span>scroll to your section</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION: CAREER
+═══════════════════════════════════════ -->
+<div class="section-divider" id="divider-career"></div>
+
+<section class="section" id="section-career" data-path="career" aria-label="Career in tech">
+
+  <span class="section-tag" data-path="career">🚀 Tech Career</span>
+
+  <h2 class="section-headline">You're one decision away from a real income in tech.</h2>
+
+  <p class="section-body">
+    Most people stay stuck because they don't know <strong>where to start</strong> — not because they can't do it.
+    I help you get clear, get skilled, and get paid. No fluff, no 4-year degree required.
+  </p>
+
+  <ul class="proof-list" data-path="career">
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Honest roadmap</strong> — I'll tell you exactly what path fits your situation, not a one-size pitch.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Earning potential</strong> — Entry-level tech roles in Africa start from $500–$2,000/mo. Senior roles go much higher.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Ongoing support</strong> — Not a course. A conversation that continues as you grow.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>No gatekeeping</strong> — I'll connect you to the right resources, communities, and opportunities.</span>
+    </li>
+  </ul>
+
+  <a class="cta-primary cta-career"
+     id="cta-career"
+     href="https://wa.me/message/XXXXXXXXXX?text=Hi%2C%20I%20scanned%20your%20QR.%20I%20want%20to%20start%20a%20tech%20career."
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Message on WhatsApp about starting a tech career">
+    <span class="cta-icon">💬</span>
+    Let's talk career
+  </a>
+  <span class="cta-secondary">Opens WhatsApp · Free conversation · No commitment</span>
+
+  <div class="trust-strip" data-path="career">
+    <span class="trust-strip-icon">🔒</span>
+    <span class="trust-strip-text">No spam, no upsell. Just a <strong>real conversation</strong> about your situation.</span>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION: BUSINESS
+═══════════════════════════════════════ -->
+<div class="section-divider" id="divider-business"></div>
+
+<section class="section" id="section-business" data-path="business" aria-label="Business improvement">
+
+  <span class="section-tag" data-path="business">⚡ Business Systems</span>
+
+  <h2 class="section-headline">Your business is leaking time and money. Let's fix that.</h2>
+
+  <p class="section-body">
+    Most growing businesses are held back by <strong>manual work, broken workflows,</strong> and tools that don't talk to each other.
+    I design systems that run so you don't have to.
+  </p>
+
+  <ul class="proof-list" data-path="business">
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Process audit</strong> — Find what's wasting your team's time right now.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Automation builds</strong> — Workflows, CRMs, dashboards, and integrations that actually work.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Tech stack clarity</strong> — Stop paying for tools you don't need. Use the right ones well.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Fast turnaround</strong> — I move quickly. Most assessments start within 48 hours.</span>
+    </li>
+  </ul>
+
+  <a class="cta-primary cta-business"
+     id="cta-business"
+     href="https://wa.me/message/XXXXXXXXXX?text=Hi%2C%20I%20need%20help%20improving%20my%20business%20systems."
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Message on WhatsApp about improving business systems">
+    <span class="cta-icon">💬</span>
+    Diagnose my business
+  </a>
+  <span class="cta-secondary">Opens WhatsApp · 15-min discovery call · No pressure</span>
+
+  <div class="trust-strip" data-path="business">
+    <span class="trust-strip-icon">⚙️</span>
+    <span class="trust-strip-text">I've fixed systems for <strong>solo operators to 50-person teams.</strong> All industries welcome.</span>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION: PARTNER
+═══════════════════════════════════════ -->
+<div class="section-divider" id="divider-partner"></div>
+
+<section class="section" id="section-partner" data-path="partner" aria-label="Partnership or collaboration">
+
+  <span class="section-tag" data-path="partner">🤝 Partnership</span>
+
+  <h2 class="section-headline">You have the idea. I'll bring the technical horsepower.</h2>
+
+  <p class="section-body">
+    Whether you want a <strong>co-founder, a technical lead,</strong> or someone to turn your concept into a real product — I'm open to the right conversations.
+  </p>
+
+  <ul class="proof-list" data-path="partner">
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Idea validation</strong> — I'll give you an honest technical and market read before you invest.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>MVP builds</strong> — From concept to working product. I build lean and fast.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Technical co-founder</strong> — For founders who need a technical equal at the table, not just a contractor.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Revenue-aligned</strong> — Equity, hybrid, or retainer structures depending on the fit.</span>
+    </li>
+  </ul>
+
+  <a class="cta-primary cta-partner"
+     id="cta-partner"
+     href="https://wa.me/message/XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20partnership%20or%20building%20an%20idea%20together."
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Message on WhatsApp about a partnership">
+    <span class="cta-icon">💬</span>
+    Pitch your idea
+  </a>
+  <span class="cta-secondary">Opens WhatsApp · Confidential · Founders only</span>
+
+  <div class="trust-strip" data-path="partner">
+    <span class="trust-strip-icon">🔐</span>
+    <span class="trust-strip-text">Ideas are safe here. <strong>NDAs available</strong> on request before any detailed discussion.</span>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION: REFERRAL
+═══════════════════════════════════════ -->
+<div class="section-divider" id="divider-refer"></div>
+
+<section class="section" id="section-refer" data-path="refer" aria-label="Earn by referring">
+
+  <span class="section-tag" data-path="refer">💰 Referral Program</span>
+
+  <h2 class="section-headline">Know someone who needs this? Get paid for the connection.</h2>
+
+  <p class="section-body">
+    You don't need to be a tech person. You just need to know the <strong>right people.</strong>
+    Every qualified referral you send earns you a commission — simple as that.
+  </p>
+
+  <ul class="proof-list" data-path="refer">
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Straightforward commissions</strong> — Paid on every successful engagement from your referral.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>No selling required</strong> — Just introduce. I handle the rest.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Track your referrals</strong> — Full transparency. You always know what's happening with your leads.</span>
+    </li>
+    <li class="proof-item">
+      <span class="proof-dot">✓</span>
+      <span class="proof-text"><strong>Recurring opportunity</strong> — Refer as many people as you want. No cap.</span>
+    </li>
+  </ul>
+
+  <!-- INLINE REFERRAL FORM -->
+  <div class="refer-form" id="referForm">
+
+    <div class="form-field">
+      <label class="form-label" for="ref-name">Your name</label>
+      <input class="form-input" type="text" id="ref-name" placeholder="e.g. Kofi Mensah" autocomplete="name">
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="ref-contact">Your WhatsApp / email</label>
+      <input class="form-input" type="text" id="ref-contact" placeholder="How I'll reach you" autocomplete="email">
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="ref-who">Who are you referring?</label>
+      <input class="form-input" type="text" id="ref-who" placeholder="Name or description of the person">
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="ref-type">Their need</label>
+      <select class="form-select" id="ref-type">
+        <option value="" disabled selected>Select a path</option>
+        <option value="career">Career — wants to enter tech</option>
+        <option value="business">Business — needs systems or fixes</option>
+        <option value="partner">Partner — has an idea or product</option>
+      </select>
+    </div>
+
+    <button class="cta-primary cta-refer" onclick="submitReferral()" style="margin-top:4px;"
+            aria-label="Submit referral">
+      <span class="cta-icon">✨</span>
+      Submit my referral
+    </button>
+
+    <div class="form-submit-msg" id="formSuccess">
+      🎉 Referral received! I'll reach out to you within 24 hours to confirm and discuss your commission.
+    </div>
+
+  </div>
+
+  <span class="cta-secondary" style="margin-top:0">Takes 60 seconds · Commission discussed on confirmation</span>
+
+  <div class="trust-strip" data-path="refer">
+    <span class="trust-strip-icon">💸</span>
+    <span class="trust-strip-text">Commission rates shared privately. <strong>No referral goes untracked.</strong></span>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer id="footer">
+  <p class="footer-text">
+    Built by <strong>por.</strong> — routing the right people to the right opportunity.<br>
+    <span style="font-size:11px; color: var(--muted); margin-top:6px; display:block;">
+      Tap a path above · WhatsApp responses within a few hours
+    </span>
+  </p>
+</footer>
+
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════ */
+<script>
+// ─── STATE ─────────────────────────────
+const state = {
+  selectedPath: null,
+  sessionStart: Date.now()
+};
+
+// WhatsApp number — REPLACE with real number (country code, no +)
+const WA_NUMBER = '233201517382'; // e.g. 233XXXXXXXXX for Ghana
+
+// Prefilled messages per path
+const WA_MESSAGES = {
+  career:   'Hi, I scanned your QR. I want to start a tech career.',
+  business: 'Hi, I need help improving my business systems.',
+  partner:  'Hi, I\'d like to discuss a partnership or building an idea together.',
+};
+
+// ─── PATH SELECTION ────────────────────
+function selectPath(path, fromNav) {
+  state.selectedPath = path;
+
+  // Update route button states
+  document.querySelectorAll('.route-btn').forEach(btn => {
+    btn.classList.toggle('selected', btn.dataset.path === path);
+  });
+
+  // Update nav pill states
+  document.querySelectorAll('.nav-pill').forEach(pill => {
+    pill.classList.toggle('active', pill.dataset.path === path);
+  });
+
+  // Show/hide sections
+  document.querySelectorAll('.section').forEach(sec => {
+    const match = sec.dataset.path === path;
+    if (match && !sec.classList.contains('visible')) {
+      sec.classList.add('visible');
+    } else if (!match) {
+      sec.classList.remove('visible');
+    }
+  });
+
+  // Show scroll arrow cue
+  document.getElementById('heroArrow').classList.add('show');
+
+  // Smooth scroll to section (slight delay for animation)
+  setTimeout(() => {
+    const target = document.getElementById('section-' + path);
+    if (target) {
+      const offset = fromNav ? 70 : 40;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }, 80);
+
+  // Update WA links dynamically
+  updateWALinks(path);
+}
+
+// ─── WHATSAPP LINK BUILDER ─────────────
+function buildWALink(path) {
+  const msg = encodeURIComponent(WA_MESSAGES[path] || '');
+  return `https://wa.me/${WA_NUMBER}?text=${msg}`;
+}
+
+function updateWALinks(path) {
+  const cta = document.getElementById('cta-' + path);
+  if (cta && WA_MESSAGES[path]) {
+    cta.href = buildWALink(path);
+  }
+}
+
+// ─── REFERRAL FORM ─────────────────────
+function submitReferral() {
+  const name    = document.getElementById('ref-name').value.trim();
+  const contact = document.getElementById('ref-contact').value.trim();
+  const who     = document.getElementById('ref-who').value.trim();
+  const type    = document.getElementById('ref-type').value;
+
+  if (!name || !contact || !who || !type) {
+    // Shake the empty fields
+    [{ id:'ref-name',name }, { id:'ref-contact',contact }, { id:'ref-who',who }].forEach(({id, val}) => {
+      if (!(val || val === 0 ? val : document.getElementById(id).value.trim())) {
+        shakeField(id);
+      }
+    });
+    if (!type) shakeField('ref-type');
+    return;
+  }
+
+  // Build a WA message with the referral details
+  const waMsg = encodeURIComponent(
+    `Hi! I'm referring someone:\n\n` +
+    `My name: ${name}\n` +
+    `My contact: ${contact}\n` +
+    `Referring: ${who}\n` +
+    `Their need: ${type}\n\n` +
+    `Please confirm commission details.`
+  );
+
+  // Open WhatsApp with referral details
+  window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`, '_blank', 'noopener');
+
+  // Show success message
+  const form = document.getElementById('referForm');
+  const success = document.getElementById('formSuccess');
+  form.querySelectorAll('.form-field, .cta-primary').forEach(el => {
+    el.style.opacity = '0.3';
+    el.style.pointerEvents = 'none';
+  });
+  success.style.display = 'block';
+}
+
+function shakeField(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.borderColor = '#e8534a';
+  el.style.animation = 'none';
+  setTimeout(() => {
+    el.style.animation = 'shake 0.4s ease';
+    setTimeout(() => { el.style.borderColor = ''; el.style.animation = ''; }, 500);
+  }, 10);
+}
+
+// Add shake keyframes dynamically
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+  }
+`;
+document.head.appendChild(style);
+
+// ─── STICKY NAV + SCROLL PROGRESS ──────
+const nav = document.getElementById('nav');
+const progress = document.getElementById('progress');
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+
+  // Show nav after scrolling past hero
+  const heroH = document.getElementById('hero').offsetHeight;
+  nav.classList.toggle('visible', scrolled > heroH * 0.6);
+
+  // Scroll progress bar
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (scrolled / total) * 100 : 0;
+  progress.style.width = pct + '%';
+}, { passive: true });
+
+// ─── CHECK URL HASH FOR DIRECT ROUTING ─
+(function() {
+  const hash = window.location.hash.replace('#', '');
+  const validPaths = ['career', 'business', 'partner', 'refer'];
+  if (validPaths.includes(hash)) {
+    setTimeout(() => selectPath(hash), 200);
+  }
+})();
+</script>
+
+</body>
+</html>
