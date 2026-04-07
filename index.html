@@ -3,26 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hey, welcome — let's find what you need</title>
+  <title>Joseph — IT Leadership & Digital Solutions</title>
   <meta
     name="description"
-    content="A personal, conversational landing page that helps visitors quickly choose what they need and reach out."
+    content="A professional landing page to help visitors quickly choose what they need and get in touch."
   />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1115'/%3E%3Cpath d='M16 45V19h8l16 19V19h8v26h-8L24 26v19z' fill='%23e8c44a'/%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E293B'/%3E%3Cpath d='M22 18h8v28h-8zm12 0h8v28h-8z' fill='%23FFFFFF'/%3E%3C/svg%3E" />
   <style>
     :root {
-      --bg: #090b0f;
-      --surface: #11151b;
-      --surface-2: #1a2028;
-      --text: #f3f5f8;
-      --muted: #acb2bc;
-      --border: rgba(255, 255, 255, 0.12);
-      --gold: #e8c44a;
-      --focus: #77adff;
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --text: #334155;
+      --muted: #64748b;
+      --border: #dbe3ee;
+      --navy: #1e293b;
+      --steel-blue: #3b82f6;
+      --focus: #3b82f6;
       --radius: 18px;
     }
 
@@ -35,55 +32,47 @@
     }
 
     body {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      background: radial-gradient(1100px 700px at 20% -10%, #1f2731 0, var(--bg) 56%);
+      font-family: Inter, Outfit, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.45;
+      line-height: 1.5;
       overflow-x: hidden;
     }
 
     .app {
-      width: min(620px, 100%);
+      width: min(760px, 100%);
       margin: 0 auto;
-      padding: 1rem 1rem 4rem;
+      padding: 2rem 1.1rem 5rem;
     }
 
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      margin-bottom: 1rem;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.05rem;
-      letter-spacing: -0.02em;
-      color: var(--muted);
-    }
-
-    .brand-mark {
-      width: 29px;
-      height: 29px;
-      border-radius: 10px;
       display: grid;
-      place-items: center;
-      border: 1px solid var(--border);
-      background: linear-gradient(145deg, #1b2027, #11151b);
-      color: var(--gold);
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 0.96rem;
+      gap: 0.35rem;
+      margin-bottom: 1.75rem;
     }
 
-    /*
-      Screen containers are full-focus blocks.
-      Only one screen is visible at a time to keep attention high.
-    */
+    .brand h1 {
+      color: var(--navy);
+      font-size: clamp(2rem, 7vw, 2.85rem);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+
+    .tagline {
+      color: var(--text);
+      font-size: clamp(1rem, 3.5vw, 1.15rem);
+      font-weight: 500;
+    }
+
     .screen {
       display: none;
-      min-height: 70svh;
+      min-height: 66svh;
       align-content: center;
-      gap: 1rem;
-      padding: 1.4rem 0 0.5rem;
+      gap: 1.1rem;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--surface), var(--surface-2));
       opacity: 0;
       transform: translateY(12px);
       transition: opacity 320ms ease, transform 320ms ease;
@@ -98,54 +87,47 @@
       transform: translateY(0);
     }
 
-    h1, h2 {
-      font-family: 'Syne', sans-serif;
-      letter-spacing: -0.03em;
-      line-height: 1.08;
-    }
-
-    h1 {
-      font-size: clamp(1.8rem, 8vw, 2.5rem);
-      margin-bottom: 0.45rem;
-    }
-
     h2 {
-      font-size: clamp(1.45rem, 6.5vw, 2.05rem);
+      font-size: clamp(1.45rem, 5.8vw, 2.05rem);
       margin-bottom: 0.2rem;
+      color: var(--navy);
+      letter-spacing: -0.03em;
+      line-height: 1.14;
     }
 
     p {
-      color: var(--muted);
-      font-size: clamp(1rem, 4.2vw, 1.1rem);
-      max-width: 42ch;
+      color: var(--text);
+      font-size: clamp(1rem, 4vw, 1.08rem);
+      max-width: 56ch;
     }
 
     .lead {
-      color: #eef2f8;
-      font-size: clamp(1.02rem, 4.4vw, 1.16rem);
+      color: var(--text);
+      font-weight: 500;
     }
 
     .cta-stack {
       display: grid;
-      gap: 0.75rem;
-      margin-top: 0.55rem;
+      gap: 0.85rem;
+      margin-top: 0.65rem;
+      justify-items: center;
     }
 
     .choice-btn,
     .final-link {
-      width: 100%;
-      min-height: 52px;
+      width: min(100%, 560px);
+      min-height: 48px;
       border-radius: 14px;
-      border: 1px solid var(--border);
-      background: linear-gradient(160deg, var(--surface-2), var(--surface));
-      color: var(--text);
-      padding: 0.8rem 0.95rem;
-      text-align: left;
+      border: 1px solid var(--navy);
+      background: var(--navy);
+      color: #fff;
+      padding: 0.85rem 1rem;
+      text-align: center;
       font-size: 1rem;
       font-weight: 700;
       text-decoration: none;
       cursor: pointer;
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, filter 180ms ease;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
     }
 
     .choice-btn:hover,
@@ -153,43 +135,49 @@
     .final-link:hover,
     .final-link:focus-visible {
       transform: translateY(-1px);
-      border-color: rgba(255, 255, 255, 0.34);
-      background: rgba(255, 255, 255, 0.08);
+      background: var(--steel-blue);
+      border-color: var(--steel-blue);
       outline: 2px solid transparent;
     }
 
     .choice-btn:focus-visible,
     .final-link:focus-visible {
-      box-shadow: 0 0 0 3px rgba(119, 173, 255, 0.42);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
     }
 
     .tiny-note {
-      font-size: 0.92rem;
-      color: #c5cbd5;
+      font-size: 0.94rem;
+      color: var(--muted);
       margin-top: 0.4rem;
+      text-align: center;
     }
 
     .back-btn {
-      margin-top: 0.4rem;
+      margin-top: 0.6rem;
       width: fit-content;
       border: 0;
       background: transparent;
-      color: var(--muted);
+      color: var(--text);
       text-decoration: underline;
       text-underline-offset: 0.16em;
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       cursor: pointer;
+      justify-self: center;
     }
 
     .footer {
-      margin-top: 1rem;
+      margin-top: 2rem;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      text-align: center;
     }
 
     @media (min-width: 760px) {
-      .app { padding-top: 1.5rem; }
-      .screen { min-height: 72vh; }
+      .app { padding: 2.8rem 1.5rem 5.5rem; }
+      .screen {
+        min-height: 68vh;
+        padding: 2rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -202,30 +190,33 @@
 </head>
 <body>
   <main class="app" aria-live="polite">
-    <div class="brand"><span class="brand-mark">N</span>NextStep</div>
+    <header class="brand">
+      <h1>Joseph</h1>
+      <p class="tagline">IT Leadership &amp; Digital Solutions</p>
+    </header>
 
     <section class="screen active" id="screen-1" data-step="1">
-      <h1>Hey! You’ve reached my corner of the web.</h1>
-      <p class="lead">I’m a tech expert — I help people get things done with systems, software, and all things digital.</p>
-      <p>Want to quickly tell me what brought you here?</p>
+      <h2>Welcome. Let’s quickly find the right path for you.</h2>
+      <p class="lead">I help organizations and professionals solve digital challenges with practical, scalable technology solutions.</p>
+      <p>Would you like to share what brought you here?</p>
       <div class="cta-stack">
-        <button class="choice-btn" data-next="screen-2" type="button">Yes, let’s do it →</button>
+        <button class="choice-btn" data-next="screen-2" type="button">Yes, let’s do it</button>
       </div>
     </section>
 
     <section class="screen" id="screen-2" data-step="2">
-      <h2>Got a business and need an IT manager/consultant’s input?</h2>
-      <p>I can help you simplify operations, reduce chaos, and build smarter systems.</p>
+      <h2>Need strategic IT leadership or consulting input?</h2>
+      <p>I can help streamline operations, reduce complexity, and align systems with business goals.</p>
       <div class="cta-stack">
         <button class="choice-btn" type="button" data-track="business" data-next="screen-final">Yes — this is me</button>
-        <button class="choice-btn" type="button" data-next="screen-3">Not this. Show me another path</button>
+        <button class="choice-btn" type="button" data-next="screen-3">Not this. Show another path</button>
       </div>
       <button class="back-btn" data-back="screen-1" type="button">Back</button>
     </section>
 
     <section class="screen" id="screen-3" data-step="3">
-      <h2>Thinking about getting into tech but not sure where to start?</h2>
-      <p>I’ll help you choose a clear path and avoid wasting time on the wrong steps.</p>
+      <h2>Starting a tech journey and need direction?</h2>
+      <p>I’ll help you identify a clear path so you can focus your energy on what matters most.</p>
       <div class="cta-stack">
         <button class="choice-btn" type="button" data-track="tech-start" data-next="screen-final">Yes — I want guidance</button>
         <button class="choice-btn" type="button" data-next="screen-4">Not this either</button>
@@ -235,7 +226,7 @@
 
     <section class="screen" id="screen-4" data-step="4">
       <h2>Need a website, app, or digital system built?</h2>
-      <p>If you want it done right and actually usable, I can build with you.</p>
+      <p>If you need a reliable, user-focused build, I can help deliver a practical solution.</p>
       <div class="cta-stack">
         <button class="choice-btn" type="button" data-track="build" data-next="screen-final">Yes — I need this built</button>
         <button class="choice-btn" type="button" data-next="screen-5">Keep going</button>
@@ -244,31 +235,26 @@
     </section>
 
     <section class="screen" id="screen-5" data-step="5">
-      <h2>Have an idea and want someone experienced to make it real?</h2>
-      <p>Perfect. I love turning raw ideas into practical, working products.</p>
+      <h2>Have a digital idea and want to bring it to life?</h2>
+      <p>Great. I work with clients to turn ideas into useful, working products.</p>
       <div class="cta-stack">
-        <button class="choice-btn" type="button" data-track="idea" data-next="screen-final">Yes — let’s make it real</button>
+        <button class="choice-btn" type="button" data-track="idea" data-next="screen-final">Yes — let’s build it</button>
         <button class="choice-btn" type="button" data-track="general" data-next="screen-final">I’m not sure yet, but I want to talk</button>
       </div>
       <button class="back-btn" data-back="screen-4" type="button">Back</button>
     </section>
 
     <section class="screen" id="screen-final" data-step="6">
-      <h2>Great — let’s talk.</h2>
-      <p class="lead">Pick what feels easiest. I’ll reply fast and we’ll take it from there.</p>
+      <h2>Great — let’s connect.</h2>
+      <p class="lead">Choose the option that’s easiest for you. I’ll respond promptly.</p>
       <div class="cta-stack">
-        <!-- TODO: Replace the href values below with your real contact details
-             before going live:
-               wa-link  → https://wa.me/YOUR_PHONE_NUMBER?text=…
-               mail-link → mailto:YOUR_EMAIL_ADDRESS?subject=…
-               form-link → https://forms.gle/YOUR_FORM_ID              -->
-        <a class="final-link" id="wa-link" href="https://wa.me/YOUR_PHONE_NUMBER?text=Hey%20I%20just%20came%20from%20your%20site." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+        <a class="final-link" id="wa-link" href="https://wa.me/YOUR_PHONE_NUMBER?text=Hello%20I%20just%20visited%20your%20site." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
         <a class="final-link" id="mail-link" href="mailto:YOUR_EMAIL_ADDRESS?subject=Quick%20intro%20from%20your%20site">Send an Email</a>
         <a class="final-link" id="form-link" href="https://forms.gle/YOUR_FORM_ID" target="_blank" rel="noopener noreferrer">Use the Short Form</a>
       </div>
       <p class="tiny-note" id="path-note">Thanks for sharing what you need.</p>
       <button class="back-btn" data-back="screen-1" type="button">Start over</button>
-      <p class="footer">© <span id="year"></span> NextStep.</p>
+      <p class="footer">© <span id="year"></span> Joseph · Built by DevJozi</p>
     </section>
   </main>
 
@@ -282,15 +268,11 @@
       const labelByPath = {
         business: 'Got it. You’re here for business support.',
         'tech-start': 'Nice. You’re here to get started in tech.',
-        build: 'Awesome. You’re here to build something real.',
-        idea: 'Love it. You’re here to bring an idea to life.',
-        general: 'Perfect. We can figure out the best path together.'
+        build: 'Excellent. You’re here to build a digital solution.',
+        idea: 'Great. You’re here to bring an idea to life.',
+        general: 'Perfect. We can clarify the best next step together.'
       };
 
-      /*
-        Show one screen at a time.
-        Clicking a choice moves to the next step like a mini conversation.
-      */
       function showScreen(screenId) {
         const target = document.getElementById(screenId);
         if (!target) return;
@@ -314,7 +296,7 @@
         btn.addEventListener('click', () => {
           const chosenPath = btn.dataset.track;
           if (chosenPath) {
-            localStorage.setItem('nextstep_path', chosenPath);
+            localStorage.setItem('joseph_path', chosenPath);
             note.textContent = labelByPath[chosenPath] || 'Thanks for sharing what you need.';
           }
 
@@ -327,23 +309,19 @@
         btn.addEventListener('click', () => {
           const backId = btn.dataset.back;
           if (backId === 'screen-1') {
-            localStorage.removeItem('nextstep_path');
+            localStorage.removeItem('joseph_path');
             note.textContent = 'Thanks for sharing what you need.';
           }
           showScreen(backId);
         });
       });
 
-      // Restore user context if they already made a selection in a previous visit.
-      const rememberedPath = localStorage.getItem('nextstep_path');
+      const rememberedPath = localStorage.getItem('joseph_path');
       if (rememberedPath && labelByPath[rememberedPath]) {
         note.textContent = labelByPath[rememberedPath];
       }
 
       document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Initialise the first screen so it is visible on page load and
-      // all aria-hidden states are set correctly from the start.
       showScreen('screen-1');
     });
   </script>
