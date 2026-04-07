@@ -309,10 +309,11 @@
       });
 
       function highlightCard(pathName) {
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         pathCards.forEach(card => {
           if (card.dataset.path === pathName) {
             card.classList.add('highlighted');
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
           } else {
             card.classList.remove('highlighted');
           }
