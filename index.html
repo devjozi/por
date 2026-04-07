@@ -21,6 +21,8 @@
       --steel-blue: #3b82f6;
       --focus: #3b82f6;
       --radius: 18px;
+      --vh: 1vh;
+      --available-height: 52vh;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,13 +42,13 @@
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      min-height: 100vh;
+      min-height: calc(var(--vh) * 100);
     }
 
     .app {
       width: min(820px, 100%);
       margin: 0 auto;
-      min-height: 100svh;
+      min-height: calc(var(--vh) * 100);
       padding: clamp(1.6rem, 4vw, 4rem) clamp(1rem, 4vw, 1.75rem) 3rem;
       display: flex;
       flex-direction: column;
@@ -87,7 +89,7 @@
 
     .screen {
       display: none;
-      min-height: 0;
+      min-height: clamp(230px, var(--available-height), 680px);
       align-content: center;
       gap: clamp(0.9rem, 2.5vw, 1.15rem);
       padding: 0;
@@ -204,9 +206,7 @@
 
     @media (min-width: 760px) {
       .app { padding: 4.25rem 1.75rem 3.5rem; }
-      .screen {
-        min-height: 0;
-      }
+      .screen { min-height: clamp(280px, var(--available-height), 720px); }
     }
 
     @media (max-width: 759px) {
@@ -230,6 +230,10 @@
 
       .screen:first-of-type {
         margin-top: 0.25rem;
+      }
+
+      .screen {
+        min-height: clamp(220px, var(--available-height), 620px);
       }
     }
 
@@ -256,6 +260,17 @@
 
       .screen {
         gap: 0.8rem;
+      }
+    }
+
+    @media (max-height: 760px) {
+      .app {
+        justify-content: flex-start;
+      }
+
+      .screen {
+        min-height: auto;
+        align-content: flex-start;
       }
     }
 
@@ -328,8 +343,8 @@
       <h2>Let’s talk.</h2>
       <p class="lead">Choose whichever way is easiest for you. I’ll get back to you personally.</p>
       <div class="cta-stack">
-        <a class="final-link" id="wa-link" href="https://wa.me/YOUR_PHONE_NUMBER?text=Hello%20I%20just%20visited%20your%20site." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-        <a class="final-link" id="mail-link" href="mailto:YOUR_EMAIL_ADDRESS?subject=Quick%20intro%20from%20your%20site">Send an Email</a>
+        <a class="final-link" id="wa-link" href="https://wa.me/233201517382?text=Hello%20I%20just%20visited%20your%20site." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+        <a class="final-link" id="mail-link" href="mailto:devjozi59@gmail.com?subject=Quick%20intro%20from%20your%20site">Send an Email</a>
         <a class="final-link" id="form-link" href="https://forms.gle/YOUR_FORM_ID" target="_blank" rel="noopener noreferrer">Use the Short Form</a>
       </div>
       <p class="tiny-note" id="path-note">Thanks for sharing what you need.</p>
@@ -341,6 +356,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const app = document.querySelector('.app');
+      const brand = document.querySelector('.brand');
       const screens = [...document.querySelectorAll('.screen')];
       const nextButtons = document.querySelectorAll('[data-next]');
       const backButtons = document.querySelectorAll('[data-back]');
@@ -352,6 +369,19 @@
         idea: 'Great. You’re here to bring an idea to life.',
         general: 'Perfect. We can clarify the best next step together.'
       };
+
+      function updateViewportSizing() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+        if (!app || !brand) return;
+
+        const appStyles = window.getComputedStyle(app);
+        const padTop = parseFloat(appStyles.paddingTop) || 0;
+        const padBottom = parseFloat(appStyles.paddingBottom) || 0;
+        const availableHeight = window.innerHeight - brand.offsetHeight - padTop - padBottom;
+        document.documentElement.style.setProperty('--available-height', `${Math.max(220, Math.round(availableHeight))}px`);
+      }
 
       function showScreen(screenId) {
         const target = document.getElementById(screenId);
@@ -400,6 +430,10 @@
       if (rememberedPath && labelByPath[rememberedPath]) {
         note.textContent = labelByPath[rememberedPath];
       }
+
+      updateViewportSizing();
+      window.addEventListener('resize', updateViewportSizing);
+      window.addEventListener('orientationchange', updateViewportSizing);
 
       document.getElementById('year').textContent = new Date().getFullYear();
       showScreen('screen-1');
