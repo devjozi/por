@@ -257,9 +257,14 @@
       <h2>Great — let’s talk.</h2>
       <p class="lead">Pick what feels easiest. I’ll reply fast and we’ll take it from there.</p>
       <div class="cta-stack">
-        <a class="final-link" id="wa-link" href="https://wa.me/15555555555?text=Hey%20I%20just%20came%20from%20your%20site." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-        <a class="final-link" id="mail-link" href="mailto:hello@example.com?subject=Quick%20intro%20from%20your%20site">Send an Email</a>
-        <a class="final-link" id="form-link" href="https://forms.gle/" target="_blank" rel="noopener noreferrer">Use the Short Form</a>
+        <!-- TODO: Replace the href values below with your real contact details
+             before going live:
+               wa-link  → https://wa.me/YOUR_PHONE_NUMBER?text=…
+               mail-link → mailto:YOUR_EMAIL_ADDRESS?subject=…
+               form-link → https://forms.gle/YOUR_FORM_ID              -->
+        <a class="final-link" id="wa-link" href="https://wa.me/YOUR_PHONE_NUMBER?text=Hey%20I%20just%20came%20from%20your%20site." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+        <a class="final-link" id="mail-link" href="mailto:YOUR_EMAIL_ADDRESS?subject=Quick%20intro%20from%20your%20site">Send an Email</a>
+        <a class="final-link" id="form-link" href="https://forms.gle/YOUR_FORM_ID" target="_blank" rel="noopener noreferrer">Use the Short Form</a>
       </div>
       <p class="tiny-note" id="path-note">Thanks for sharing what you need.</p>
       <button class="back-btn" data-back="screen-1" type="button">Start over</button>
@@ -336,6 +341,10 @@
       }
 
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Initialise the first screen so it is visible on page load and
+      // all aria-hidden states are set correctly from the start.
+      showScreen('screen-1');
     });
   </script>
 </body>
