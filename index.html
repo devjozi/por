@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joseph — IT Leadership & Digital Solutions</title>
+  <title>Apply today's technology with Joseph | IT Leadership &amp; Digital Solutions</title>
   <meta
     name="description"
-    content="A professional landing page to help visitors quickly choose what they need and get in touch."
+    content="Apply today's technology with Joseph for IT leadership and digital solutions."
   />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E293B'/%3E%3Cpath d='M22 18h8v28h-8zm12 0h8v28h-8z' fill='%23FFFFFF'/%3E%3C/svg%3E" />
   <style>
     :root {
-      --bg: #fafafa;
+      --bg: #ffffff;
       --surface: #ffffff;
-      --surface-2: #f8fafc;
+      --surface-2: #ffffff;
       --text: #334155;
       --muted: #64748b;
       --border: #dbe3ee;
@@ -37,22 +37,39 @@
       color: var(--text);
       line-height: 1.5;
       overflow-x: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
 
     .app {
       width: min(760px, 100%);
       margin: 0 auto;
-      padding: 2rem 1.1rem 5rem;
+      min-height: 100svh;
+      padding: 2rem 1.1rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .brand {
       display: grid;
       gap: 0.35rem;
+      margin-top: 2rem;
       margin-bottom: 1.75rem;
+      text-align: center;
+    }
+
+    .greeting {
+      color: var(--muted);
+      font-size: clamp(0.98rem, 3.5vw, 1.05rem);
+      font-weight: 500;
+      margin-bottom: 0.3rem;
     }
 
     .brand h1 {
-      color: var(--navy);
+      color: var(--text);
       font-size: clamp(2rem, 7vw, 2.85rem);
       letter-spacing: -0.03em;
       line-height: 1.08;
@@ -66,13 +83,13 @@
 
     .screen {
       display: none;
-      min-height: 66svh;
+      min-height: 0;
       align-content: center;
       gap: 1.1rem;
-      padding: 1.5rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, var(--surface), var(--surface-2));
+      padding: 0;
+      border-radius: 0;
+      border: 0;
+      background: transparent;
       opacity: 0;
       transform: translateY(12px);
       transition: opacity 320ms ease, transform 320ms ease;
@@ -90,7 +107,7 @@
     h2 {
       font-size: clamp(1.45rem, 5.8vw, 2.05rem);
       margin-bottom: 0.2rem;
-      color: var(--navy);
+      color: var(--text);
       letter-spacing: -0.03em;
       line-height: 1.14;
     }
@@ -120,7 +137,7 @@
       border-radius: 14px;
       border: 1px solid var(--navy);
       background: var(--navy);
-      color: #fff;
+      color: #ffffff;
       padding: 0.85rem 1rem;
       text-align: center;
       font-size: 1rem;
@@ -173,10 +190,9 @@
     }
 
     @media (min-width: 760px) {
-      .app { padding: 2.8rem 1.5rem 5.5rem; }
+      .app { padding: 2.8rem 1.5rem 3.5rem; }
       .screen {
-        min-height: 68vh;
-        padding: 2rem;
+        min-height: 0;
       }
     }
 
@@ -191,7 +207,8 @@
 <body>
   <main class="app" aria-live="polite">
     <header class="brand">
-      <h1>Joseph</h1>
+      <p class="greeting">Hey! Welcome. You’ve reached my corner of the web.</p>
+      <h1>Apply today's technology with Joseph</h1>
       <p class="tagline">IT Leadership &amp; Digital Solutions</p>
     </header>
 
