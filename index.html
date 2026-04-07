@@ -23,6 +23,7 @@
       --radius: 18px;
       --vh: 1vh;
       --available-height: 52vh;
+      --screen-min-height: 220px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -89,7 +90,7 @@
 
     .screen {
       display: none;
-      min-height: clamp(230px, var(--available-height), 680px);
+      min-height: clamp(var(--screen-min-height), var(--available-height), 680px);
       align-content: center;
       gap: clamp(0.9rem, 2.5vw, 1.15rem);
       padding: 0;
@@ -377,10 +378,24 @@
         if (!app || !brand) return;
 
         const appStyles = window.getComputedStyle(app);
+        const brandStyles = window.getComputedStyle(brand);
         const padTop = parseFloat(appStyles.paddingTop) || 0;
         const padBottom = parseFloat(appStyles.paddingBottom) || 0;
-        const availableHeight = window.innerHeight - brand.offsetHeight - padTop - padBottom;
-        document.documentElement.style.setProperty('--available-height', `${Math.max(220, Math.round(availableHeight))}px`);
+        const brandMarginTop = parseFloat(brandStyles.marginTop) || 0;
+        const brandMarginBottom = parseFloat(brandStyles.marginBottom) || 0;
+        const availableHeight = window.innerHeight - brand.offsetHeight - brandMarginTop - brandMarginBottom - padTop - padBottom;
+        const screenMinHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--screen-min-height')) || 220;
+        document.documentElement.style.setProperty('--available-height', `${Math.max(screenMinHeight, Math.round(availableHeight))}px`);
+      }
+
+      let rafPending = false;
+      function scheduleViewportUpdate() {
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(() => {
+          rafPending = false;
+          updateViewportSizing();
+        });
       }
 
       function showScreen(screenId) {
@@ -432,8 +447,8 @@
       }
 
       updateViewportSizing();
-      window.addEventListener('resize', updateViewportSizing);
-      window.addEventListener('orientationchange', updateViewportSizing);
+      window.addEventListener('resize', scheduleViewportUpdate);
+      window.addEventListener('orientationchange', scheduleViewportUpdate);
 
       document.getElementById('year').textContent = new Date().getFullYear();
       showScreen('screen-1');
