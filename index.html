@@ -38,7 +38,7 @@
       line-height: 1.5;
       overflow-x: hidden;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       min-height: 100vh;
     }
@@ -47,17 +47,17 @@
       width: min(760px, 100%);
       margin: 0 auto;
       min-height: 100svh;
-      padding: 2rem 1.1rem 3rem;
+      padding: 3.25rem 1.1rem 3rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     .brand {
       display: grid;
       gap: 0.35rem;
-      margin-top: 2rem;
-      margin-bottom: 1.75rem;
+      margin-top: 0;
+      margin-bottom: 2rem;
       text-align: center;
     }
 
@@ -97,6 +97,10 @@
 
     .screen.active {
       display: grid;
+    }
+
+    .screen:first-of-type {
+      margin-top: 1rem;
     }
 
     .screen.visible {
@@ -190,7 +194,7 @@
     }
 
     @media (min-width: 760px) {
-      .app { padding: 2.8rem 1.5rem 3.5rem; }
+      .app { padding: 4rem 1.5rem 3.5rem; }
       .screen {
         min-height: 0;
       }
@@ -213,7 +217,7 @@
     </header>
 
     <section class="screen active" id="screen-1" data-step="1">
-      <h2>Welcome. Let’s quickly find the right path for you.</h2>
+      <h2>Hey! You’ve reached my corner of the web.</h2>
       <p class="lead">I help organizations and professionals solve digital challenges with practical, scalable technology solutions.</p>
       <p>Would you like to share what brought you here?</p>
       <div class="cta-stack">
