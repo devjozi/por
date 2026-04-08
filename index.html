@@ -3,456 +3,647 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apply today's technology with Joseph | IT Leadership &amp; Digital Solutions</title>
-  <meta
-    name="description"
-    content="Apply today's technology with Joseph for IT leadership and digital solutions."
-  />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E293B'/%3E%3Cpath d='M22 18h8v28h-8zm12 0h8v28h-8z' fill='%23FFFFFF'/%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#1a2332" />
+  <title>Joseph | Networking Landing Page</title>
+  <meta name="description" content="Joseph helps businesses with audits, builds, mentorship, and referrals through a simple mobile-first landing page." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a2332'/%3E%3Cpath d='M18 18h10v28H18zm18 0h10v28H36z' fill='%23ffffff'/%3E%3C/svg%3E" />
   <style>
     :root {
-      --bg: #ffffff;
+      --bg: #f4f6f8;
       --surface: #ffffff;
-      --surface-2: #ffffff;
-      --text: #334155;
-      --muted: #64748b;
-      --border: #dbe3ee;
-      --navy: #1e293b;
-      --steel-blue: #3b82f6;
-      --focus: #3b82f6;
-      --radius: 18px;
-      --vh: 1vh;
-      --available-height: 52vh;
-      --screen-min-height: 220px;
+      --surface-2: #f8fafc;
+      --text: #1a2332;
+      --muted: #5a6778;
+      --border: #d7dee6;
+      --border-strong: #bfc9d4;
+      --navy: #1a2332;
+      --accent: #155ef0;
+      --accent-strong: #0f4cd1;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 12px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-    html, body {
-      width: 100%;
-      min-height: 100%;
+    html {
+      font-size: 17px;
       scroll-behavior: smooth;
+      scroll-padding-top: 1rem;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
-      font-family: Inter, Outfit, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.5;
-      overflow-x: hidden;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      min-height: calc(var(--vh) * 100);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      touch-action: manipulation;
     }
 
-    .app {
-      width: min(820px, 100%);
-      margin: 0 auto;
-      min-height: calc(var(--vh) * 100);
-      padding: clamp(1.6rem, 4vw, 4rem) clamp(1rem, 4vw, 1.75rem) 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+    a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .brand {
-      display: grid;
-      gap: 0.4rem;
-      margin-top: 0;
-      margin-bottom: clamp(1.4rem, 4vw, 2.4rem);
-      text-align: left;
-      justify-self: start;
-      align-self: start;
+    button {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(21, 94, 240, 0.22);
+      outline-offset: 3px;
+    }
+
+    .page {
       width: 100%;
     }
 
-    .greeting {
-      color: var(--muted);
-      font-size: clamp(0.98rem, 3.5vw, 1.05rem);
-      font-weight: 500;
-      margin-bottom: 0.3rem;
+    .container {
+      width: min(1120px, calc(100% - 1.25rem));
+      margin: 0 auto;
     }
 
-    .brand h1 {
-      color: var(--text);
-      font-size: clamp(2rem, 6.6vw, 3.1rem);
-      letter-spacing: -0.03em;
-      line-height: 1.08;
-      max-width: 14ch;
+    .topbar {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.8);
     }
 
-    .tagline {
-      color: var(--text);
-      font-size: clamp(1rem, 3.5vw, 1.15rem);
-      font-weight: 500;
+    .topbar-inner {
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
     }
 
-    .screen {
-      display: none;
-      min-height: clamp(var(--screen-min-height), var(--available-height), 680px);
-      align-content: center;
-      gap: clamp(0.9rem, 2.5vw, 1.15rem);
-      padding: 0;
-      border-radius: 0;
-      border: 0;
-      background: transparent;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 320ms ease, transform 320ms ease;
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+      min-width: 0;
     }
 
-    .screen.active {
-      display: grid;
-    }
-
-    .screen:first-of-type {
-      margin-top: 1rem;
-    }
-
-    .screen.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    h2 {
-      font-size: clamp(1.45rem, 5.8vw, 2.05rem);
-      margin-bottom: 0.2rem;
-      color: var(--text);
-      letter-spacing: -0.03em;
-      line-height: 1.14;
-    }
-
-    p {
-      color: var(--text);
-      font-size: clamp(1rem, 4vw, 1.08rem);
-      max-width: 56ch;
-    }
-
-    .lead {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .cta-stack {
-      display: grid;
-      gap: 0.85rem;
-      margin-top: 0.65rem;
-      justify-items: start;
-    }
-
-    .choice-btn,
-    .final-link {
-      width: min(100%, 420px);
-      min-height: 48px;
-      border-radius: 14px;
-      border: 1px solid var(--navy);
-      background: var(--navy);
-      color: #ffffff;
-      padding: 0.85rem 1rem;
-      text-align: center;
+    .brand-name {
       font-size: 1rem;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+      white-space: nowrap;
     }
 
-    .choice-btn:hover,
-    .choice-btn:focus-visible,
-    .final-link:hover,
-    .final-link:focus-visible {
-      transform: translateY(-1px);
-      background: var(--steel-blue);
-      border-color: var(--steel-blue);
-      outline: 2px solid transparent;
-    }
-
-    .choice-btn:focus-visible,
-    .final-link:focus-visible {
-      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
-    }
-
-    .tiny-note {
-      font-size: 0.94rem;
+    .brand-note {
+      font-size: 0.78rem;
+      font-weight: 600;
       color: var(--muted);
-      margin-top: 0.4rem;
-      text-align: center;
+      white-space: nowrap;
     }
 
-    .back-btn {
-      margin-top: 0.6rem;
-      width: fit-content;
-      border: 0;
+    .hero {
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0 0.95rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      color: var(--navy);
+      max-width: 14ch;
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      max-width: 42ch;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.15rem;
+    }
+
+    .cta {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid transparent;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+      cursor: pointer;
+    }
+
+    .cta-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .cta-primary:hover,
+    .cta-primary:focus-visible {
+      background: var(--accent-strong);
+      border-color: var(--accent-strong);
+      color: #ffffff;
+    }
+
+    .cta-secondary {
       background: transparent;
-      color: var(--text);
-      text-decoration: underline;
-      text-underline-offset: 0.16em;
-      font-size: 0.96rem;
-      cursor: pointer;
-      justify-self: center;
+      color: var(--navy);
+      border-color: var(--border-strong);
     }
 
-    .footer {
-      margin-top: 2rem;
+    .cta-secondary:hover,
+    .cta-secondary:focus-visible {
+      border-color: var(--navy);
+      background: #ffffff;
+      color: var(--navy);
+    }
+
+    .section {
+      padding: 0.95rem 0 1.15rem;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-label {
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--muted);
+    }
+
+    .section-title {
+      font-size: clamp(1.35rem, 5vw, 1.85rem);
+      line-height: 1.14;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+
+    .section-copy {
+      max-width: 52ch;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.55;
+    }
+
+    .doors-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    .door-card {
+      min-height: 152px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      padding: 0.9rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: border-color 160ms ease, background-color 160ms ease;
+    }
+
+    .door-card:hover,
+    .door-card:focus-visible {
+      border-color: var(--accent);
+      background: #f8fbff;
+    }
+
+    .door-icon {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      background: var(--surface-2);
+      flex: 0 0 auto;
+    }
+
+    .door-icon svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .door-kicker {
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .door-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+    }
+
+    .door-copy {
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .door-action {
+      margin-top: auto;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 800;
       font-size: 0.9rem;
       text-align: center;
     }
 
-    .hero-copy {
-      text-align: left;
-      width: 100%;
+    .door-card:hover .door-action,
+    .door-card:focus-visible .door-action {
+      border-color: var(--accent-strong);
+      background: var(--accent-strong);
+      color: #ffffff;
+    }
+
+    .opportunity {
+      border-top: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .opportunity-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .opportunity-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .opp-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .opp-amount {
+      color: var(--navy);
+      font-size: clamp(1.5rem, 4vw, 2.15rem);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .opp-amount .currency {
+      font-size: 0.8em;
+      letter-spacing: -0.03em;
+      margin-right: 0.15rem;
+    }
+
+    .opp-copy {
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .opp-foot {
+      margin-top: auto;
+      padding-top: 0.2rem;
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .opportunity-cta-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.95rem;
+    }
+
+    .footer {
+      padding: 1.1rem 0 1.4rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .footer a {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    @media (min-width: 640px) {
+      .opportunity-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (min-width: 760px) {
-      .app { padding: 4.25rem 1.75rem 3.5rem; }
-      .screen { min-height: clamp(280px, var(--available-height), 720px); }
-    }
-
-    @media (max-width: 759px) {
-      .app {
-        padding-top: 1.4rem;
-        padding-bottom: 2.25rem;
+      .topbar-inner {
+        min-height: 60px;
       }
 
-      .brand {
-        margin-bottom: 1.5rem;
+      .hero-inner {
+        grid-template-columns: 1.3fr 0.7fr;
+        align-items: end;
+        gap: 1rem;
       }
 
-      .brand h1 {
-        max-width: 11.5ch;
+      .hero-copy {
+        max-width: 50ch;
       }
 
-      .choice-btn,
-      .final-link {
-        width: 100%;
-      }
-
-      .screen:first-of-type {
-        margin-top: 0.25rem;
-      }
-
-      .screen {
-        min-height: clamp(220px, var(--available-height), 620px);
-      }
-    }
-
-    @media (max-width: 460px) {
-      .greeting {
-        font-size: 0.96rem;
-      }
-
-      .brand h1 {
-        font-size: clamp(1.75rem, 10vw, 2.2rem);
-      }
-
-      .tagline {
-        font-size: 0.98rem;
-      }
-
-      h2 {
-        font-size: clamp(1.3rem, 7vw, 1.8rem);
-      }
-
-      p {
-        font-size: 0.98rem;
-      }
-
-      .screen {
-        gap: 0.8rem;
-      }
-    }
-
-    @media (max-height: 760px) {
-      .app {
+      .hero-actions {
         justify-content: flex-start;
       }
 
-      .screen {
-        min-height: auto;
-        align-content: flex-start;
+      .section-head {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 1rem;
+      }
+
+      .section-copy {
+        text-align: right;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .doors-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .opportunity-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html, body { scroll-behavior: auto; }
-      .screen,
-      .choice-btn,
-      .final-link { transition-duration: 0.01ms !important; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="app" aria-live="polite">
-    <header class="brand">
-      <p class="greeting">I help businesses and professionals solve technical problems with practical, reliable solutions.</p>
-      <h1>I’m Joseph.</h1>
-      <p class="tagline">10+ years in IT leadership and digital development.</p>
+  <div class="page">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <span class="brand-name">Joseph</span>
+          <span class="brand-note">Digital systems and networking</span>
+        </div>
+      </div>
     </header>
 
-    <section class="screen active hero-copy" id="screen-1" data-step="1">
-      <h2>What do you need help with?</h2>
-      <p class="lead">I’ll help you quickly find the right next step.</p>
-      <p>Tell me what brought you here.</p>
-      <div class="cta-stack">
-        <button class="choice-btn" data-next="screen-2" type="button">Let’s find a solution</button>
-      </div>
-    </section>
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <p class="eyebrow">Professional Simplicity</p>
+            <h1 class="hero-title">Digital systems for businesses that need clarity.</h1>
+            <p class="hero-copy">
+              I audit workflows, build useful tools, and mentor people who want practical applied AI.
+            </p>
+          </div>
 
-    <section class="screen" id="screen-2" data-step="2">
-      <h2>Technical Leadership</h2>
-      <p>If your current systems feel overly complex or aren't supporting your goals, I can help simplify your operations and get your technology back on track.</p>
-      <div class="cta-stack">
-        <button class="choice-btn" type="button" data-track="business" data-next="screen-final">This is what I need</button>
-        <button class="choice-btn" type="button" data-next="screen-3">Not this. Show another path</button>
-      </div>
-      <button class="back-btn" data-back="screen-1" type="button">Back</button>
-    </section>
+          <div class="hero-actions">
+            <a class="cta cta-primary" href="#doors">See the Four Doors</a>
+            <a class="cta cta-secondary" href="#opportunities">View Opportunity Cards</a>
+          </div>
+        </div>
+      </section>
 
-    <section class="screen" id="screen-3" data-step="3">
-      <h2>Career Direction</h2>
-      <p>The tech landscape is noisy. I can help you find a clear path so you can focus your time on the skills and projects that actually matter.</p>
-      <div class="cta-stack">
-        <button class="choice-btn" type="button" data-track="tech-start" data-next="screen-final">I’d like some guidance</button>
-        <button class="choice-btn" type="button" data-next="screen-4">Not this either</button>
-      </div>
-      <button class="back-btn" data-back="screen-2" type="button">Back</button>
-    </section>
+      <section class="section" id="doors">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-label">Four Doors</p>
+              <h2 class="section-title">Choose the next step in under a second.</h2>
+            </div>
+            <p class="section-copy">The doors are compact, thumb-friendly, and visible early on a standard phone screen.</p>
+          </div>
 
-    <section class="screen" id="screen-4" data-step="4">
-      <h2>Product Development</h2>
-      <p>From a rough idea to a finished product. If you need a website, an app, or a custom internal system built to last, I can build it for you.</p>
-      <div class="cta-stack">
-        <button class="choice-btn" type="button" data-track="build" data-next="screen-final">Let’s build it</button>
-        <button class="choice-btn" type="button" data-next="screen-5">Keep going</button>
-      </div>
-      <button class="back-btn" data-back="screen-3" type="button">Back</button>
-    </section>
+          <div class="doors-grid">
+            <a
+              class="door-card"
+              href="https://wa.me/"
+              data-wa-message="Hi Joseph, I'd like to book a Digital Audit for my business."
+            >
+              <span class="door-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 5h16v12H7l-3 3V5z"></path>
+                  <path d="M8 9h8"></path>
+                  <path d="M8 13h5"></path>
+                </svg>
+              </span>
+              <span class="door-kicker">Advisory</span>
+              <h3 class="door-title">Book a Digital Audit</h3>
+              <p class="door-copy">Find wasted time, broken workflows, and quick wins before they cost more.</p>
+              <span class="door-action">WhatsApp Joseph</span>
+            </a>
 
-    <section class="screen" id="screen-5" data-step="5">
-      <h2>Have a digital idea and want to bring it to life?</h2>
-      <p>Great. I work with clients to turn ideas into useful, working products.</p>
-      <div class="cta-stack">
-        <button class="choice-btn" type="button" data-track="idea" data-next="screen-final">Yes — let’s build it</button>
-        <button class="choice-btn" type="button" data-track="general" data-next="screen-final">I’m not sure yet, but I want to talk</button>
-      </div>
-      <button class="back-btn" data-back="screen-4" type="button">Back</button>
-    </section>
+            <a
+              class="door-card"
+              href="https://wa.me/"
+              data-wa-message="Hi Joseph, I have a project I'd like you to build."
+            >
+              <span class="door-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 7h16"></path>
+                  <path d="M4 17h16"></path>
+                  <path d="M7 7l-3 5 3 5"></path>
+                  <path d="M17 7l3 5-3 5"></path>
+                </svg>
+              </span>
+              <span class="door-kicker">Build</span>
+              <h3 class="door-title">Start a Project</h3>
+              <p class="door-copy">Websites, apps, and internal tools shaped around how your team actually works.</p>
+              <span class="door-action">WhatsApp Joseph</span>
+            </a>
 
-    <section class="screen" id="screen-final" data-step="6">
-      <h2>Let’s talk.</h2>
-      <p class="lead">Choose whichever way is easiest for you. I’ll get back to you personally.</p>
-      <div class="cta-stack">
-        <a class="final-link" id="wa-link" href="https://wa.me/233201517382?text=Hello%20I%20just%20visited%20your%20site." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-        <a class="final-link" id="mail-link" href="mailto:devjozi59@gmail.com?subject=Quick%20intro%20from%20your%20site">Send an Email</a>
-        <a class="final-link" id="form-link" href="https://forms.gle/YOUR_FORM_ID" target="_blank" rel="noopener noreferrer">Use the Short Form</a>
+            <a
+              class="door-card"
+              href="https://wa.me/"
+              data-wa-message="Hi Joseph, I want to learn more about the Applied AI course."
+            >
+              <span class="door-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 7v5l3 2"></path>
+                </svg>
+              </span>
+              <span class="door-kicker">Mentorship</span>
+              <h3 class="door-title">Applied AI Course</h3>
+              <p class="door-copy">Learn practical automation, AI workflows, and better ways to move work forward.</p>
+              <span class="door-action">WhatsApp Joseph</span>
+            </a>
+
+            <a
+              class="door-card"
+              href="https://wa.me/"
+              data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
+            >
+              <span class="door-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3v18"></path>
+                  <path d="M17 7H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7"></path>
+                </svg>
+              </span>
+              <span class="door-kicker">Partner</span>
+              <h3 class="door-title">Bounty Board</h3>
+              <p class="door-copy">Refer a client and discuss the partner payout for closed work.</p>
+              <span class="door-action">WhatsApp Joseph</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section opportunity" id="opportunities">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-label">Earn</p>
+              <h2 class="section-title">Opportunity Cards</h2>
+            </div>
+            <p class="section-copy">Clear, professional payouts with the reward amount always in view.</p>
+          </div>
+
+          <div class="opportunity-grid">
+            <article class="opportunity-card">
+              <span class="opp-label">Business web presence</span>
+              <div class="opp-amount"><span class="currency">GHS</span>1,500 - 5,250</div>
+              <p class="opp-copy">Landing pages and business websites that make a strong first impression.</p>
+              <div class="opp-foot">Typical project payout</div>
+            </article>
+
+            <article class="opportunity-card">
+              <span class="opp-label">Automation systems</span>
+              <div class="opp-amount"><span class="currency">GHS</span>4,500 - 22,500</div>
+              <p class="opp-copy">Custom tools and internal systems for inventory, operations, and growth.</p>
+              <div class="opp-foot">High-value build range</div>
+            </article>
+
+            <article class="opportunity-card">
+              <span class="opp-label">Monthly management</span>
+              <div class="opp-amount"><span class="currency">GHS</span>675 - 1,200</div>
+              <p class="opp-copy">A recurring retainer for clients who need steady support each month.</p>
+              <div class="opp-foot">Paid while the client stays active</div>
+            </article>
+
+            <article class="opportunity-card">
+              <span class="opp-label">Referral partner</span>
+              <div class="opp-amount">15%</div>
+              <p class="opp-copy">Introduce the right business and earn from the deal once it closes.</p>
+              <div class="opp-foot">Bounty Board referral share</div>
+            </article>
+          </div>
+
+          <div class="opportunity-cta-row">
+            <a
+              class="cta cta-primary"
+              href="https://wa.me/"
+              data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
+            >
+              Discuss a Referral
+            </a>
+            <a class="cta cta-secondary" href="#doors">Back to the Four Doors</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span>© <span id="year"></span> Joseph · </span>
+        <a href="mailto:devjozi59@gmail.com">devjozi59@gmail.com</a>
       </div>
-      <p class="tiny-note" id="path-note">Thanks for sharing what you need.</p>
-      <button class="back-btn" data-back="screen-1" type="button">Start over</button>
-      <p class="footer">© <span id="year"></span> Joseph · Built by DevJozi</p>
-    </section>
-  </main>
+    </footer>
+  </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const app = document.querySelector('.app');
-      const brand = document.querySelector('.brand');
-      const screens = [...document.querySelectorAll('.screen')];
-      const nextButtons = document.querySelectorAll('[data-next]');
-      const backButtons = document.querySelectorAll('[data-back]');
-      const note = document.getElementById('path-note');
-      const labelByPath = {
-        business: 'Got it. You’re here for business support.',
-        'tech-start': 'Nice. You’re here to get started in tech.',
-        build: 'Excellent. You’re here to build a digital solution.',
-        idea: 'Great. You’re here to bring an idea to life.',
-        general: 'Perfect. We can clarify the best next step together.'
-      };
+    (function () {
+      const WA_NUMBER = '233201517382';
 
-      function updateViewportSizing() {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-        if (!app || !brand) return;
-
-        const appStyles = window.getComputedStyle(app);
-        const brandStyles = window.getComputedStyle(brand);
-        const padTop = parseFloat(appStyles.paddingTop) || 0;
-        const padBottom = parseFloat(appStyles.paddingBottom) || 0;
-        const brandMarginTop = parseFloat(brandStyles.marginTop) || 0;
-        const brandMarginBottom = parseFloat(brandStyles.marginBottom) || 0;
-        const availableHeight = window.innerHeight - brand.offsetHeight - brandMarginTop - brandMarginBottom - padTop - padBottom;
-        const screenMinHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--screen-min-height')) || 220;
-        document.documentElement.style.setProperty('--available-height', `${Math.max(screenMinHeight, Math.round(availableHeight))}px`);
-      }
-
-      let rafPending = false;
-      function scheduleViewportUpdate() {
-        if (rafPending) return;
-        rafPending = true;
-        requestAnimationFrame(() => {
-          rafPending = false;
-          updateViewportSizing();
-        });
-      }
-
-      function showScreen(screenId) {
-        const target = document.getElementById(screenId);
-        if (!target) return;
-
-        screens.forEach(screen => {
-          screen.classList.remove('active', 'visible');
-          screen.setAttribute('aria-hidden', 'true');
-        });
-
-        target.classList.add('active');
-        target.setAttribute('aria-hidden', 'false');
-
-        requestAnimationFrame(() => target.classList.add('visible'));
-
-        target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
-        const firstAction = target.querySelector('button, a');
-        if (firstAction) firstAction.focus({ preventScroll: true });
-      }
-
-      nextButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const chosenPath = btn.dataset.track;
-          if (chosenPath) {
-            localStorage.setItem('joseph_path', chosenPath);
-            note.textContent = labelByPath[chosenPath] || 'Thanks for sharing what you need.';
-          }
-
-          const nextId = btn.dataset.next;
-          showScreen(nextId);
-        });
+      document.querySelectorAll('[data-wa-message]').forEach((link) => {
+        const message = link.getAttribute('data-wa-message');
+        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+        link.setAttribute('href', url);
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
       });
-
-      backButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const backId = btn.dataset.back;
-          if (backId === 'screen-1') {
-            localStorage.removeItem('joseph_path');
-            note.textContent = 'Thanks for sharing what you need.';
-          }
-          showScreen(backId);
-        });
-      });
-
-      const rememberedPath = localStorage.getItem('joseph_path');
-      if (rememberedPath && labelByPath[rememberedPath]) {
-        note.textContent = labelByPath[rememberedPath];
-      }
-
-      updateViewportSizing();
-      window.addEventListener('resize', scheduleViewportUpdate);
-      window.addEventListener('orientationchange', scheduleViewportUpdate);
 
       document.getElementById('year').textContent = new Date().getFullYear();
-      showScreen('screen-1');
-    });
+    }());
   </script>
 </body>
 </html>
