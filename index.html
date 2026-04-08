@@ -3,456 +3,766 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apply today's technology with Joseph | IT Leadership &amp; Digital Solutions</title>
-  <meta
-    name="description"
-    content="Apply today's technology with Joseph for IT leadership and digital solutions."
-  />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E293B'/%3E%3Cpath d='M22 18h8v28h-8zm12 0h8v28h-8z' fill='%23FFFFFF'/%3E%3C/svg%3E" />
+  <title>Joseph | Building Systems That Work</title>
+  <meta name="description" content="Joseph helps businesses stop losing money to manual errors and helps professionals get into real-world tech roles. IT leadership, digital products, and applied AI mentorship." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E293B'/%3E%3Cpath d='M18 18h10v28H18zm18 0h10v28H36z' fill='%23FFFFFF'/%3E%3C/svg%3E" />
+
   <style>
     :root {
-      --bg: #ffffff;
-      --surface: #ffffff;
-      --surface-2: #ffffff;
-      --text: #334155;
-      --muted: #64748b;
-      --border: #dbe3ee;
-      --navy: #1e293b;
-      --steel-blue: #3b82f6;
-      --focus: #3b82f6;
-      --radius: 18px;
-      --vh: 1vh;
-      --available-height: 52vh;
-      --screen-min-height: 220px;
+      --navy:   #1a2332;
+      --navy-2: #243044;
+      --slate:  #3d5166;
+      --text:   #1a2332;
+      --muted:  #5c6b7a;
+      --border: #dde3ea;
+      --bg:     #f9fafb;
+      --white:  #ffffff;
+      --accent: #1a6cf4;
+      --green:  #0f7a55;
+      --green-bg: #eaf5f0;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      width: 100%;
-      min-height: 100%;
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: Inter, Outfit, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.5;
-      overflow-x: hidden;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      min-height: calc(var(--vh) * 100);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .app {
-      width: min(820px, 100%);
+    a { color: inherit; text-decoration: none; }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 900px;
       margin: 0 auto;
-      min-height: calc(var(--vh) * 100);
-      padding: clamp(1.6rem, 4vw, 4rem) clamp(1rem, 4vw, 1.75rem) 3rem;
+      padding: 0 clamp(1.1rem, 5vw, 2.5rem);
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-cta {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.42rem 1rem;
+      transition: background 180ms, color 180ms;
+    }
+
+    .nav-cta:hover { background: var(--accent); color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(3rem, 7vw, 5.5rem);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 6.5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      color: var(--white);
+      max-width: 18ch;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 1.15rem);
+      color: rgba(255,255,255,0.72);
+      max-width: 52ch;
+      line-height: 1.65;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .pill {
+      font-size: 0.83rem;
+      font-weight: 500;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.07);
+    }
+
+    /* ── SECTION TITLES ── */
+    .section {
+      padding: clamp(3rem, 7vw, 5rem) 0;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.55rem, 4.5vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── FOUR DOORS ── */
+    .doors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .door {
+      background: var(--white);
+      padding: clamp(1.5rem, 4vw, 2rem);
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      gap: 1rem;
+      transition: background 180ms;
     }
 
-    .brand {
-      display: grid;
-      gap: 0.4rem;
-      margin-top: 0;
-      margin-bottom: clamp(1.4rem, 4vw, 2.4rem);
-      text-align: left;
-      justify-self: start;
-      align-self: start;
-      width: 100%;
+    .door:hover { background: #fafbfc; }
+
+    .door-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .greeting {
-      color: var(--muted);
-      font-size: clamp(0.98rem, 3.5vw, 1.05rem);
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-    }
+    .door-icon svg { width: 20px; height: 20px; }
 
-    .brand h1 {
-      color: var(--text);
-      font-size: clamp(2rem, 6.6vw, 3.1rem);
-      letter-spacing: -0.03em;
-      line-height: 1.08;
-      max-width: 14ch;
-    }
+    .door-icon-blue  { background: #e8f0fe; }
+    .door-icon-green { background: var(--green-bg); }
+    .door-icon-amber { background: #fef3e2; }
+    .door-icon-slate { background: #eef0f4; }
 
-    .tagline {
-      color: var(--text);
-      font-size: clamp(1rem, 3.5vw, 1.15rem);
-      font-weight: 500;
-    }
+    .door-icon-blue  svg { color: #1a6cf4; }
+    .door-icon-green svg { color: #0f7a55; }
+    .door-icon-amber svg { color: #b85f00; }
+    .door-icon-slate svg { color: #3d5166; }
 
-    .screen {
-      display: none;
-      min-height: clamp(var(--screen-min-height), var(--available-height), 680px);
-      align-content: center;
-      gap: clamp(0.9rem, 2.5vw, 1.15rem);
-      padding: 0;
-      border-radius: 0;
-      border: 0;
-      background: transparent;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 320ms ease, transform 320ms ease;
-    }
-
-    .screen.active {
-      display: grid;
-    }
-
-    .screen:first-of-type {
-      margin-top: 1rem;
-    }
-
-    .screen.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    h2 {
-      font-size: clamp(1.45rem, 5.8vw, 2.05rem);
-      margin-bottom: 0.2rem;
-      color: var(--text);
-      letter-spacing: -0.03em;
-      line-height: 1.14;
-    }
-
-    p {
-      color: var(--text);
-      font-size: clamp(1rem, 4vw, 1.08rem);
-      max-width: 56ch;
-    }
-
-    .lead {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .cta-stack {
-      display: grid;
-      gap: 0.85rem;
-      margin-top: 0.65rem;
-      justify-items: start;
-    }
-
-    .choice-btn,
-    .final-link {
-      width: min(100%, 420px);
-      min-height: 48px;
-      border-radius: 14px;
-      border: 1px solid var(--navy);
-      background: var(--navy);
-      color: #ffffff;
-      padding: 0.85rem 1rem;
-      text-align: center;
-      font-size: 1rem;
+    .door h3 {
+      font-size: 1.05rem;
       font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
     }
 
-    .choice-btn:hover,
-    .choice-btn:focus-visible,
-    .final-link:hover,
-    .final-link:focus-visible {
-      transform: translateY(-1px);
-      background: var(--steel-blue);
-      border-color: var(--steel-blue);
-      outline: 2px solid transparent;
-    }
-
-    .choice-btn:focus-visible,
-    .final-link:focus-visible {
-      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
-    }
-
-    .tiny-note {
+    .door p {
       font-size: 0.94rem;
       color: var(--muted);
-      margin-top: 0.4rem;
-      text-align: center;
+      line-height: 1.65;
+      flex: 1;
     }
 
-    .back-btn {
-      margin-top: 0.6rem;
-      width: fit-content;
-      border: 0;
-      background: transparent;
-      color: var(--text);
-      text-decoration: underline;
-      text-underline-offset: 0.16em;
-      font-size: 0.96rem;
-      cursor: pointer;
-      justify-self: center;
-    }
-
-    .footer {
-      margin-top: 2rem;
-      color: var(--muted);
+    .door-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       font-size: 0.9rem;
-      text-align: center;
-    }
-
-    .hero-copy {
+      font-weight: 600;
+      color: var(--navy);
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      padding: 0.6rem 1.05rem;
+      background: var(--white);
+      cursor: pointer;
+      transition: border-color 180ms, background 180ms, transform 180ms;
       text-align: left;
+      align-self: flex-start;
       width: 100%;
+      justify-content: center;
     }
 
-    @media (min-width: 760px) {
-      .app { padding: 4.25rem 1.75rem 3.5rem; }
-      .screen { min-height: clamp(280px, var(--available-height), 720px); }
+    .door-cta:hover {
+      border-color: var(--navy);
+      background: var(--navy);
+      color: var(--white);
+      transform: translateY(-1px);
     }
 
-    @media (max-width: 759px) {
-      .app {
-        padding-top: 1.4rem;
-        padding-bottom: 2.25rem;
-      }
+    .door-cta svg { width: 15px; height: 15px; flex-shrink: 0; }
 
-      .brand {
-        margin-bottom: 1.5rem;
-      }
-
-      .brand h1 {
-        max-width: 11.5ch;
-      }
-
-      .choice-btn,
-      .final-link {
-        width: 100%;
-      }
-
-      .screen:first-of-type {
-        margin-top: 0.25rem;
-      }
-
-      .screen {
-        min-height: clamp(220px, var(--available-height), 620px);
-      }
+    /* ── DIVIDER ── */
+    .divider {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 0;
     }
 
-    @media (max-width: 460px) {
-      .greeting {
-        font-size: 0.96rem;
-      }
-
-      .brand h1 {
-        font-size: clamp(1.75rem, 10vw, 2.2rem);
-      }
-
-      .tagline {
-        font-size: 0.98rem;
-      }
-
-      h2 {
-        font-size: clamp(1.3rem, 7vw, 1.8rem);
-      }
-
-      p {
-        font-size: 0.98rem;
-      }
-
-      .screen {
-        gap: 0.8rem;
-      }
+    /* ── BOUNTY BOARD ── */
+    #bounty {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
-    @media (max-height: 760px) {
-      .app {
-        justify-content: flex-start;
-      }
+    .bounty-intro {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      align-items: end;
+      margin-bottom: 2rem;
+    }
 
-      .screen {
-        min-height: auto;
-        align-content: flex-start;
-      }
+    @media (max-width: 540px) {
+      .bounty-intro { grid-template-columns: 1fr; }
+    }
+
+    .commission-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-bg);
+      border: 1.5px solid #bbe6d5;
+      border-radius: 14px;
+      padding: 1.1rem 1.6rem;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .commission-badge .big {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .commission-badge .label {
+      font-size: 0.8rem;
+      color: #1a6b4a;
+      margin-top: 0.3rem;
+      font-weight: 500;
+    }
+
+    .bounty-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.93rem;
+    }
+
+    thead tr {
+      background: #f4f5f7;
+    }
+
+    th {
+      text-align: left;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      padding: 0.85rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 1rem 1.2rem;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .td-service { font-weight: 600; color: var(--navy); }
+
+    .td-reward {
+      font-weight: 700;
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    .recurring-badge {
+      display: inline-block;
+      font-size: 0.73rem;
+      font-weight: 700;
+      background: #eaf5f0;
+      color: #0f7a55;
+      border: 1px solid #bbe6d5;
+      border-radius: 100px;
+      padding: 0.2rem 0.55rem;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .bounty-cta-row {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 0.75rem 1.4rem;
+      cursor: pointer;
+      transition: transform 160ms, background 160ms, box-shadow 160ms;
+      border: none;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-primary:hover { background: var(--navy-2); }
+
+    .btn-wa {
+      background: #128c47;
+      color: var(--white);
+    }
+
+    .btn-wa:hover { background: #0e7039; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-ghost:hover { border-color: var(--navy); background: var(--white); }
+
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 2rem 1rem;
+    }
+
+    footer a { color: rgba(255,255,255,0.75); text-decoration: underline; text-underline-offset: 0.15em; }
+
+    /* ── MODAL OVERLAY ── */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,16,26,0.55);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-bg.open { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 18px;
+      width: min(480px, 100%);
+      padding: clamp(1.5rem, 5vw, 2.2rem);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-sub {
+      font-size: 0.93rem;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .modal-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 0.95rem 1.1rem;
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: border-color 160ms, background 160ms;
+    }
+
+    .modal-link:hover { border-color: var(--navy); background: #f8f9fb; }
+    .modal-link svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    .modal-link.wa { border-color: #bbe6d5; color: #0f7a55; background: #eaf5f0; }
+    .modal-link.wa:hover { border-color: #0f7a55; background: #d8f0e8; }
+
+    .modal-dismiss {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--muted);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+      background: none;
+      border: none;
+    }
+
+    /* ── UTILITY ── */
+    .mt-sm { margin-top: 0.5rem; }
+    .mt-md { margin-top: 1rem; }
+
+    @media (max-width: 520px) {
+      .bounty-cta-row { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html, body { scroll-behavior: auto; }
-      .screen,
-      .choice-btn,
-      .final-link { transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
+
 <body>
-  <main class="app" aria-live="polite">
-    <header class="brand">
-      <p class="greeting">I help businesses and professionals solve technical problems with practical, reliable solutions.</p>
-      <h1>I’m Joseph.</h1>
-      <p class="tagline">10+ years in IT leadership and digital development.</p>
-    </header>
 
-    <section class="screen active hero-copy" id="screen-1" data-step="1">
-      <h2>What do you need help with?</h2>
-      <p class="lead">I’ll help you quickly find the right next step.</p>
-      <p>Tell me what brought you here.</p>
-      <div class="cta-stack">
-        <button class="choice-btn" data-next="screen-2" type="button">Let’s find a solution</button>
-      </div>
-    </section>
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <span class="nav-logo">Joseph · DevJozi</span>
+      <a class="nav-cta" href="#" onclick="openModal('general'); return false;">Get in touch</a>
+    </div>
+  </nav>
 
-    <section class="screen" id="screen-2" data-step="2">
-      <h2>Technical Leadership</h2>
-      <p>If your current systems feel overly complex or aren't supporting your goals, I can help simplify your operations and get your technology back on track.</p>
-      <div class="cta-stack">
-        <button class="choice-btn" type="button" data-track="business" data-next="screen-final">This is what I need</button>
-        <button class="choice-btn" type="button" data-next="screen-3">Not this. Show another path</button>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">IT Leadership &amp; Digital Development · Accra</span>
+      <h1>Building systems that work. <em>Scaling technical talent.</em></h1>
+      <p class="hero-sub">
+        Most businesses lose money quietly — through manual processes, disconnected tools, and teams who don't know how to use the technology they already have. I fix that. I also help professionals stop reading about tech and start using it to earn.
+      </p>
+      <div class="hero-pills">
+        <span class="pill">10+ years in IT leadership</span>
+        <span class="pill">Digital products</span>
+        <span class="pill">Applied AI training</span>
+        <span class="pill">Partner commissions</span>
       </div>
-      <button class="back-btn" data-back="screen-1" type="button">Back</button>
-    </section>
+    </div>
+  </header>
 
-    <section class="screen" id="screen-3" data-step="3">
-      <h2>Career Direction</h2>
-      <p>The tech landscape is noisy. I can help you find a clear path so you can focus your time on the skills and projects that actually matter.</p>
-      <div class="cta-stack">
-        <button class="choice-btn" type="button" data-track="tech-start" data-next="screen-final">I’d like some guidance</button>
-        <button class="choice-btn" type="button" data-next="screen-4">Not this either</button>
-      </div>
-      <button class="back-btn" data-back="screen-2" type="button">Back</button>
-    </section>
+  <!-- FOUR DOORS -->
+  <section class="section" id="services">
+    <div class="container">
+      <p class="section-label">What I do</p>
+      <h2 class="section-title">Where do you need the most help?</h2>
+      <p class="section-sub">Pick the path that fits your situation. Every door leads to a real conversation — not a sales funnel.</p>
 
-    <section class="screen" id="screen-4" data-step="4">
-      <h2>Product Development</h2>
-      <p>From a rough idea to a finished product. If you need a website, an app, or a custom internal system built to last, I can build it for you.</p>
-      <div class="cta-stack">
-        <button class="choice-btn" type="button" data-track="build" data-next="screen-final">Let’s build it</button>
-        <button class="choice-btn" type="button" data-next="screen-5">Keep going</button>
-      </div>
-      <button class="back-btn" data-back="screen-3" type="button">Back</button>
-    </section>
+      <div class="doors-grid">
 
-    <section class="screen" id="screen-5" data-step="5">
-      <h2>Have a digital idea and want to bring it to life?</h2>
-      <p>Great. I work with clients to turn ideas into useful, working products.</p>
-      <div class="cta-stack">
-        <button class="choice-btn" type="button" data-track="idea" data-next="screen-final">Yes — let’s build it</button>
-        <button class="choice-btn" type="button" data-track="general" data-next="screen-final">I’m not sure yet, but I want to talk</button>
-      </div>
-      <button class="back-btn" data-back="screen-4" type="button">Back</button>
-    </section>
+        <!-- Door 1: Business & IT Advisory -->
+        <div class="door">
+          <div class="door-icon door-icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>Business &amp; IT Advisory</h3>
+          <p>Most businesses lose money because their systems are manual or disorganized. I help you audit your operations, plug the leaks, and professionalize your setup - so you stop paying for problems that have already been solved.</p>
+          <button class="door-cta" onclick="openModal('audit')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Book a Digital Audit
+          </button>
+        </div>
 
-    <section class="screen" id="screen-final" data-step="6">
-      <h2>Let’s talk.</h2>
-      <p class="lead">Choose whichever way is easiest for you. I’ll get back to you personally.</p>
-      <div class="cta-stack">
-        <a class="final-link" id="wa-link" href="https://wa.me/233201517382?text=Hello%20I%20just%20visited%20your%20site." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-        <a class="final-link" id="mail-link" href="mailto:devjozi59@gmail.com?subject=Quick%20intro%20from%20your%20site">Send an Email</a>
-        <a class="final-link" id="form-link" href="https://forms.gle/YOUR_FORM_ID" target="_blank" rel="noopener noreferrer">Use the Short Form</a>
+        <!-- Door 2: Building Digital Products -->
+        <div class="door">
+          <div class="door-icon door-icon-slate">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <h3>Building Digital Products</h3>
+          <p>I build websites, custom apps, and inventory systems that actually fit how your business runs. Not templates. Not guesswork. High-quality builds with a clear focus on ease of use, so your team picks it up without training manuals.</p>
+          <button class="door-cta" onclick="openModal('build')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Start a Project
+          </button>
+        </div>
+
+        <!-- Door 3: Tech Mentorship -->
+        <div class="door">
+          <div class="door-icon door-icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3>Tech Mentorship &amp; Applied AI</h3>
+          <p>Don't just learn theory. I teach you how to use today's tools — AI, automation, and no-code systems — to solve real business problems and land better jobs. Practical skills, real projects, and direct guidance from someone in the field.</p>
+          <button class="door-cta" onclick="openModal('mentorship')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            View the Courses
+          </button>
+        </div>
+
+        <!-- Door 4: Partner & Earn -->
+        <div class="door">
+          <div class="door-icon door-icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3>Partner &amp; Earn</h3>
+          <p>If you know a business owner who needs these services, introduce us. I pay a 15% commission for every successful project you bring my way — with no cap and no complicated paperwork. A warm introduction is all it takes.</p>
+          <button class="door-cta" onclick="document.getElementById('bounty').scrollIntoView({behavior:'smooth'})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            See the Bounty Board
+          </button>
+        </div>
+
       </div>
-      <p class="tiny-note" id="path-note">Thanks for sharing what you need.</p>
-      <button class="back-btn" data-back="screen-1" type="button">Start over</button>
-      <p class="footer">© <span id="year"></span> Joseph · Built by DevJozi</p>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- BOUNTY BOARD -->
+  <section class="section" id="bounty">
+    <div class="container">
+      <p class="section-label">Partner Programme</p>
+
+      <div class="bounty-intro">
+        <div>
+          <h2 class="section-title">The Bounty Board</h2>
+          <p class="section-sub" style="margin-bottom: 0;">Every successful introduction earns you a direct cash payment. Here is exactly what you get for each service category.</p>
+        </div>
+        <div class="commission-badge">
+          <span class="big">15%</span>
+          <span class="label">per closed project</span>
+        </div>
+      </div>
+
+      <div class="bounty-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Your Reward (GHS)</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-service">Business Web Presence</td>
+              <td class="td-reward">GH₵ 1,500 – GH₵ 5,250</td>
+              <td style="color: var(--muted); font-size: 0.88rem;">Websites and landing pages</td>
+            </tr>
+            <tr>
+              <td class="td-service">Inventory &amp; Automation Systems</td>
+              <td class="td-reward">GH₵ 4,500 – GH₵ 22,500</td>
+              <td style="color: var(--muted); font-size: 0.88rem;">Custom tools and internal systems</td>
+            </tr>
+            <tr>
+              <td class="td-service">Monthly Management Retainer</td>
+              <td class="td-reward">GH₵ 675 – GH₵ 1,200 <span class="recurring-badge">Monthly</span></td>
+              <td style="color: var(--muted); font-size: 0.88rem;">Paid every month while client is active</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bounty-cta-row">
+        <button class="btn btn-wa" onclick="openModal('partner')">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Introduce a client on WhatsApp
+        </button>
+        <button class="btn btn-ghost" onclick="openModal('partner')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2-2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Send an email instead
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> Joseph · <a href="mailto:devjozi59@gmail.com">devjozi59@gmail.com</a> · Built by DevJozi</p>
+  </footer>
+
+  <!-- CONTACT MODAL -->
+  <div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <p class="modal-title" id="modal-title">Let's talk</p>
+      <p class="modal-sub" id="modal-sub">Choose whichever way works best for you. I'll get back to you personally.</p>
+      <div class="modal-actions">
+        <a class="modal-link wa" id="modal-wa" href="#" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a class="modal-link" id="modal-mail" href="mailto:devjozi59@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2-2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Send an email
+        </a>
+      </div>
+      <button class="modal-dismiss" onclick="closeModal()">Close</button>
+    </div>
+  </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const app = document.querySelector('.app');
-      const brand = document.querySelector('.brand');
-      const screens = [...document.querySelectorAll('.screen')];
-      const nextButtons = document.querySelectorAll('[data-next]');
-      const backButtons = document.querySelectorAll('[data-back]');
-      const note = document.getElementById('path-note');
-      const labelByPath = {
-        business: 'Got it. You’re here for business support.',
-        'tech-start': 'Nice. You’re here to get started in tech.',
-        build: 'Excellent. You’re here to build a digital solution.',
-        idea: 'Great. You’re here to bring an idea to life.',
-        general: 'Perfect. We can clarify the best next step together.'
-      };
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-      function updateViewportSizing() {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    const WA_NUMBER = '233201517382';
 
-        if (!app || !brand) return;
-
-        const appStyles = window.getComputedStyle(app);
-        const brandStyles = window.getComputedStyle(brand);
-        const padTop = parseFloat(appStyles.paddingTop) || 0;
-        const padBottom = parseFloat(appStyles.paddingBottom) || 0;
-        const brandMarginTop = parseFloat(brandStyles.marginTop) || 0;
-        const brandMarginBottom = parseFloat(brandStyles.marginBottom) || 0;
-        const availableHeight = window.innerHeight - brand.offsetHeight - brandMarginTop - brandMarginBottom - padTop - padBottom;
-        const screenMinHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--screen-min-height')) || 220;
-        document.documentElement.style.setProperty('--available-height', `${Math.max(screenMinHeight, Math.round(availableHeight))}px`);
+    const CONFIG = {
+      audit: {
+        title: 'Book a Digital Audit',
+        sub: 'Tell me a bit about your business and I\'ll set up a call.',
+        wa: 'Hi Joseph, I saw your site and I\'m interested in booking a Digital Audit for my business.',
+        mail: 'Digital Audit Enquiry'
+      },
+      build: {
+        title: 'Start a Project',
+        sub: 'Tell me what you\'re building. I\'ll respond with next steps.',
+        wa: 'Hi Joseph, I saw your site and I\'m interested in building a digital product.',
+        mail: 'Project Enquiry'
+      },
+      mentorship: {
+        title: 'Tech Mentorship &amp; Courses',
+        sub: 'Tell me where you are right now and what you want to achieve.',
+        wa: 'Hi Joseph, I saw your site and I\'m interested in your tech mentorship and courses.',
+        mail: 'Mentorship &amp; Courses Enquiry'
+      },
+      partner: {
+        title: 'Partner &amp; Earn',
+        sub: 'Send me the client\'s name and what they need. I\'ll take it from there.',
+        wa: 'Hi Joseph, I saw your site and I\'d like to introduce a potential client for your services.',
+        mail: 'Partner Introduction'
+      },
+      general: {
+        title: 'Let\'s talk',
+        sub: 'Choose whichever way works best for you.',
+        wa: 'Hi Joseph, I saw your site and I\'m interested in learning more about your work.',
+        mail: 'Enquiry from your site'
       }
+    };
 
-      let rafPending = false;
-      function scheduleViewportUpdate() {
-        if (rafPending) return;
-        rafPending = true;
-        requestAnimationFrame(() => {
-          rafPending = false;
-          updateViewportSizing();
-        });
-      }
+    function openModal(key) {
+      const c = CONFIG[key] || CONFIG.general;
+      document.getElementById('modal-title').innerHTML = c.title;
+      document.getElementById('modal-sub').textContent = c.sub;
 
-      function showScreen(screenId) {
-        const target = document.getElementById(screenId);
-        if (!target) return;
+      const waText = encodeURIComponent(c.wa);
+      document.getElementById('modal-wa').href = `https://wa.me/${WA_NUMBER}?text=${waText}`;
 
-        screens.forEach(screen => {
-          screen.classList.remove('active', 'visible');
-          screen.setAttribute('aria-hidden', 'true');
-        });
+      const mailSubject = encodeURIComponent(c.mail);
+      const mailBody = encodeURIComponent(c.wa);
+      document.getElementById('modal-mail').href = `mailto:devjozi59@gmail.com?subject=${mailSubject}&body=${mailBody}`;
 
-        target.classList.add('active');
-        target.setAttribute('aria-hidden', 'false');
+      document.getElementById('modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
 
-        requestAnimationFrame(() => target.classList.add('visible'));
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
 
-        target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
-        const firstAction = target.querySelector('button, a');
-        if (firstAction) firstAction.focus({ preventScroll: true });
-      }
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
 
-      nextButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const chosenPath = btn.dataset.track;
-          if (chosenPath) {
-            localStorage.setItem('joseph_path', chosenPath);
-            note.textContent = labelByPath[chosenPath] || 'Thanks for sharing what you need.';
-          }
-
-          const nextId = btn.dataset.next;
-          showScreen(nextId);
-        });
-      });
-
-      backButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const backId = btn.dataset.back;
-          if (backId === 'screen-1') {
-            localStorage.removeItem('joseph_path');
-            note.textContent = 'Thanks for sharing what you need.';
-          }
-          showScreen(backId);
-        });
-      });
-
-      const rememberedPath = localStorage.getItem('joseph_path');
-      if (rememberedPath && labelByPath[rememberedPath]) {
-        note.textContent = labelByPath[rememberedPath];
-      }
-
-      updateViewportSizing();
-      window.addEventListener('resize', scheduleViewportUpdate);
-      window.addEventListener('orientationchange', scheduleViewportUpdate);
-
-      document.getElementById('year').textContent = new Date().getFullYear();
-      showScreen('screen-1');
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
     });
   </script>
+
 </body>
 </html>
