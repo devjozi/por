@@ -473,6 +473,24 @@
 
     .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
+    /* ── HOW I WORK ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+      gap: 0.8rem;
+    }
+
+    .how-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      font-size: 0.9rem;
+      color: var(--navy);
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--navy);
@@ -772,6 +790,21 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2-2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Send an email instead
         </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section class="section" id="how-i-work">
+    <div class="container">
+      <p class="section-label">Working Style</p>
+      <h2 class="section-title">How I Work</h2>
+      <p class="section-sub">A practical delivery approach focused on operational value, clarity, and long-term maintainability.</p>
+      <div class="how-grid">
+        <div class="how-item">Practical over theoretical.</div>
+        <div class="how-item">Business-first technical decisions.</div>
+        <div class="how-item">Systems built for maintainability.</div>
+        <div class="how-item">Focus on measurable operational improvement.</div>
       </div>
     </div>
   </section>
