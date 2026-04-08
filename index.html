@@ -3,766 +3,652 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joseph | Building Systems That Work</title>
-  <meta name="description" content="Joseph helps businesses stop losing money to manual errors and helps professionals get into real-world tech roles. IT leadership, digital products, and applied AI mentorship." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E293B'/%3E%3Cpath d='M18 18h10v28H18zm18 0h10v28H36z' fill='%23FFFFFF'/%3E%3C/svg%3E" />
-
+  <meta name="theme-color" content="#1a2332" />
+  <title>Joseph | Networking Landing Page</title>
+  <meta name="description" content="Joseph helps businesses with audits, builds, mentorship, and referrals through a simple mobile-first landing page." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a2332'/%3E%3Cpath d='M18 18h10v28H18zm18 0h10v28H36z' fill='%23ffffff'/%3E%3C/svg%3E" />
   <style>
     :root {
-      --navy:   #1a2332;
-      --navy-2: #243044;
-      --slate:  #3d5166;
-      --text:   #1a2332;
-      --muted:  #5c6b7a;
-      --border: #dde3ea;
-      --bg:     #f9fafb;
-      --white:  #ffffff;
-      --accent: #1a6cf4;
-      --green:  #0f7a55;
-      --green-bg: #eaf5f0;
+      --bg: #f4f6f8;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --text: #1a2332;
+      --muted: #5a6778;
+      --border: #d7dee6;
+      --border-strong: #bfc9d4;
+      --navy: #1a2332;
+      --accent: #155ef0;
+      --accent-strong: #0f4cd1;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 12px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+      scroll-padding-top: 1rem;
+      -webkit-text-size-adjust: 100%;
+    }
 
     body {
-      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      touch-action: manipulation;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-    /* ── LAYOUT ── */
+    button {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(21, 94, 240, 0.22);
+      outline-offset: 3px;
+    }
+
+    .page {
+      width: 100%;
+    }
+
     .container {
-      max-width: 900px;
+      width: min(1120px, calc(100% - 1.25rem));
       margin: 0 auto;
-      padding: 0 clamp(1.1rem, 5vw, 2.5rem);
     }
 
-    /* ── NAV ── */
-    nav {
-      background: var(--white);
+    .topbar {
       border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(0);
     }
 
-    .nav-inner {
+    .topbar-inner {
+      min-height: 56px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 56px;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
     }
 
-    .nav-logo {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-    }
-
-    .nav-cta {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--accent);
-      border: 1.5px solid var(--accent);
-      border-radius: 8px;
-      padding: 0.42rem 1rem;
-      transition: background 180ms, color 180ms;
-    }
-
-    .nav-cta:hover { background: var(--accent); color: var(--white); }
-
-    /* ── HERO ── */
-    .hero {
-      background: var(--navy);
-      color: var(--white);
-      padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(3rem, 7vw, 5.5rem);
-    }
-
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 1.1rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.1rem, 6.5vw, 3.6rem);
-      font-weight: 700;
-      line-height: 1.08;
-      letter-spacing: -0.035em;
-      color: var(--white);
-      max-width: 18ch;
-      margin-bottom: 1.4rem;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      color: rgba(255,255,255,0.55);
-    }
-
-    .hero-sub {
-      font-size: clamp(1rem, 3vw, 1.15rem);
-      color: rgba(255,255,255,0.72);
-      max-width: 52ch;
-      line-height: 1.65;
-      margin-bottom: 2.2rem;
-    }
-
-    .hero-pills {
+    .brand {
       display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+      min-width: 0;
+    }
+
+    .brand-name {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .brand-note {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .hero {
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0 0.95rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      color: var(--navy);
+      max-width: 14ch;
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      max-width: 42ch;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
       flex-wrap: wrap;
-      gap: 0.6rem;
+      margin-top: 0.15rem;
     }
 
-    .pill {
-      font-size: 0.83rem;
-      font-weight: 500;
-      padding: 0.35rem 0.9rem;
-      border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.22);
-      color: rgba(255,255,255,0.75);
-      background: rgba(255,255,255,0.07);
+    .cta {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid transparent;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+      cursor: pointer;
     }
 
-    /* ── SECTION TITLES ── */
+    .cta-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .cta-primary:hover,
+    .cta-primary:focus-visible {
+      background: var(--accent-strong);
+      border-color: var(--accent-strong);
+      color: #ffffff;
+    }
+
+    .cta-secondary {
+      background: transparent;
+      color: var(--navy);
+      border-color: var(--border-strong);
+    }
+
+    .cta-secondary:hover,
+    .cta-secondary:focus-visible {
+      border-color: var(--navy);
+      background: #ffffff;
+      color: var(--navy);
+    }
+
     .section {
-      padding: clamp(3rem, 7vw, 5rem) 0;
+      padding: 0.95rem 0 1.15rem;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
     }
 
     .section-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 0.6rem;
     }
 
     .section-title {
-      font-size: clamp(1.55rem, 4.5vw, 2.1rem);
-      font-weight: 700;
+      font-size: clamp(1.35rem, 5vw, 1.85rem);
+      line-height: 1.14;
       letter-spacing: -0.03em;
-      line-height: 1.15;
       color: var(--navy);
-      margin-bottom: 0.65rem;
     }
 
-    .section-sub {
-      font-size: 1rem;
+    .section-copy {
+      max-width: 52ch;
       color: var(--muted);
-      max-width: 58ch;
-      margin-bottom: 2.5rem;
+      font-size: 0.96rem;
+      line-height: 1.55;
     }
 
-    /* ── FOUR DOORS ── */
     .doors-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
     }
 
-    .door {
-      background: var(--white);
-      padding: clamp(1.5rem, 4vw, 2rem);
+    .door-card {
+      min-height: 152px;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      transition: background 180ms;
+      gap: 0.7rem;
+      padding: 0.9rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: border-color 160ms ease, background-color 160ms ease;
     }
 
-    .door:hover { background: #fafbfc; }
+    .door-card:hover,
+    .door-card:focus-visible {
+      border-color: var(--accent);
+      background: #f8fbff;
+    }
 
     .door-icon {
       width: 40px;
       height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .door-icon svg { width: 20px; height: 20px; }
-
-    .door-icon-blue  { background: #e8f0fe; }
-    .door-icon-green { background: var(--green-bg); }
-    .door-icon-amber { background: #fef3e2; }
-    .door-icon-slate { background: #eef0f4; }
-
-    .door-icon-blue  svg { color: #1a6cf4; }
-    .door-icon-green svg { color: #0f7a55; }
-    .door-icon-amber svg { color: #b85f00; }
-    .door-icon-slate svg { color: #3d5166; }
-
-    .door h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-    }
-
-    .door p {
-      font-size: 0.94rem;
-      color: var(--muted);
-      line-height: 1.65;
-      flex: 1;
-    }
-
-    .door-cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--navy);
-      border: 1.5px solid var(--border);
-      border-radius: 9px;
-      padding: 0.6rem 1.05rem;
-      background: var(--white);
-      cursor: pointer;
-      transition: border-color 180ms, background 180ms, transform 180ms;
-      text-align: left;
-      align-self: flex-start;
-      width: 100%;
       justify-content: center;
-    }
-
-    .door-cta:hover {
-      border-color: var(--navy);
-      background: var(--navy);
-      color: var(--white);
-      transform: translateY(-1px);
-    }
-
-    .door-cta svg { width: 15px; height: 15px; flex-shrink: 0; }
-
-    /* ── DIVIDER ── */
-    .divider {
-      border: 0;
-      border-top: 1px solid var(--border);
-      margin: 0;
-    }
-
-    /* ── BOUNTY BOARD ── */
-    #bounty {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .bounty-intro {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 1.5rem;
-      align-items: end;
-      margin-bottom: 2rem;
-    }
-
-    @media (max-width: 540px) {
-      .bounty-intro { grid-template-columns: 1fr; }
-    }
-
-    .commission-badge {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: var(--green-bg);
-      border: 1.5px solid #bbe6d5;
-      border-radius: 14px;
-      padding: 1.1rem 1.6rem;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .commission-badge .big {
-      font-size: 2.1rem;
-      font-weight: 700;
-      color: var(--green);
-      letter-spacing: -0.04em;
-      line-height: 1;
-    }
-
-    .commission-badge .label {
-      font-size: 0.8rem;
-      color: #1a6b4a;
-      margin-top: 0.3rem;
-      font-weight: 500;
-    }
-
-    .bounty-table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.93rem;
-    }
-
-    thead tr {
-      background: #f4f5f7;
-    }
-
-    th {
-      text-align: left;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--muted);
-      padding: 0.85rem 1.2rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    td {
-      padding: 1rem 1.2rem;
-      color: var(--text);
-      border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-    }
-
-    tr:last-child td { border-bottom: 0; }
-
-    .td-service { font-weight: 600; color: var(--navy); }
-
-    .td-reward {
-      font-weight: 700;
-      color: var(--green);
-      white-space: nowrap;
-    }
-
-    .recurring-badge {
-      display: inline-block;
-      font-size: 0.73rem;
-      font-weight: 700;
-      background: #eaf5f0;
-      color: #0f7a55;
-      border: 1px solid #bbe6d5;
-      border-radius: 100px;
-      padding: 0.2rem 0.55rem;
-      margin-left: 0.4rem;
-      vertical-align: middle;
-    }
-
-    .bounty-cta-row {
-      margin-top: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      border-radius: 10px;
-      padding: 0.75rem 1.4rem;
-      cursor: pointer;
-      transition: transform 160ms, background 160ms, box-shadow 160ms;
-      border: none;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-    .btn:active { transform: translateY(0); }
-
-    .btn-primary {
-      background: var(--navy);
-      color: var(--white);
-    }
-
-    .btn-primary:hover { background: var(--navy-2); }
-
-    .btn-wa {
-      background: #128c47;
-      color: var(--white);
-    }
-
-    .btn-wa:hover { background: #0e7039; }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--navy);
-      border: 1.5px solid var(--border);
-    }
-
-    .btn-ghost:hover { border-color: var(--navy); background: var(--white); }
-
-    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.55);
-      text-align: center;
-      font-size: 0.85rem;
-      padding: 2rem 1rem;
-    }
-
-    footer a { color: rgba(255,255,255,0.75); text-decoration: underline; text-underline-offset: 0.15em; }
-
-    /* ── MODAL OVERLAY ── */
-    .modal-bg {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(10,16,26,0.55);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-
-    .modal-bg.open { display: flex; }
-
-    .modal {
-      background: var(--white);
-      border-radius: 18px;
-      width: min(480px, 100%);
-      padding: clamp(1.5rem, 5vw, 2.2rem);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-    }
-
-    .modal-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-sub {
-      font-size: 0.93rem;
-      color: var(--muted);
-      margin-bottom: 1.6rem;
-    }
-
-    .modal-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .modal-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      border: 1.5px solid var(--border);
       border-radius: 12px;
-      padding: 0.95rem 1.1rem;
-      font-size: 0.93rem;
-      font-weight: 600;
-      color: var(--navy);
-      background: var(--white);
-      cursor: pointer;
-      transition: border-color 160ms, background 160ms;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      background: var(--surface-2);
+      flex: 0 0 auto;
     }
 
-    .modal-link:hover { border-color: var(--navy); background: #f8f9fb; }
-    .modal-link svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .door-icon svg {
+      width: 19px;
+      height: 19px;
+    }
 
-    .modal-link.wa { border-color: #bbe6d5; color: #0f7a55; background: #eaf5f0; }
-    .modal-link.wa:hover { border-color: #0f7a55; background: #d8f0e8; }
-
-    .modal-dismiss {
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 0.88rem;
+    .door-kicker {
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--muted);
-      cursor: pointer;
-      text-decoration: underline;
-      text-underline-offset: 0.15em;
-      background: none;
-      border: none;
     }
 
-    /* ── UTILITY ── */
-    .mt-sm { margin-top: 0.5rem; }
-    .mt-md { margin-top: 1rem; }
+    .door-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+    }
 
-    @media (max-width: 520px) {
-      .bounty-cta-row { flex-direction: column; align-items: stretch; }
-      .btn { justify-content: center; }
+    .door-copy {
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .door-action {
+      margin-top: auto;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .door-action:hover,
+    .door-action:focus-visible {
+      border-color: var(--accent-strong);
+      background: var(--accent-strong);
+      color: #ffffff;
+    }
+
+    .opportunity {
+      border-top: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .opportunity-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .opportunity-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .opp-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .opp-amount {
+      color: var(--navy);
+      font-size: clamp(1.5rem, 4vw, 2.15rem);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .opp-amount .currency {
+      font-size: 0.8em;
+      letter-spacing: -0.03em;
+      margin-right: 0.15rem;
+    }
+
+    .opp-copy {
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .opp-foot {
+      margin-top: auto;
+      padding-top: 0.2rem;
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .opportunity-cta-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.95rem;
+    }
+
+    .footer {
+      padding: 1.1rem 0 1.4rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .footer a {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    @media (min-width: 640px) {
+      .opportunity-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 760px) {
+      .topbar-inner {
+        min-height: 60px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1.3fr 0.7fr;
+        align-items: end;
+        gap: 1rem;
+      }
+
+      .hero-copy {
+        max-width: 50ch;
+      }
+
+      .hero-actions {
+        justify-content: flex-start;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 1rem;
+      }
+
+      .section-copy {
+        text-align: right;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .doors-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .opportunity-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: 0.01ms !important; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 </head>
-
 <body>
-
-  <!-- NAV -->
-  <nav>
-    <div class="container nav-inner">
-      <span class="nav-logo">Joseph · DevJozi</span>
-      <a class="nav-cta" href="#" onclick="openModal('general'); return false;">Get in touch</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero">
-    <div class="container">
-      <span class="hero-eyebrow">IT Leadership &amp; Digital Development · Accra</span>
-      <h1>Building systems that work. <em>Scaling technical talent.</em></h1>
-      <p class="hero-sub">
-        Most businesses lose money quietly — through manual processes, disconnected tools, and teams who don't know how to use the technology they already have. I fix that. I also help professionals stop reading about tech and start using it to earn.
-      </p>
-      <div class="hero-pills">
-        <span class="pill">10+ years in IT leadership</span>
-        <span class="pill">Digital products</span>
-        <span class="pill">Applied AI training</span>
-        <span class="pill">Partner commissions</span>
+  <div class="page">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <span class="brand-name">Joseph</span>
+          <span class="brand-note">Digital systems and networking</span>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- FOUR DOORS -->
-  <section class="section" id="services">
-    <div class="container">
-      <p class="section-label">What I do</p>
-      <h2 class="section-title">Where do you need the most help?</h2>
-      <p class="section-sub">Pick the path that fits your situation. Every door leads to a real conversation — not a sales funnel.</p>
-
-      <div class="doors-grid">
-
-        <!-- Door 1: Business & IT Advisory -->
-        <div class="door">
-          <div class="door-icon door-icon-blue">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="21"/>
-            </svg>
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <p class="eyebrow">Professional Simplicity</p>
+            <h1 class="hero-title">Digital systems for businesses that need clarity.</h1>
+            <p class="hero-copy">
+              I audit workflows, build useful tools, and mentor people who want practical applied AI.
+            </p>
           </div>
-          <h3>Business &amp; IT Advisory</h3>
-          <p>Most businesses lose money because their systems are manual or disorganized. I help you audit your operations, plug the leaks, and professionalize your setup - so you stop paying for problems that have already been solved.</p>
-          <button class="door-cta" onclick="openModal('audit')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            Book a Digital Audit
-          </button>
-        </div>
 
-        <!-- Door 2: Building Digital Products -->
-        <div class="door">
-          <div class="door-icon door-icon-slate">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-            </svg>
+          <div class="hero-actions">
+            <a class="cta cta-primary" href="#doors">See the Four Doors</a>
+            <a class="cta cta-secondary" href="#opportunities">View Opportunity Cards</a>
           </div>
-          <h3>Building Digital Products</h3>
-          <p>I build websites, custom apps, and inventory systems that actually fit how your business runs. Not templates. Not guesswork. High-quality builds with a clear focus on ease of use, so your team picks it up without training manuals.</p>
-          <button class="door-cta" onclick="openModal('build')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            Start a Project
-          </button>
         </div>
+      </section>
 
-        <!-- Door 3: Tech Mentorship -->
-        <div class="door">
-          <div class="door-icon door-icon-amber">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
+      <section class="section" id="doors">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-label">Four Doors</p>
+              <h2 class="section-title">Choose the next step in under a second.</h2>
+            </div>
+            <p class="section-copy">The doors are compact, thumb-friendly, and visible early on a standard phone screen.</p>
           </div>
-          <h3>Tech Mentorship &amp; Applied AI</h3>
-          <p>Don't just learn theory. I teach you how to use today's tools — AI, automation, and no-code systems — to solve real business problems and land better jobs. Practical skills, real projects, and direct guidance from someone in the field.</p>
-          <button class="door-cta" onclick="openModal('mentorship')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            View the Courses
-          </button>
-        </div>
 
-        <!-- Door 4: Partner & Earn -->
-        <div class="door">
-          <div class="door-icon door-icon-green">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-            </svg>
+          <div class="doors-grid">
+            <a
+              class="door-card"
+              href="https://wa.me/233201517382"
+              data-wa-message="Hi Joseph, I'd like to book a Digital Audit for my business."
+              aria-label="Open WhatsApp for Advisory"
+            >
+              <span class="door-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 5h16v12H7l-3 3V5z"></path>
+                  <path d="M8 9h8"></path>
+                  <path d="M8 13h5"></path>
+                </svg>
+              </span>
+              <span class="door-kicker">Advisory</span>
+              <h3 class="door-title">Book a Digital Audit</h3>
+              <p class="door-copy">Find wasted time, broken workflows, and quick wins before they cost more.</p>
+              <span class="door-action">WhatsApp Joseph</span>
+            </a>
+
+            <a
+              class="door-card"
+              href="https://wa.me/233201517382"
+              data-wa-message="Hi Joseph, I have a project I'd like you to build."
+              aria-label="Open WhatsApp for Build"
+            >
+              <span class="door-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 7h16"></path>
+                  <path d="M4 17h16"></path>
+                  <path d="M7 7l-3 5 3 5"></path>
+                  <path d="M17 7l3 5-3 5"></path>
+                </svg>
+              </span>
+              <span class="door-kicker">Build</span>
+              <h3 class="door-title">Start a Project</h3>
+              <p class="door-copy">Websites, apps, and internal tools shaped around how your team actually works.</p>
+              <span class="door-action">WhatsApp Joseph</span>
+            </a>
+
+            <a
+              class="door-card"
+              href="https://wa.me/233201517382"
+              data-wa-message="Hi Joseph, I want to learn more about the Applied AI course."
+              aria-label="Open WhatsApp for Mentorship"
+            >
+              <span class="door-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 7v5l3 2"></path>
+                </svg>
+              </span>
+              <span class="door-kicker">Mentorship</span>
+              <h3 class="door-title">Applied AI Course</h3>
+              <p class="door-copy">Learn practical automation, AI workflows, and better ways to move work forward.</p>
+              <span class="door-action">WhatsApp Joseph</span>
+            </a>
+
+            <a
+              class="door-card"
+              href="https://wa.me/233201517382"
+              data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
+              aria-label="Open WhatsApp for Partner"
+            >
+              <span class="door-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3v18"></path>
+                  <path d="M17 7H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7"></path>
+                </svg>
+              </span>
+              <span class="door-kicker">Partner</span>
+              <h3 class="door-title">Bounty Board</h3>
+              <p class="door-copy">Refer a client and discuss the partner payout for closed work.</p>
+              <span class="door-action">WhatsApp Joseph</span>
+            </a>
           </div>
-          <h3>Partner &amp; Earn</h3>
-          <p>If you know a business owner who needs these services, introduce us. I pay a 15% commission for every successful project you bring my way — with no cap and no complicated paperwork. A warm introduction is all it takes.</p>
-          <button class="door-cta" onclick="document.getElementById('bounty').scrollIntoView({behavior:'smooth'})">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            See the Bounty Board
-          </button>
         </div>
+      </section>
 
-      </div>
-    </div>
-  </section>
+      <section class="section opportunity" id="opportunities">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-label">Earn</p>
+              <h2 class="section-title">Opportunity Cards</h2>
+            </div>
+            <p class="section-copy">Clear, professional payouts with the reward amount always in view.</p>
+          </div>
 
-  <hr class="divider" />
+          <div class="opportunity-grid">
+            <article class="opportunity-card">
+              <span class="opp-label">Business web presence</span>
+              <div class="opp-amount"><span class="currency">GHS</span>1,500 - 5,250</div>
+              <p class="opp-copy">Landing pages and business websites that make a strong first impression.</p>
+              <div class="opp-foot">Typical project payout</div>
+            </article>
 
-  <!-- BOUNTY BOARD -->
-  <section class="section" id="bounty">
-    <div class="container">
-      <p class="section-label">Partner Programme</p>
+            <article class="opportunity-card">
+              <span class="opp-label">Automation systems</span>
+              <div class="opp-amount"><span class="currency">GHS</span>4,500 - 22,500</div>
+              <p class="opp-copy">Custom tools and internal systems for inventory, operations, and growth.</p>
+              <div class="opp-foot">High-value build range</div>
+            </article>
 
-      <div class="bounty-intro">
-        <div>
-          <h2 class="section-title">The Bounty Board</h2>
-          <p class="section-sub" style="margin-bottom: 0;">Every successful introduction earns you a direct cash payment. Here is exactly what you get for each service category.</p>
+            <article class="opportunity-card">
+              <span class="opp-label">Monthly management</span>
+              <div class="opp-amount"><span class="currency">GHS</span>675 - 1,200</div>
+              <p class="opp-copy">A recurring retainer for clients who need steady support each month.</p>
+              <div class="opp-foot">Paid while the client stays active</div>
+            </article>
+
+            <article class="opportunity-card">
+              <span class="opp-label">Referral partner</span>
+              <div class="opp-amount">15%</div>
+              <p class="opp-copy">Introduce the right business and earn from the deal once it closes.</p>
+              <div class="opp-foot">Bounty Board referral share</div>
+            </article>
+          </div>
+
+          <div class="opportunity-cta-row">
+            <a
+              class="cta cta-primary"
+              href="https://wa.me/233201517382"
+              data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
+            >
+              Discuss a Referral
+            </a>
+            <a class="cta cta-secondary" href="#doors">Back to the Four Doors</a>
+          </div>
         </div>
-        <div class="commission-badge">
-          <span class="big">15%</span>
-          <span class="label">per closed project</span>
-        </div>
-      </div>
+      </section>
+    </main>
 
-      <div class="bounty-table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Your Reward (GHS)</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="td-service">Business Web Presence</td>
-              <td class="td-reward">GH₵ 1,500 – GH₵ 5,250</td>
-              <td style="color: var(--muted); font-size: 0.88rem;">Websites and landing pages</td>
-            </tr>
-            <tr>
-              <td class="td-service">Inventory &amp; Automation Systems</td>
-              <td class="td-reward">GH₵ 4,500 – GH₵ 22,500</td>
-              <td style="color: var(--muted); font-size: 0.88rem;">Custom tools and internal systems</td>
-            </tr>
-            <tr>
-              <td class="td-service">Monthly Management Retainer</td>
-              <td class="td-reward">GH₵ 675 – GH₵ 1,200 <span class="recurring-badge">Monthly</span></td>
-              <td style="color: var(--muted); font-size: 0.88rem;">Paid every month while client is active</td>
-            </tr>
-          </tbody>
-        </table>
+    <footer class="footer">
+      <div class="container">
+        <span>© <span id="year"></span> Joseph · </span>
+        <a href="mailto:devjozi59@gmail.com">devjozi59@gmail.com</a>
       </div>
-
-      <div class="bounty-cta-row">
-        <button class="btn btn-wa" onclick="openModal('partner')">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          Introduce a client on WhatsApp
-        </button>
-        <button class="btn btn-ghost" onclick="openModal('partner')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2-2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Send an email instead
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© <span id="year"></span> Joseph · <a href="mailto:devjozi59@gmail.com">devjozi59@gmail.com</a> · Built by DevJozi</p>
-  </footer>
-
-  <!-- CONTACT MODAL -->
-  <div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal">
-      <p class="modal-title" id="modal-title">Let's talk</p>
-      <p class="modal-sub" id="modal-sub">Choose whichever way works best for you. I'll get back to you personally.</p>
-      <div class="modal-actions">
-        <a class="modal-link wa" id="modal-wa" href="#" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          Chat on WhatsApp
-        </a>
-        <a class="modal-link" id="modal-mail" href="mailto:devjozi59@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2-2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Send an email
-        </a>
-      </div>
-      <button class="modal-dismiss" onclick="closeModal()">Close</button>
-    </div>
+    </footer>
   </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    (function () {
+      const WA_NUMBER = '233201517382';
 
-    const WA_NUMBER = '233201517382';
+      document.querySelectorAll('[data-wa-message]').forEach((link) => {
+        const message = link.getAttribute('data-wa-message');
+        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+        link.setAttribute('href', url);
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      });
 
-    const CONFIG = {
-      audit: {
-        title: 'Book a Digital Audit',
-        sub: 'Tell me a bit about your business and I\'ll set up a call.',
-        wa: 'Hi Joseph, I saw your site and I\'m interested in booking a Digital Audit for my business.',
-        mail: 'Digital Audit Enquiry'
-      },
-      build: {
-        title: 'Start a Project',
-        sub: 'Tell me what you\'re building. I\'ll respond with next steps.',
-        wa: 'Hi Joseph, I saw your site and I\'m interested in building a digital product.',
-        mail: 'Project Enquiry'
-      },
-      mentorship: {
-        title: 'Tech Mentorship &amp; Courses',
-        sub: 'Tell me where you are right now and what you want to achieve.',
-        wa: 'Hi Joseph, I saw your site and I\'m interested in your tech mentorship and courses.',
-        mail: 'Mentorship &amp; Courses Enquiry'
-      },
-      partner: {
-        title: 'Partner &amp; Earn',
-        sub: 'Send me the client\'s name and what they need. I\'ll take it from there.',
-        wa: 'Hi Joseph, I saw your site and I\'d like to introduce a potential client for your services.',
-        mail: 'Partner Introduction'
-      },
-      general: {
-        title: 'Let\'s talk',
-        sub: 'Choose whichever way works best for you.',
-        wa: 'Hi Joseph, I saw your site and I\'m interested in learning more about your work.',
-        mail: 'Enquiry from your site'
-      }
-    };
-
-    function openModal(key) {
-      const c = CONFIG[key] || CONFIG.general;
-      document.getElementById('modal-title').innerHTML = c.title;
-      document.getElementById('modal-sub').textContent = c.sub;
-
-      const waText = encodeURIComponent(c.wa);
-      document.getElementById('modal-wa').href = `https://wa.me/${WA_NUMBER}?text=${waText}`;
-
-      const mailSubject = encodeURIComponent(c.mail);
-      const mailBody = encodeURIComponent(c.wa);
-      document.getElementById('modal-mail').href = `mailto:devjozi59@gmail.com?subject=${mailSubject}&body=${mailBody}`;
-
-      document.getElementById('modal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    document.getElementById('modal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeModal();
-    });
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }());
   </script>
-
 </body>
 </html>
