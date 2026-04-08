@@ -275,6 +275,44 @@
 
     .door-cta svg { width: 15px; height: 15px; flex-shrink: 0; }
 
+    /* ── PROOF SECTION ── */
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      gap: 0.9rem;
+    }
+
+    .proof-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.15rem 1.2rem;
+    }
+
+    .proof-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.45rem;
+    }
+
+    .proof-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .proof-placeholder {
+      margin-top: 0.8rem;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      background: #fafbfc;
+      color: var(--muted);
+      font-size: 0.82rem;
+      padding: 0.6rem 0.7rem;
+    }
+
     /* ── DIVIDER ── */
     .divider {
       border: 0;
@@ -641,7 +679,7 @@
           <p>If you know a business owner who needs these services, introduce us. I pay a 15% commission for every successful project you bring my way — with no cap and no complicated paperwork. A warm introduction is all it takes.</p>
           <button class="door-cta" onclick="document.getElementById('bounty').scrollIntoView({behavior:'smooth'})">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            See the Bounty Board
+            View Partner Incentives
           </button>
         </div>
 
@@ -651,15 +689,44 @@
 
   <hr class="divider" />
 
-  <!-- BOUNTY BOARD -->
+  <!-- PROOF SECTION -->
+  <section class="section" id="proof">
+    <div class="container">
+      <p class="section-label">Social Proof</p>
+      <h2 class="section-title">Why Businesses Trust Me</h2>
+      <p class="section-sub">Clear technical direction, practical execution, and consistent focus on business outcomes.</p>
+
+      <div class="proof-grid">
+        <article class="proof-card">
+          <h3>Experience &amp; Leadership Background</h3>
+          <p>Led IT and digital initiatives across operations, delivery, and team enablement to keep systems aligned with business priorities.</p>
+          <div class="proof-placeholder">TODO: Add leadership milestone, role scope, or client context.</div>
+        </article>
+
+        <article class="proof-card">
+          <h3>Example Outcomes Delivered</h3>
+          <p>Implemented streamlined processes, reduced manual work, and introduced tools that improved reliability and decision speed.</p>
+          <div class="proof-placeholder">TODO: Add measurable result (time saved, error reduction, revenue impact).</div>
+        </article>
+
+        <article class="proof-card">
+          <h3>Types of Problems Solved</h3>
+          <p>Disconnected workflows, inconsistent data, unclear operating processes, and underused digital tools that slow execution.</p>
+          <div class="proof-placeholder">TODO: Add case study link or testimonial quote.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER REFERRALS -->
   <section class="section" id="bounty">
     <div class="container">
-      <p class="section-label">Partner Programme</p>
+      <p class="section-label">Referral Programme</p>
 
       <div class="bounty-intro">
         <div>
-          <h2 class="section-title">The Bounty Board</h2>
-          <p class="section-sub" style="margin-bottom: 0;">Every successful introduction earns you a direct cash payment. Here is exactly what you get for each service category.</p>
+          <h2 class="section-title">For Partners &amp; Referrals</h2>
+          <p class="section-sub" style="margin-bottom: 0;">If you refer a business that becomes a client, you receive a transparent partner incentive based on the project scope.</p>
         </div>
         <div class="commission-badge">
           <span class="big">15%</span>
