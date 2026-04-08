@@ -75,7 +75,6 @@
     .topbar {
       border-bottom: 1px solid var(--border);
       background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(0);
     }
 
     .topbar-inner {
@@ -309,8 +308,8 @@
       text-align: center;
     }
 
-    .door-action:hover,
-    .door-action:focus-visible {
+    .door-card:hover .door-action,
+    .door-card:focus-visible .door-action {
       border-color: var(--accent-strong);
       background: var(--accent-strong);
       color: #ffffff;
@@ -497,9 +496,8 @@
           <div class="doors-grid">
             <a
               class="door-card"
-              href="https://wa.me/233201517382"
+              href="https://wa.me/"
               data-wa-message="Hi Joseph, I'd like to book a Digital Audit for my business."
-              aria-label="Open WhatsApp for Advisory"
             >
               <span class="door-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -516,9 +514,8 @@
 
             <a
               class="door-card"
-              href="https://wa.me/233201517382"
+              href="https://wa.me/"
               data-wa-message="Hi Joseph, I have a project I'd like you to build."
-              aria-label="Open WhatsApp for Build"
             >
               <span class="door-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -536,9 +533,8 @@
 
             <a
               class="door-card"
-              href="https://wa.me/233201517382"
+              href="https://wa.me/"
               data-wa-message="Hi Joseph, I want to learn more about the Applied AI course."
-              aria-label="Open WhatsApp for Mentorship"
             >
               <span class="door-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -554,9 +550,8 @@
 
             <a
               class="door-card"
-              href="https://wa.me/233201517382"
+              href="https://wa.me/"
               data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
-              aria-label="Open WhatsApp for Partner"
             >
               <span class="door-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -616,7 +611,7 @@
           <div class="opportunity-cta-row">
             <a
               class="cta cta-primary"
-              href="https://wa.me/233201517382"
+              href="https://wa.me/"
               data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
             >
               Discuss a Referral
