@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1a2332" />
-  <title>Joseph | Networking Landing Page</title>
-  <meta name="description" content="Joseph helps businesses with audits, builds, mentorship, and referrals through a simple mobile-first landing page." />
+  <title>Joseph | Digital Systems for Ghanaian Businesses</title>
+  <meta name="description" content="Joseph builds operational systems that let your business run without constant supervision — audits, builds, AI workflows, and referral partnerships." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a2332'/%3E%3Cpath d='M18 18h10v28H18zm18 0h10v28H36z' fill='%23ffffff'/%3E%3C/svg%3E" />
   <style>
     :root {
@@ -19,19 +22,21 @@
       --navy: #1a2332;
       --accent: #155ef0;
       --accent-strong: #0f4cd1;
+      --accent-subtle: #eef3fe;
       --radius-lg: 18px;
       --radius-md: 14px;
       --radius-sm: 12px;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --topbar-h: 56px;
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
 
     html {
       font-size: 17px;
       scroll-behavior: smooth;
-      scroll-padding-top: 1rem;
+      scroll-padding-top: var(--topbar-h);
       -webkit-text-size-adjust: 100%;
     }
 
@@ -39,7 +44,7 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: var(--font-body);
       font-size: 1rem;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
@@ -47,34 +52,30 @@
       touch-action: manipulation;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button {
-      font: inherit;
-      -webkit-tap-highlight-color: transparent;
-    }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; -webkit-tap-highlight-color: transparent; }
+    h1, h2, h3, p { margin: 0; }
 
     :focus-visible {
       outline: 3px solid rgba(21, 94, 240, 0.22);
       outline-offset: 3px;
     }
 
-    .page {
-      width: 100%;
-    }
+    .page { width: 100%; }
 
     .container {
       width: min(1120px, calc(100% - 1.25rem));
       margin: 0 auto;
     }
 
+    /* ── TOPBAR ── */
     .topbar {
       border-bottom: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .topbar-inner {
@@ -86,138 +87,149 @@
       padding: 0.5rem 0;
     }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-      min-width: 0;
-    }
-
+    .brand { display: flex; flex-direction: column; gap: 0.05rem; min-width: 0; }
     .brand-name {
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
       color: var(--navy);
       white-space: nowrap;
     }
+    .brand-note { font-size: 0.78rem; font-weight: 500; color: var(--muted); white-space: nowrap; }
 
-    .brand-note {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--muted);
+    .topbar-cta {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-sm);
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color 160ms ease;
       white-space: nowrap;
     }
+    .topbar-cta:hover { background: var(--accent-strong); color: #fff; }
 
+    /* ── HERO ── */
     .hero {
       border-bottom: 1px solid var(--border);
-      padding: 0.85rem 0 0.95rem;
+      padding: 2.5rem 0 2rem;
+      background: var(--surface);
     }
 
     .hero-inner {
       display: grid;
-      gap: 0.7rem;
+      gap: 1.5rem;
     }
 
     .eyebrow {
-      margin: 0;
+      margin: 0 0 0.6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
       font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
     }
-
-    h1, h2, h3, p {
-      margin: 0;
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
     }
 
     .hero-title {
-      font-size: clamp(2rem, 8vw, 3.2rem);
-      font-weight: 800;
-      line-height: 1.06;
-      letter-spacing: -0.04em;
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 7.5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
       color: var(--navy);
-      max-width: 14ch;
-      text-wrap: balance;
+      max-width: 16ch;
     }
 
     .hero-copy {
-      max-width: 42ch;
-      font-size: 1rem;
-      line-height: 1.55;
+      max-width: 46ch;
+      font-size: 1.02rem;
+      line-height: 1.6;
       color: var(--muted);
+    }
+
+    .hero-proof {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .hero-proof-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex: 0 0 auto;
     }
 
     .hero-actions {
       display: flex;
       gap: 0.75rem;
       flex-wrap: wrap;
-      margin-top: 0.15rem;
     }
 
+    /* ── BUTTONS ── */
     .cta {
       min-height: 52px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.9rem 1.1rem;
+      padding: 0.9rem 1.25rem;
       border-radius: var(--radius-sm);
       border: 1.5px solid transparent;
-      font-weight: 800;
+      font-weight: 700;
+      font-size: 0.95rem;
       letter-spacing: -0.01em;
       transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
       cursor: pointer;
     }
+    .cta-primary { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+    .cta-primary:hover, .cta-primary:focus-visible { background: var(--accent-strong); border-color: var(--accent-strong); color: #ffffff; }
+    .cta-secondary { background: transparent; color: var(--navy); border-color: var(--border-strong); }
+    .cta-secondary:hover, .cta-secondary:focus-visible { border-color: var(--navy); background: #ffffff; color: var(--navy); }
 
-    .cta-primary {
-      background: var(--accent);
-      color: #ffffff;
-      border-color: var(--accent);
-    }
-
-    .cta-primary:hover,
-    .cta-primary:focus-visible {
-      background: var(--accent-strong);
-      border-color: var(--accent-strong);
-      color: #ffffff;
-    }
-
-    .cta-secondary {
-      background: transparent;
-      color: var(--navy);
-      border-color: var(--border-strong);
-    }
-
-    .cta-secondary:hover,
-    .cta-secondary:focus-visible {
-      border-color: var(--navy);
-      background: #ffffff;
-      color: var(--navy);
-    }
-
-    .section {
-      padding: 0.95rem 0 1.15rem;
-    }
+    /* ── SECTIONS ── */
+    .section { padding: 2rem 0 2.25rem; }
+    .section + .section { border-top: 1px solid var(--border); }
 
     .section-head {
       display: grid;
       gap: 0.35rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
     }
 
     .section-label {
       font-size: 0.74rem;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
     }
 
     .section-title {
-      font-size: clamp(1.35rem, 5vw, 1.85rem);
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-weight: 400;
       line-height: 1.14;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       color: var(--navy);
     }
 
@@ -228,109 +240,242 @@
       line-height: 1.55;
     }
 
+    /* ── WHO THIS IS FOR ── */
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+    }
+
+    .who-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: border-color 160ms ease;
+    }
+    .who-card:hover { border-color: var(--accent); }
+
+    .who-icon {
+      width: 40px; height: 40px;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      font-size: 1.15rem;
+    }
+
+    .who-body { min-width: 0; }
+    .who-title {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 0.25rem;
+    }
+    .who-copy { font-size: 0.88rem; color: var(--muted); line-height: 1.45; }
+
+    /* ── DOORS ── */
+    .doors-section { background: var(--surface); }
+
     .doors-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 0.65rem;
     }
 
     .door-card {
-      min-height: 152px;
       display: flex;
       flex-direction: column;
-      gap: 0.7rem;
-      padding: 0.9rem;
+      gap: 0.65rem;
+      padding: 1.1rem;
       border-radius: var(--radius-lg);
       border: 1px solid var(--border);
       background: var(--surface);
-      transition: border-color 160ms ease, background-color 160ms ease;
+      transition: border-color 160ms ease, background-color 160ms ease, transform 120ms ease;
     }
-
-    .door-card:hover,
-    .door-card:focus-visible {
+    .door-card:hover, .door-card:focus-visible {
       border-color: var(--accent);
       background: #f8fbff;
+      transform: translateY(-1px);
     }
 
-    .door-icon {
-      width: 40px;
-      height: 40px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      color: var(--accent);
-      background: var(--surface-2);
-      flex: 0 0 auto;
-    }
-
-    .door-icon svg {
-      width: 19px;
-      height: 19px;
-    }
-
-    .door-kicker {
-      font-size: 0.73rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
+    .door-pain {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
-    .door-title {
-      font-size: 0.98rem;
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
+    .door-headline {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.25;
       color: var(--navy);
     }
 
     .door-copy {
       font-size: 0.9rem;
-      line-height: 1.45;
+      line-height: 1.5;
       color: var(--muted);
+    }
+
+    .door-service-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-subtle);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      width: fit-content;
     }
 
     .door-action {
       margin-top: auto;
-      min-height: 52px;
+      min-height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.7rem 0.9rem;
+      padding: 0.65rem 0.9rem;
       border-radius: var(--radius-sm);
       border: 1.5px solid var(--accent);
       background: var(--accent);
       color: #ffffff;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 0.9rem;
       text-align: center;
+      transition: background-color 160ms ease, border-color 160ms ease;
     }
-
-    .door-card:hover .door-action,
-    .door-card:focus-visible .door-action {
+    .door-card:hover .door-action, .door-card:focus-visible .door-action {
       border-color: var(--accent-strong);
       background: var(--accent-strong);
-      color: #ffffff;
     }
 
-    .opportunity {
-      border-top: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.45);
+    /* ── TRUST ── */
+    .trust-section { background: var(--navy); color: #fff; }
+    .trust-section .section-label { color: rgba(255,255,255,0.5); }
+    .trust-section .section-title { color: #fff; }
+    .trust-section .section-copy { color: rgba(255,255,255,0.65); }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+      margin-top: 0.75rem;
+    }
+
+    .trust-card {
+      padding: 1.1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .trust-number {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .trust-number span { font-size: 1.1rem; opacity: 0.6; }
+
+    .trust-label {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.4;
+    }
+
+    .trust-bio {
+      margin-top: 1.25rem;
+      padding: 1.1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.75);
+    }
+    .trust-bio strong { color: #fff; }
+
+    /* ── PARTNERS (collapsed) ── */
+    .partners-section {
+      background: var(--surface-2);
+    }
+
+    .partners-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+      gap: 1rem;
+    }
+    .partners-toggle-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .partners-toggle-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--navy);
+    }
+    .partners-chevron {
+      width: 28px; height: 28px;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      transition: transform 240ms ease;
+    }
+    .partners-chevron svg { width: 14px; height: 14px; }
+    [aria-expanded="true"] .partners-chevron { transform: rotate(180deg); }
+
+    .partners-body {
+      overflow: hidden;
+      transition: max-height 300ms ease, opacity 250ms ease;
+      max-height: 0;
+      opacity: 0;
+    }
+    .partners-body.is-open {
+      opacity: 1;
     }
 
     .opportunity-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.75rem;
-      margin-top: 0.75rem;
+      gap: 0.65rem;
+      margin-top: 1rem;
     }
 
     .opportunity-card {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.5rem;
       padding: 1rem;
       border-radius: var(--radius-lg);
       border: 1px solid var(--border);
@@ -339,7 +484,7 @@
 
     .opp-label {
       font-size: 0.75rem;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
@@ -347,106 +492,72 @@
 
     .opp-amount {
       color: var(--navy);
-      font-size: clamp(1.5rem, 4vw, 2.15rem);
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
       line-height: 1;
-      font-weight: 900;
-      letter-spacing: -0.05em;
+      font-weight: 800;
+      letter-spacing: -0.04em;
       font-variant-numeric: tabular-nums;
     }
+    .opp-amount .currency { font-size: 0.8em; opacity: 0.65; margin-right: 0.1rem; }
 
-    .opp-amount .currency {
-      font-size: 0.8em;
-      letter-spacing: -0.03em;
-      margin-right: 0.15rem;
-    }
-
-    .opp-copy {
-      font-size: 0.92rem;
-      line-height: 1.45;
-      color: var(--muted);
-    }
-
-    .opp-foot {
-      margin-top: auto;
-      padding-top: 0.2rem;
-      color: var(--navy);
-      font-size: 0.88rem;
-      font-weight: 800;
-    }
+    .opp-copy { font-size: 0.88rem; line-height: 1.45; color: var(--muted); }
+    .opp-foot { margin-top: auto; padding-top: 0.2rem; color: var(--navy); font-size: 0.85rem; font-weight: 700; }
 
     .opportunity-cta-row {
       display: flex;
       gap: 0.75rem;
       flex-wrap: wrap;
-      margin-top: 0.95rem;
+      margin-top: 1rem;
     }
 
+    /* ── FOOTER ── */
     .footer {
       padding: 1.1rem 0 1.4rem;
       border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: 0.88rem;
     }
+    .footer a { color: var(--navy); font-weight: 700; }
 
-    .footer a {
-      color: var(--navy);
-      font-weight: 700;
-    }
-
-    @media (min-width: 640px) {
-      .opportunity-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    /* ── RESPONSIVE ── */
+    @media (min-width: 540px) {
+      .who-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .opportunity-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (min-width: 760px) {
-      .topbar-inner {
-        min-height: 60px;
-      }
+      :root { --topbar-h: 60px; }
+      .topbar-inner { min-height: 60px; }
 
       .hero-inner {
-        grid-template-columns: 1.3fr 0.7fr;
+        grid-template-columns: 1.4fr 0.6fr;
         align-items: end;
-        gap: 1rem;
+        gap: 1.5rem;
       }
 
-      .hero-copy {
-        max-width: 50ch;
-      }
-
-      .hero-actions {
-        justify-content: flex-start;
-      }
+      .doors-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
       .section-head {
         grid-template-columns: 1fr auto;
         align-items: end;
         gap: 1rem;
       }
+      .section-copy { text-align: right; }
 
-      .section-copy {
-        text-align: right;
-      }
+      .trust-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
 
     @media (min-width: 900px) {
-      .doors-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .opportunity-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
+      .doors-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .who-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .opportunity-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .trust-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
@@ -456,170 +567,248 @@
 </head>
 <body>
   <div class="page">
+
+    <!-- TOPBAR -->
     <header class="topbar">
       <div class="container topbar-inner">
         <div class="brand">
           <span class="brand-name">Joseph</span>
-          <span class="brand-note">Digital systems and networking</span>
+          <span class="brand-note">Digital systems &amp; operations</span>
         </div>
+        <a class="topbar-cta" href="https://wa.me/233201517382" data-wa-message="Hi Joseph, I'd like to talk about fixing a problem in my business.">WhatsApp Joseph</a>
       </div>
     </header>
 
     <main>
+
+      <!-- HERO -->
       <section class="hero">
         <div class="container hero-inner">
           <div>
-            <p class="eyebrow">Professional Simplicity</p>
-            <h1 class="hero-title">Digital systems for businesses that need clarity.</h1>
+            <p class="eyebrow">Accra · Ghana</p>
+            <h1 class="hero-title">Build systems that run without you in the room.</h1>
             <p class="hero-copy">
-              I audit workflows, build useful tools, and mentor people who want practical applied AI.
+              Most Ghanaian business owners are the system — and that's the problem. I build the digital infrastructure, automations, and workflows that let your operations run reliably, even when you step away.
             </p>
+            <div class="hero-proof">
+              <span class="hero-proof-dot"></span>
+              <span>10+ years in IT leadership · Accra-based · Available now</span>
+            </div>
           </div>
 
           <div class="hero-actions">
-            <a class="cta cta-primary" href="#doors">See the Four Doors</a>
-            <a class="cta cta-secondary" href="#opportunities">View Opportunity Cards</a>
+            <a class="cta cta-primary" href="#doors">Find Your Entry Point</a>
+            <a class="cta cta-secondary" href="#who">Is This For You?</a>
           </div>
         </div>
       </section>
 
-      <section class="section" id="doors">
+      <!-- WHO THIS IS FOR -->
+      <section class="section" id="who">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="section-label">Who This Is For</p>
+              <h2 class="section-title">Recognise yourself here?</h2>
+            </div>
+            <p class="section-copy">These aren't hypotheticals. These are the operators I work with every day.</p>
+          </div>
+
+          <div class="who-grid">
+            <div class="who-card">
+              <div class="who-icon" aria-hidden="true">🏪</div>
+              <div class="who-body">
+                <p class="who-title">The owner whose business stops when they travel</p>
+                <p class="who-copy">Distribution, wholesale, or retail — if the business depends on your physical presence, you don't have a business yet. You have a job.</p>
+              </div>
+            </div>
+
+            <div class="who-card">
+              <div class="who-icon" aria-hidden="true">📱</div>
+              <div class="who-body">
+                <p class="who-title">Running your operations from WhatsApp groups</p>
+                <p class="who-copy">Orders, staff updates, supplier chases, invoices — all on the same chat thread. It worked at first. It doesn't scale.</p>
+              </div>
+            </div>
+
+            <div class="who-card">
+              <div class="who-icon" aria-hidden="true">📦</div>
+              <div class="who-body">
+                <p class="who-title">Losing control of moving parts as you grow</p>
+                <p class="who-copy">Inventory discrepancies, fulfilment gaps, staff doing things differently every time — the system breaks before the revenue can justify a full team.</p>
+              </div>
+            </div>
+
+            <div class="who-card">
+              <div class="who-icon" aria-hidden="true">💼</div>
+              <div class="who-body">
+                <p class="who-title">Building a side venture you can't fully oversee</p>
+                <p class="who-copy">A professional with a second business that needs real digital infrastructure — not just a Facebook page and a pray-it-works approach.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOUR DOORS -->
+      <section class="section doors-section" id="doors">
         <div class="container">
           <div class="section-head">
             <div>
               <p class="section-label">Four Doors</p>
-              <h2 class="section-title">Choose the next step in under a second.</h2>
+              <h2 class="section-title">What problem are we solving first?</h2>
             </div>
-            <p class="section-copy">The doors are compact, thumb-friendly, and visible early on a standard phone screen.</p>
+            <p class="section-copy">Start here. Each door routes to the right kind of engagement for your situation.</p>
           </div>
 
           <div class="doors-grid">
             <a
               class="door-card"
-              href="https://wa.me/"
-              data-wa-message="Hi Joseph, I'd like to book a Digital Audit for my business."
+              href="https://wa.me/233201517382"
+              data-wa-message="Hi Joseph, I can't trust what happens in my business when I'm away — I'd like to book a Digital Audit."
             >
-              <span class="door-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 5h16v12H7l-3 3V5z"></path>
-                  <path d="M8 9h8"></path>
-                  <path d="M8 13h5"></path>
-                </svg>
-              </span>
-              <span class="door-kicker">Advisory</span>
-              <h3 class="door-title">Book a Digital Audit</h3>
-              <p class="door-copy">Find wasted time, broken workflows, and quick wins before they cost more.</p>
+              <span class="door-pain">Pain Point → Oversight</span>
+              <h3 class="door-headline">"I can't trust what happens when I'm away."</h3>
+              <p class="door-copy">Your workflows, tools, and oversight gaps — audited and mapped in one session. Walk away with a clear picture of what's costing you.</p>
+              <span class="door-service-tag">→ Digital Audit</span>
               <span class="door-action">WhatsApp Joseph</span>
             </a>
 
             <a
               class="door-card"
-              href="https://wa.me/"
-              data-wa-message="Hi Joseph, I have a project I'd like you to build."
+              href="https://wa.me/233201517382"
+              data-wa-message="Hi Joseph, my operations are messy and manual and I need help building better systems."
             >
-              <span class="door-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 7h16"></path>
-                  <path d="M4 17h16"></path>
-                  <path d="M7 7l-3 5 3 5"></path>
-                  <path d="M17 7l3 5-3 5"></path>
-                </svg>
-              </span>
-              <span class="door-kicker">Build</span>
-              <h3 class="door-title">Start a Project</h3>
-              <p class="door-copy">Websites, apps, and internal tools shaped around how your team actually works.</p>
+              <span class="door-pain">Pain Point → Operations</span>
+              <h3 class="door-headline">"My operations are messy and manual."</h3>
+              <p class="door-copy">Websites, internal tools, automation systems — built around how your team actually works, not how a template assumes you work.</p>
+              <span class="door-service-tag">→ Build a System</span>
               <span class="door-action">WhatsApp Joseph</span>
             </a>
 
             <a
               class="door-card"
-              href="https://wa.me/"
-              data-wa-message="Hi Joseph, I want to learn more about the Applied AI course."
+              href="https://wa.me/233201517382"
+              data-wa-message="Hi Joseph, I need better systems to scale and want to learn about AI and automation workflows."
             >
-              <span class="door-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M12 7v5l3 2"></path>
-                </svg>
-              </span>
-              <span class="door-kicker">Mentorship</span>
-              <h3 class="door-title">Applied AI Course</h3>
-              <p class="door-copy">Learn practical automation, AI workflows, and better ways to move work forward.</p>
+              <span class="door-pain">Pain Point → Capability</span>
+              <h3 class="door-headline">"I need better systems to scale."</h3>
+              <p class="door-copy">Practical AI workflows and automation training — not theory. For operators who want to move faster without adding more headcount.</p>
+              <span class="door-service-tag">→ Applied AI Course</span>
               <span class="door-action">WhatsApp Joseph</span>
             </a>
 
             <a
               class="door-card"
-              href="https://wa.me/"
-              data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
+              href="https://wa.me/233201517382"
+              data-wa-message="Hi Joseph, I want to build or improve a digital venture and need your help."
             >
-              <span class="door-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3v18"></path>
-                  <path d="M17 7H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7"></path>
-                </svg>
-              </span>
-              <span class="door-kicker">Partner</span>
-              <h3 class="door-title">Bounty Board</h3>
-              <p class="door-copy">Refer a client and discuss the partner payout for closed work.</p>
+              <span class="door-pain">Goal → New Venture</span>
+              <h3 class="door-headline">"I want to build or improve my digital venture."</h3>
+              <p class="door-copy">Starting from scratch or improving what exists — scoped engagements for founders and professionals launching something that needs to work reliably.</p>
+              <span class="door-service-tag">→ Start a Project</span>
               <span class="door-action">WhatsApp Joseph</span>
             </a>
           </div>
         </div>
       </section>
 
-      <section class="section opportunity" id="opportunities">
+      <!-- TRUST / CREDIBILITY -->
+      <section class="section trust-section" id="trust">
         <div class="container">
           <div class="section-head">
             <div>
-              <p class="section-label">Earn</p>
-              <h2 class="section-title">Opportunity Cards</h2>
+              <p class="section-label">Why Joseph</p>
+              <h2 class="section-title">Built from the inside out.</h2>
             </div>
-            <p class="section-copy">Clear, professional payouts with the reward amount always in view.</p>
+            <p class="section-copy" style="color: rgba(255,255,255,0.55);">Operational credibility, not agency polish.</p>
           </div>
 
-          <div class="opportunity-grid">
-            <article class="opportunity-card">
-              <span class="opp-label">Business web presence</span>
-              <div class="opp-amount"><span class="currency">GHS</span>1,500 - 5,250</div>
-              <p class="opp-copy">Landing pages and business websites that make a strong first impression.</p>
-              <div class="opp-foot">Typical project payout</div>
-            </article>
-
-            <article class="opportunity-card">
-              <span class="opp-label">Automation systems</span>
-              <div class="opp-amount"><span class="currency">GHS</span>4,500 - 22,500</div>
-              <p class="opp-copy">Custom tools and internal systems for inventory, operations, and growth.</p>
-              <div class="opp-foot">High-value build range</div>
-            </article>
-
-            <article class="opportunity-card">
-              <span class="opp-label">Monthly management</span>
-              <div class="opp-amount"><span class="currency">GHS</span>675 - 1,200</div>
-              <p class="opp-copy">A recurring retainer for clients who need steady support each month.</p>
-              <div class="opp-foot">Paid while the client stays active</div>
-            </article>
-
-            <article class="opportunity-card">
-              <span class="opp-label">Referral partner</span>
-              <div class="opp-amount">15%</div>
-              <p class="opp-copy">Introduce the right business and earn from the deal once it closes.</p>
-              <div class="opp-foot">Bounty Board referral share</div>
-            </article>
+          <div class="trust-grid">
+            <div class="trust-card">
+              <div class="trust-number">10<span>+ yrs</span></div>
+              <div class="trust-label">IT &amp; systems leadership across organisations in Ghana</div>
+            </div>
+            <div class="trust-card">
+              <div class="trust-number">SME<span> focus</span></div>
+              <div class="trust-label">Built specifically for Ghanaian businesses — not adapted from foreign templates</div>
+            </div>
+            <div class="trust-card">
+              <div class="trust-number">Ops<span>-first</span></div>
+              <div class="trust-label">Every project starts with how your operation actually runs, not what looks good on screen</div>
+            </div>
+            <div class="trust-card">
+              <div class="trust-number">AI<span>-ready</span></div>
+              <div class="trust-label">Practical automation and AI workflows that work at Ghanaian business scale</div>
+            </div>
           </div>
 
-          <div class="opportunity-cta-row">
-            <a
-              class="cta cta-primary"
-              href="https://wa.me/"
-              data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
-            >
-              Discuss a Referral
-            </a>
-            <a class="cta cta-secondary" href="#doors">Back to the Four Doors</a>
+          <div class="trust-bio">
+            <strong>I'm not an agency.</strong> I'm a systems operator who's spent over a decade inside organisations solving the same problems you're describing — workflows nobody controls, tools that don't talk to each other, and businesses that grind to a halt the moment the owner leaves the building. My approach is direct, practical, and scoped to what you can actually implement.
           </div>
         </div>
       </section>
+
+      <!-- PARTNERS (collapsed) -->
+      <section class="section partners-section" id="partners">
+        <div class="container">
+          <button class="partners-toggle" aria-expanded="false" aria-controls="partners-content" id="partners-btn">
+            <div>
+              <p class="partners-toggle-label">For Partners</p>
+              <p class="partners-toggle-title">Referral &amp; Bounty Board</p>
+            </div>
+            <span class="partners-chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </span>
+          </button>
+
+          <div class="partners-body" id="partners-content" role="region" aria-labelledby="partners-btn">
+            <div class="opportunity-grid">
+              <article class="opportunity-card">
+                <span class="opp-label">Business web presence</span>
+                <div class="opp-amount"><span class="currency">GHS</span>1,500 – 5,250</div>
+                <p class="opp-copy">Landing pages and business websites that make a strong first impression.</p>
+                <div class="opp-foot">Typical project payout</div>
+              </article>
+
+              <article class="opportunity-card">
+                <span class="opp-label">Automation systems</span>
+                <div class="opp-amount"><span class="currency">GHS</span>4,500 – 22,500</div>
+                <p class="opp-copy">Custom tools and internal systems for inventory, operations, and growth.</p>
+                <div class="opp-foot">High-value build range</div>
+              </article>
+
+              <article class="opportunity-card">
+                <span class="opp-label">Monthly management</span>
+                <div class="opp-amount"><span class="currency">GHS</span>675 – 1,200</div>
+                <p class="opp-copy">A recurring retainer for clients who need steady support each month.</p>
+                <div class="opp-foot">Paid while the client stays active</div>
+              </article>
+
+              <article class="opportunity-card">
+                <span class="opp-label">Referral partner</span>
+                <div class="opp-amount">15%</div>
+                <p class="opp-copy">Introduce the right business and earn from the deal once it closes.</p>
+                <div class="opp-foot">Bounty Board referral share</div>
+              </article>
+            </div>
+
+            <div class="opportunity-cta-row">
+              <a
+                class="cta cta-primary"
+                href="https://wa.me/233201517382"
+                data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
+              >
+                Discuss a Referral
+              </a>
+              <a class="cta cta-secondary" href="#doors">Back to the Four Doors</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="footer">
@@ -643,6 +832,31 @@
       });
 
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Partners accordion
+      const btn = document.getElementById('partners-btn');
+      const body = document.getElementById('partners-content');
+      if (btn && body) {
+        const setAccordionState = function (open) {
+          btn.setAttribute('aria-expanded', String(open));
+          body.classList.toggle('is-open', open);
+          body.inert = !open;
+          body.style.maxHeight = open ? body.scrollHeight + 'px' : '0';
+        };
+
+        setAccordionState(btn.getAttribute('aria-expanded') === 'true');
+
+        btn.addEventListener('click', function () {
+          const isOpen = this.getAttribute('aria-expanded') === 'true';
+          setAccordionState(!isOpen);
+        });
+
+        window.addEventListener('resize', function () {
+          if (btn.getAttribute('aria-expanded') === 'true') {
+            body.style.maxHeight = body.scrollHeight + 'px';
+          }
+        });
+      }
     }());
   </script>
 </body>
