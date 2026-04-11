@@ -28,6 +28,7 @@
       --radius-sm: 12px;
       --font-display: 'DM Serif Display', Georgia, serif;
       --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --topbar-h: 56px;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -35,7 +36,7 @@
     html {
       font-size: 17px;
       scroll-behavior: smooth;
-      scroll-padding-top: 1rem;
+      scroll-padding-top: var(--topbar-h);
       -webkit-text-size-adjust: 100%;
     }
 
@@ -461,7 +462,6 @@
       opacity: 0;
     }
     .partners-body.is-open {
-      max-height: 900px;
       opacity: 1;
     }
 
@@ -527,6 +527,7 @@
     }
 
     @media (min-width: 760px) {
+      :root { --topbar-h: 60px; }
       .topbar-inner { min-height: 60px; }
 
       .hero-inner {
@@ -574,7 +575,7 @@
           <span class="brand-name">Joseph</span>
           <span class="brand-note">Digital systems &amp; operations</span>
         </div>
-        <a class="topbar-cta" href="https://wa.me/" data-wa-message="Hi Joseph, I'd like to talk about fixing a problem in my business.">WhatsApp Joseph</a>
+        <a class="topbar-cta" href="https://wa.me/233201517382" data-wa-message="Hi Joseph, I'd like to talk about fixing a problem in my business.">WhatsApp Joseph</a>
       </div>
     </header>
 
@@ -663,7 +664,7 @@
           <div class="doors-grid">
             <a
               class="door-card"
-              href="https://wa.me/"
+              href="https://wa.me/233201517382"
               data-wa-message="Hi Joseph, I can't trust what happens in my business when I'm away — I'd like to book a Digital Audit."
             >
               <span class="door-pain">Pain Point → Oversight</span>
@@ -675,7 +676,7 @@
 
             <a
               class="door-card"
-              href="https://wa.me/"
+              href="https://wa.me/233201517382"
               data-wa-message="Hi Joseph, my operations are messy and manual and I need help building better systems."
             >
               <span class="door-pain">Pain Point → Operations</span>
@@ -687,7 +688,7 @@
 
             <a
               class="door-card"
-              href="https://wa.me/"
+              href="https://wa.me/233201517382"
               data-wa-message="Hi Joseph, I need better systems to scale and want to learn about AI and automation workflows."
             >
               <span class="door-pain">Pain Point → Capability</span>
@@ -699,7 +700,7 @@
 
             <a
               class="door-card"
-              href="https://wa.me/"
+              href="https://wa.me/233201517382"
               data-wa-message="Hi Joseph, I want to build or improve a digital venture and need your help."
             >
               <span class="door-pain">Goal → New Venture</span>
@@ -797,7 +798,7 @@
             <div class="opportunity-cta-row">
               <a
                 class="cta cta-primary"
-                href="https://wa.me/"
+                href="https://wa.me/233201517382"
                 data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
               >
                 Discuss a Referral
@@ -836,10 +837,24 @@
       const btn = document.getElementById('partners-btn');
       const body = document.getElementById('partners-content');
       if (btn && body) {
+        const setAccordionState = function (open) {
+          btn.setAttribute('aria-expanded', String(open));
+          body.classList.toggle('is-open', open);
+          body.inert = !open;
+          body.style.maxHeight = open ? body.scrollHeight + 'px' : '0';
+        };
+
+        setAccordionState(btn.getAttribute('aria-expanded') === 'true');
+
         btn.addEventListener('click', function () {
           const isOpen = this.getAttribute('aria-expanded') === 'true';
-          this.setAttribute('aria-expanded', String(!isOpen));
-          body.classList.toggle('is-open', !isOpen);
+          setAccordionState(!isOpen);
+        });
+
+        window.addEventListener('resize', function () {
+          if (btn.getAttribute('aria-expanded') === 'true') {
+            body.style.maxHeight = body.scrollHeight + 'px';
+          }
         });
       }
     }());
