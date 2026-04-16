@@ -3,556 +3,846 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#1a2332" />
-  <title>Joseph | Digital Systems for Ghanaian Businesses</title>
-  <meta name="description" content="Joseph builds operational systems that let your business run without constant supervision — audits, builds, AI workflows, and referral partnerships." />
+  <meta name="theme-color" content="#0d1520" />
+  <title>ApplyTech™ — Operational Systems for Ghanaian Businesses | Accra, Ghana</title>
+  <meta name="description" content="ApplyTech™ builds operational systems that give Accra businesses control, visibility, and accountability — so your business runs reliably without your constant presence. Audit · Build · Support." />
+  <meta name="keywords" content="operational systems Ghana, business automation Accra, workflow audit Ghana, SME systems Accra, business infrastructure Ghana, WhatsApp business systems, operational infrastructure, ApplyTech, Joseph Omoruwou, business referral Ghana" />
+  <meta property="og:title" content="ApplyTech™ — Operational Infrastructure Built to Scale" />
+  <meta property="og:description" content="Your business shouldn't stop when you step away. ApplyTech™ installs operational control — auditable workflows, structured processes, and systems that run without you in the room." />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a2332'/%3E%3Cpath d='M18 18h10v28H18zm18 0h10v28H36z' fill='%23ffffff'/%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230d1520'/%3E%3Cpath d='M16 20h10v24H16zM28 20h10l10 12-10 12H28z' fill='%23ffffff'/%3E%3C/svg%3E" />
   <style>
     :root {
-      --bg: #f4f6f8;
+      --ink: #0d1520;
+      --ink-2: #1e2d42;
       --surface: #ffffff;
-      --surface-2: #f8fafc;
-      --text: #1a2332;
-      --muted: #5a6778;
-      --border: #d7dee6;
-      --border-strong: #bfc9d4;
-      --navy: #1a2332;
-      --accent: #155ef0;
-      --accent-strong: #0f4cd1;
-      --accent-subtle: #eef3fe;
-      --radius-lg: 18px;
-      --radius-md: 14px;
-      --radius-sm: 12px;
-      --font-display: 'DM Serif Display', Georgia, serif;
-      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --topbar-h: 56px;
+      --surface-2: #f5f6f8;
+      --surface-3: #eef0f4;
+      --muted: #556070;
+      --border: #dde1e8;
+      --border-strong: #b8c0cc;
+      --accent: #0f52d9;
+      --accent-2: #0a3fa8;
+      --accent-warm: #e8460c;
+      --accent-warm-2: #c23a09;
+      --green: #16a34a;
+      --gold: #b8860b;
+      --radius-xl: 20px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-ui: 'Syne', system-ui, sans-serif;
+      --topbar-h: 58px;
+      --container: min(1100px, calc(100% - 2.5rem));
     }
 
-    *, *::before, *::after { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
-      font-size: 17px;
+      font-size: 16px;
       scroll-behavior: smooth;
-      scroll-padding-top: var(--topbar-h);
+      scroll-padding-top: calc(var(--topbar-h) + 8px);
       -webkit-text-size-adjust: 100%;
     }
 
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 1rem;
+      background: var(--surface-2);
+      color: var(--ink);
+      font-family: var(--font-ui);
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      touch-action: manipulation;
     }
 
-    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-    button { font: inherit; -webkit-tap-highlight-color: transparent; }
-    h1, h2, h3, p { margin: 0; }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    button { font: inherit; -webkit-tap-highlight-color: transparent; cursor: pointer; border: none; background: none; touch-action: manipulation; }
 
     :focus-visible {
-      outline: 3px solid rgba(21, 94, 240, 0.22);
+      outline: 3px solid rgba(15, 82, 217, 0.3);
       outline-offset: 3px;
     }
 
-    .page { width: 100%; }
-
-    .container {
-      width: min(1120px, calc(100% - 1.25rem));
-      margin: 0 auto;
-    }
+    .container { width: var(--container); margin: 0 auto; }
 
     /* ── TOPBAR ── */
     .topbar {
-      border-bottom: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
     .topbar-inner {
-      min-height: 56px;
+      height: var(--topbar-h);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
-      padding: 0.5rem 0;
+      gap: 1rem;
     }
 
-    .brand { display: flex; flex-direction: column; gap: 0.05rem; min-width: 0; }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
     .brand-name {
-      font-family: var(--font-display);
+      font-family: var(--font-ui);
+      font-weight: 800;
       font-size: 1.15rem;
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      color: var(--navy);
-      white-space: nowrap;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1;
     }
-    .brand-note { font-size: 0.78rem; font-weight: 500; color: var(--muted); white-space: nowrap; }
 
-    .topbar-cta {
-      min-height: 38px;
-      display: inline-flex;
-      align-items: center;
-      padding: 0.4rem 1rem;
-      border-radius: var(--radius-sm);
-      background: var(--accent);
-      color: #fff;
+    .brand-name sup {
+      font-size: 0.55em;
+      vertical-align: super;
       font-weight: 700;
-      font-size: 0.88rem;
-      border: none;
-      cursor: pointer;
-      transition: background-color 160ms ease;
-      white-space: nowrap;
-    }
-    .topbar-cta:hover { background: var(--accent-strong); color: #fff; }
-
-    /* ── HERO ── */
-    .hero {
-      border-bottom: 1px solid var(--border);
-      padding: 2.5rem 0 2rem;
-      background: var(--surface);
     }
 
-    .hero-inner {
-      display: grid;
-      gap: 1.5rem;
+    .brand-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    .eyebrow {
-      margin: 0 0 0.6rem;
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn-wa-top {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      font-size: 0.74rem;
+      min-height: 40px;
+      padding: 0 1rem;
+      background: #25d366;
+      color: #fff;
+      font-family: var(--font-ui);
       font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
+      font-size: 0.85rem;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      transition: background 150ms ease;
     }
-    .eyebrow::before {
+    .btn-wa-top:hover { background: #1db954; color: #fff; }
+
+    .btn-wa-top svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      color: #fff;
+      padding: 3rem 0 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
       content: '';
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 30%, rgba(15,82,217,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 10% 90%, rgba(15,82,217,0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      gap: 2rem;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-kicker-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
     }
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.1rem, 7.5vw, 3.4rem);
-      font-weight: 400;
-      line-height: 1.08;
+      font-size: clamp(2.2rem, 7.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.07;
       letter-spacing: -0.02em;
-      color: var(--navy);
-      max-width: 16ch;
+      color: #fff;
+      max-width: 18ch;
     }
 
-    .hero-copy {
-      max-width: 46ch;
-      font-size: 1.02rem;
+    .hero-title em {
+      font-style: italic;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
       line-height: 1.6;
-      color: var(--muted);
+      color: rgba(255,255,255,0.65);
+      max-width: 44ch;
+      margin-top: 1.1rem;
     }
 
     .hero-proof {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-weight: 500;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.75rem;
     }
-    .hero-proof-dot {
-      width: 6px; height: 6px;
+
+    .hero-proof-live {
+      width: 7px; height: 7px;
       border-radius: 50%;
-      background: #22c55e;
-      flex: 0 0 auto;
+      background: var(--green);
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(22,163,74,0.25);
     }
 
     .hero-actions {
       display: flex;
       gap: 0.75rem;
       flex-wrap: wrap;
+      margin-top: 0.25rem;
     }
 
     /* ── BUTTONS ── */
-    .cta {
-      min-height: 52px;
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.9rem 1.25rem;
-      border-radius: var(--radius-sm);
-      border: 1.5px solid transparent;
+      min-height: 52px;
+      padding: 0 1.35rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-ui);
       font-weight: 700;
       font-size: 0.95rem;
       letter-spacing: -0.01em;
-      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+      border: 1.5px solid transparent;
+      transition: background 150ms ease, border-color 150ms ease, color 150ms ease, transform 120ms ease;
       cursor: pointer;
+      white-space: nowrap;
     }
-    .cta-primary { background: var(--accent); color: #ffffff; border-color: var(--accent); }
-    .cta-primary:hover, .cta-primary:focus-visible { background: var(--accent-strong); border-color: var(--accent-strong); color: #ffffff; }
-    .cta-secondary { background: transparent; color: var(--navy); border-color: var(--border-strong); }
-    .cta-secondary:hover, .cta-secondary:focus-visible { border-color: var(--navy); background: #ffffff; color: var(--navy); }
+    .btn:active { transform: scale(0.98); }
 
-    /* ── SECTIONS ── */
-    .section { padding: 2rem 0 2.25rem; }
-    .section + .section { border-top: 1px solid var(--border); }
+    .btn-primary {
+      background: var(--accent-warm);
+      color: #fff;
+      border-color: var(--accent-warm);
+    }
+    .btn-primary:hover { background: var(--accent-warm-2); border-color: var(--accent-warm-2); color: #fff; }
 
-    .section-head {
+    .btn-outline-white {
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      border-color: rgba(255,255,255,0.25);
+    }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.6); color: #fff; background: rgba(255,255,255,0.07); }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--border-strong);
+    }
+    .btn-outline-dark:hover { border-color: var(--ink); background: var(--surface); color: var(--ink); }
+
+    .btn-wa {
+      background: #25d366;
+      color: #fff;
+      border-color: #25d366;
+    }
+    .btn-wa:hover { background: #1db954; border-color: #1db954; color: #fff; }
+    .btn-wa svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+    /* ── REFERRAL BAND ── */
+    .referral-band {
+      background: var(--ink-2);
+      color: #fff;
+      padding: 2.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .referral-inner {
       display: grid;
-      gap: 0.35rem;
-      margin-bottom: 1.25rem;
+      gap: 1.5rem;
     }
 
-    .section-label {
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 5vw, 2rem);
-      font-weight: 400;
-      line-height: 1.14;
-      letter-spacing: -0.02em;
-      color: var(--navy);
-    }
-
-    .section-copy {
-      max-width: 52ch;
-      color: var(--muted);
-      font-size: 0.96rem;
-      line-height: 1.55;
-    }
-
-    /* ── WHO THIS IS FOR ── */
-    .who-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.65rem;
-    }
-
-    .who-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.9rem;
-      padding: 1rem 1.1rem;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      background: var(--surface);
-      transition: border-color 160ms ease;
-    }
-    .who-card:hover { border-color: var(--accent); }
-
-    .who-icon {
-      width: 40px; height: 40px;
-      flex: 0 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      background: var(--accent-subtle);
-      color: var(--accent);
-      font-size: 1.15rem;
-    }
-
-    .who-body { min-width: 0; }
-    .who-title {
-      font-size: 0.97rem;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.25;
-      margin-bottom: 0.25rem;
-    }
-    .who-copy { font-size: 0.88rem; color: var(--muted); line-height: 1.45; }
-
-    /* ── DOORS ── */
-    .doors-section { background: var(--surface); }
-
-    .doors-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.65rem;
-    }
-
-    .door-card {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      padding: 1.1rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: var(--surface);
-      transition: border-color 160ms ease, background-color 160ms ease, transform 120ms ease;
-    }
-    .door-card:hover, .door-card:focus-visible {
-      border-color: var(--accent);
-      background: #f8fbff;
-      transform: translateY(-1px);
-    }
-
-    .door-pain {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .door-headline {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 400;
-      line-height: 1.25;
-      color: var(--navy);
-    }
-
-    .door-copy {
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: var(--muted);
-    }
-
-    .door-service-tag {
+    .referral-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      font-size: 0.78rem;
+      gap: 0.4rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: var(--accent);
-      background: var(--accent-subtle);
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
-      width: fit-content;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
     }
 
-    .door-action {
-      margin-top: auto;
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.65rem 0.9rem;
-      border-radius: var(--radius-sm);
-      border: 1.5px solid var(--accent);
-      background: var(--accent);
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-align: center;
-      transition: background-color 160ms ease, border-color 160ms ease;
-    }
-    .door-card:hover .door-action, .door-card:focus-visible .door-action {
-      border-color: var(--accent-strong);
-      background: var(--accent-strong);
-    }
-
-    /* ── TRUST ── */
-    .trust-section { background: var(--navy); color: #fff; }
-    .trust-section .section-label { color: rgba(255,255,255,0.5); }
-    .trust-section .section-title { color: #fff; }
-    .trust-section .section-copy { color: rgba(255,255,255,0.65); }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.65rem;
-      margin-top: 0.75rem;
-    }
-
-    .trust-card {
-      padding: 1.1rem;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.05);
-    }
-
-    .trust-number {
+    .referral-title {
       font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 400;
+      font-size: clamp(1.5rem, 5vw, 2.1rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
       color: #fff;
-      line-height: 1;
-      margin-bottom: 0.35rem;
-    }
-    .trust-number span { font-size: 1.1rem; opacity: 0.6; }
-
-    .trust-label {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.4;
     }
 
-    .trust-bio {
-      margin-top: 1.25rem;
-      padding: 1.1rem;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.05);
+    .referral-title span {
+      color: rgba(255,255,255,0.45);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .referral-copy {
       font-size: 0.95rem;
       line-height: 1.6;
-      color: rgba(255,255,255,0.75);
-    }
-    .trust-bio strong { color: #fff; }
-
-    /* ── PARTNERS (collapsed) ── */
-    .partners-section {
-      background: var(--surface-2);
+      color: rgba(255,255,255,0.58);
+      max-width: 48ch;
     }
 
-    .partners-toggle {
+    .referral-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+
+    .ref-card {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      text-align: left;
-      gap: 1rem;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
     }
-    .partners-toggle-label {
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.2rem;
-    }
-    .partners-toggle-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 400;
-      color: var(--navy);
-    }
-    .partners-chevron {
-      width: 28px; height: 28px;
-      flex: 0 0 auto;
+
+    .ref-card-icon {
+      width: 36px; height: 36px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 8px;
-      border: 1.5px solid var(--border);
+      background: rgba(15,82,217,0.2);
+      font-size: 1.05rem;
+    }
+
+    .ref-card-body {}
+    .ref-card-amount {
+      font-family: var(--font-ui);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .ref-card-label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.15rem;
+      line-height: 1.35;
+    }
+
+    .referral-cta-row {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+
+    /* ── PROBLEM SECTION ── */
+    .problem-section {
+      background: var(--surface);
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-kicker {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .section-copy {
+      font-size: 0.97rem;
+      line-height: 1.6;
       color: var(--muted);
-      transition: transform 240ms ease;
-    }
-    .partners-chevron svg { width: 14px; height: 14px; }
-    [aria-expanded="true"] .partners-chevron { transform: rotate(180deg); }
-
-    .partners-body {
-      overflow: hidden;
-      transition: max-height 300ms ease, opacity 250ms ease;
-      max-height: 0;
-      opacity: 0;
-    }
-    .partners-body.is-open {
-      opacity: 1;
+      max-width: 50ch;
+      margin-top: 0.75rem;
     }
 
-    .opportunity-grid {
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .problem-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 1.05rem 1.1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    .problem-num {
+      font-family: var(--font-ui);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--border-strong);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 1.75rem;
+      margin-top: 0.1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .problem-body {}
+    .problem-hed {
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+    }
+    .problem-txt {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* ── OFFER / SERVICES ── */
+    .offer-section {
+      background: var(--surface-2);
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .offer-ladder {
       display: grid;
       grid-template-columns: 1fr;
       gap: 0.65rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
 
-    .opportunity-card {
+    .offer-card {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
-      padding: 1rem;
-      border-radius: var(--radius-lg);
+      gap: 0.65rem;
+      padding: 1.25rem;
+      border-radius: var(--radius-xl);
       border: 1px solid var(--border);
       background: var(--surface);
+      transition: border-color 160ms ease, transform 120ms ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    .offer-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .offer-card:active { transform: scale(0.99); }
+
+    .offer-card.featured {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
     }
 
-    .opp-label {
-      font-size: 0.75rem;
+    .offer-step {
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
     }
+    .offer-card.featured .offer-step { color: rgba(255,255,255,0.4); }
 
-    .opp-amount {
-      color: var(--navy);
-      font-size: clamp(1.4rem, 4vw, 1.9rem);
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      font-variant-numeric: tabular-nums;
+    .offer-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
     }
-    .opp-amount .currency { font-size: 0.8em; opacity: 0.65; margin-right: 0.1rem; }
+    .offer-card.featured .offer-name { color: #fff; }
 
-    .opp-copy { font-size: 0.88rem; line-height: 1.45; color: var(--muted); }
-    .opp-foot { margin-top: auto; padding-top: 0.2rem; color: var(--navy); font-size: 0.85rem; font-weight: 700; }
+    .offer-desc {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .offer-card.featured .offer-desc { color: rgba(255,255,255,0.6); }
 
-    .opportunity-cta-row {
+    .offer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .offer-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .offer-card.featured .offer-list li { color: rgba(255,255,255,0.6); }
+
+    .offer-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+    .offer-card.featured .offer-list li::before { color: rgba(255,255,255,0.5); }
+
+    .offer-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.65rem 1rem;
+      border-radius: var(--radius-md);
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+      transition: background 150ms ease;
+      margin-top: auto;
+    }
+    .offer-action:hover { background: var(--accent-2); }
+    .offer-card.featured .offer-action {
+      background: #fff;
+      color: var(--ink);
+    }
+    .offer-card.featured .offer-action:hover { background: rgba(255,255,255,0.88); }
+
+    /* ── PROOF / CREDIBILITY ── */
+    .proof-section {
+      background: var(--ink);
+      color: #fff;
+      padding: 2.5rem 0;
+    }
+
+    .proof-section .section-kicker { color: rgba(255,255,255,0.4); }
+    .proof-section .section-title { color: #fff; }
+    .proof-section .section-copy { color: rgba(255,255,255,0.55); }
+
+    .proof-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .proof-stat {
+      padding: 1.05rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .proof-stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.02em;
+    }
+    .proof-stat-num span { font-size: 0.9rem; opacity: 0.45; font-style: italic; font-family: var(--font-display); }
+
+    .proof-stat-label {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.4;
+    }
+
+    .proof-case {
+      margin-top: 1rem;
+      padding: 1.25rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .proof-case-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.6rem;
+    }
+
+    .proof-case-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .proof-case-copy {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .proof-case-outcomes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-top: 0.75rem;
+    }
+
+    .proof-case-outcomes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.4;
+    }
+
+    .proof-case-outcomes li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .proof-bio {
+      margin-top: 1rem;
+      padding: 1.15rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.6);
+    }
+    .proof-bio strong { color: rgba(255,255,255,0.9); }
+
+    /* ── HOW IT WORKS ── */
+    .how-section {
+      background: var(--surface);
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 1.5rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: var(--font-ui);
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--border);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2.2rem;
+      letter-spacing: -0.04em;
+    }
+
+    .step-body {}
+    .step-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    .step-txt {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-section {
+      background: var(--accent);
+      padding: 2.75rem 0;
+      text-align: center;
+    }
+
+    .final-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .final-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      max-width: 22ch;
+    }
+
+    .final-copy {
+      font-size: 0.97rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.72);
+      max-width: 44ch;
+    }
+
+    .final-actions {
       display: flex;
       gap: 0.75rem;
       flex-wrap: wrap;
-      margin-top: 1rem;
+      justify-content: center;
     }
+
+    .btn-white {
+      background: #fff;
+      color: var(--ink);
+      border-color: #fff;
+    }
+    .btn-white:hover { background: rgba(255,255,255,0.9); color: var(--ink); }
+
+    .btn-outline-white-2 {
+      background: transparent;
+      color: rgba(255,255,255,0.9);
+      border: 1.5px solid rgba(255,255,255,0.4);
+    }
+    .btn-outline-white-2:hover { border-color: rgba(255,255,255,0.8); color: #fff; background: rgba(255,255,255,0.08); }
 
     /* ── FOOTER ── */
     .footer {
-      padding: 1.1rem 0 1.4rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.88rem;
+      background: var(--ink);
+      color: rgba(255,255,255,0.45);
+      padding: 1.5rem 0 2rem;
+      font-size: 0.85rem;
     }
-    .footer a { color: var(--navy); font-weight: 700; }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-ui);
+      font-weight: 800;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: -0.02em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      font-weight: 600;
+      transition: color 150ms ease;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
 
     /* ── RESPONSIVE ── */
     @media (min-width: 540px) {
-      .who-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .opportunity-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .referral-cards { grid-template-columns: repeat(2, 1fr); }
+      .problem-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-stats { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 760px) {
-      :root { --topbar-h: 60px; }
-      .topbar-inner { min-height: 60px; }
+      :root { --topbar-h: 62px; }
 
       .hero-inner {
-        grid-template-columns: 1.4fr 0.6fr;
+        grid-template-columns: 1.5fr 1fr;
         align-items: end;
-        gap: 1.5rem;
       }
 
-      .doors-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-title { max-width: none; }
 
-      .section-head {
-        grid-template-columns: 1fr auto;
-        align-items: end;
-        gap: 1rem;
+      .offer-ladder { grid-template-columns: repeat(3, 1fr); }
+
+      .referral-inner {
+        grid-template-columns: 1fr 1.4fr;
+        align-items: start;
+        gap: 2.5rem;
       }
-      .section-copy { text-align: right; }
 
-      .trust-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .referral-cards { grid-template-columns: repeat(2, 1fr); }
+
+      .proof-stats { grid-template-columns: repeat(4, 1fr); }
     }
 
-    @media (min-width: 900px) {
-      .doors-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .who-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .opportunity-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .trust-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (min-width: 960px) {
+      .problem-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -560,303 +850,394 @@
       *, *::before, *::after {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page">
 
-    <!-- TOPBAR -->
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <div class="brand">
-          <span class="brand-name">Joseph</span>
-          <span class="brand-note">Digital systems &amp; operations</span>
-        </div>
-        <a class="topbar-cta" href="https://wa.me/233201517382" data-wa-message="Hi Joseph, I'd like to talk about fixing a problem in my business.">WhatsApp Joseph</a>
+  <!-- ── TOPBAR ── -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-name">ApplyTech<sup>™</sup></span>
+        <span class="brand-tag">Operational Systems · Accra</span>
       </div>
-    </header>
+      <div class="topbar-right">
+        <a
+          class="btn-wa-top"
+          href="https://wa.me/233201517382"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-wa-message="Hi, I found ApplyTech™ and I'd like to talk about fixing operations in my business."
+        >
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </header>
 
-    <main>
+  <main>
 
-      <!-- HERO -->
-      <section class="hero">
-        <div class="container hero-inner">
-          <div>
-            <p class="eyebrow">Accra · Ghana</p>
-            <h1 class="hero-title">Build systems that run without you in the room.</h1>
-            <p class="hero-copy">
-              Most Ghanaian business owners are the system — and that's the problem. I build the digital infrastructure, automations, and workflows that let your operations run reliably, even when you step away.
-            </p>
-            <div class="hero-proof">
-              <span class="hero-proof-dot"></span>
-              <span>10+ years in IT leadership · Accra-based · Available now</span>
-            </div>
-          </div>
-
-          <div class="hero-actions">
-            <a class="cta cta-primary" href="#doors">Find Your Entry Point</a>
-            <a class="cta cta-secondary" href="#who">Is This For You?</a>
-          </div>
+    <!-- ── HERO ── -->
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div>
+          <p class="hero-kicker">
+            <span class="hero-kicker-dot"></span>
+            Operational Systems Firm · Accra, Ghana
+          </p>
+          <h1 class="hero-title">Your business should run <em>without you</em> in the room.</h1>
+          <p class="hero-sub">
+            Most businesses don't fail from lack of effort. They fail because workflows, data, and accountability are fragmented. ApplyTech™ fixes this at the infrastructure level — giving you control, visibility, and a business that runs whether you're in the room or not.
+          </p>
+          <p class="hero-proof">
+            <span class="hero-proof-live"></span>
+            10+ years IT leadership · Enterprise &amp; logistics experience · Available now
+          </p>
         </div>
-      </section>
 
-      <!-- WHO THIS IS FOR -->
-      <section class="section" id="who">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="section-label">Who This Is For</p>
-              <h2 class="section-title">Recognise yourself here?</h2>
-            </div>
-            <p class="section-copy">These aren't hypotheticals. These are the operators I work with every day.</p>
-          </div>
-
-          <div class="who-grid">
-            <div class="who-card">
-              <div class="who-icon" aria-hidden="true">🏪</div>
-              <div class="who-body">
-                <p class="who-title">The owner whose business stops when they travel</p>
-                <p class="who-copy">Distribution, wholesale, or retail — if the business depends on your physical presence, you don't have a business yet. You have a job.</p>
-              </div>
-            </div>
-
-            <div class="who-card">
-              <div class="who-icon" aria-hidden="true">📱</div>
-              <div class="who-body">
-                <p class="who-title">Running your operations from WhatsApp groups</p>
-                <p class="who-copy">Orders, staff updates, supplier chases, invoices — all on the same chat thread. It worked at first. It doesn't scale.</p>
-              </div>
-            </div>
-
-            <div class="who-card">
-              <div class="who-icon" aria-hidden="true">📦</div>
-              <div class="who-body">
-                <p class="who-title">Losing control of moving parts as you grow</p>
-                <p class="who-copy">Inventory discrepancies, fulfilment gaps, staff doing things differently every time — the system breaks before the revenue can justify a full team.</p>
-              </div>
-            </div>
-
-            <div class="who-card">
-              <div class="who-icon" aria-hidden="true">💼</div>
-              <div class="who-body">
-                <p class="who-title">Building a side venture you can't fully oversee</p>
-                <p class="who-copy">A professional with a second business that needs real digital infrastructure — not just a Facebook page and a pray-it-works approach.</p>
-              </div>
-            </div>
-          </div>
+        <div class="hero-actions">
+          <a
+            class="btn btn-primary"
+            href="https://wa.me/233201517382"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-wa-message="Hi ApplyTech™, I'd like to book a free Operations Audit for my business."
+          >
+            Book a Free Audit
+          </a>
+          <a class="btn btn-outline-white" href="#offer">See What We Build</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- FOUR DOORS -->
-      <section class="section doors-section" id="doors">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="section-label">Four Doors</p>
-              <h2 class="section-title">What problem are we solving first?</h2>
-            </div>
-            <p class="section-copy">Start here. Each door routes to the right kind of engagement for your situation.</p>
-          </div>
-
-          <div class="doors-grid">
+    <!-- ── REFERRAL BAND ── -->
+    <section class="referral-band" id="refer">
+      <div class="container referral-inner">
+        <div>
+          <span class="referral-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            Partner &amp; Referral Programme
+          </span>
+          <h2 class="referral-title">Know a business <span>that needs this?</span></h2>
+          <p class="referral-copy">
+            Refer them to ApplyTech™ and earn 15% of the project value once the deal closes. No cap. No complicated process. Just introduce us, and we handle the rest.
+          </p>
+          <div class="referral-cta-row">
             <a
-              class="door-card"
+              class="btn btn-primary"
               href="https://wa.me/233201517382"
-              data-wa-message="Hi Joseph, I can't trust what happens in my business when I'm away — I'd like to book a Digital Audit."
+              target="_blank"
+              rel="noopener noreferrer"
+              data-wa-message="Hi ApplyTech™, I have a referral — I know a business that could use your operational systems."
             >
-              <span class="door-pain">Pain Point → Oversight</span>
-              <h3 class="door-headline">"I can't trust what happens when I'm away."</h3>
-              <p class="door-copy">Your workflows, tools, and oversight gaps — audited and mapped in one session. Walk away with a clear picture of what's costing you.</p>
-              <span class="door-service-tag">→ Digital Audit</span>
-              <span class="door-action">WhatsApp Joseph</span>
+              Make a Referral
             </a>
-
             <a
-              class="door-card"
+              class="btn btn-outline-white"
               href="https://wa.me/233201517382"
-              data-wa-message="Hi Joseph, my operations are messy and manual and I need help building better systems."
+              target="_blank"
+              rel="noopener noreferrer"
+              data-wa-message="Hi ApplyTech™, I'd like to learn more about the referral / partner programme."
             >
-              <span class="door-pain">Pain Point → Operations</span>
-              <h3 class="door-headline">"My operations are messy and manual."</h3>
-              <p class="door-copy">Websites, internal tools, automation systems — built around how your team actually works, not how a template assumes you work.</p>
-              <span class="door-service-tag">→ Build a System</span>
-              <span class="door-action">WhatsApp Joseph</span>
-            </a>
-
-            <a
-              class="door-card"
-              href="https://wa.me/233201517382"
-              data-wa-message="Hi Joseph, I need better systems to scale and want to learn about AI and automation workflows."
-            >
-              <span class="door-pain">Pain Point → Capability</span>
-              <h3 class="door-headline">"I need better systems to scale."</h3>
-              <p class="door-copy">Practical AI workflows and automation training — not theory. For operators who want to move faster without adding more headcount.</p>
-              <span class="door-service-tag">→ Applied AI Course</span>
-              <span class="door-action">WhatsApp Joseph</span>
-            </a>
-
-            <a
-              class="door-card"
-              href="https://wa.me/233201517382"
-              data-wa-message="Hi Joseph, I want to build or improve a digital venture and need your help."
-            >
-              <span class="door-pain">Goal → New Venture</span>
-              <h3 class="door-headline">"I want to build or improve my digital venture."</h3>
-              <p class="door-copy">Starting from scratch or improving what exists — scoped engagements for founders and professionals launching something that needs to work reliably.</p>
-              <span class="door-service-tag">→ Start a Project</span>
-              <span class="door-action">WhatsApp Joseph</span>
+              Ask About Partnering
             </a>
           </div>
         </div>
-      </section>
 
-      <!-- TRUST / CREDIBILITY -->
-      <section class="section trust-section" id="trust">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="section-label">Why Joseph</p>
-              <h2 class="section-title">Built from the inside out.</h2>
+        <div>
+          <div class="referral-cards">
+            <div class="ref-card">
+              <div class="ref-card-icon" aria-hidden="true">💸</div>
+              <div class="ref-card-body">
+                <div class="ref-card-amount">15% Referral</div>
+                <div class="ref-card-label">Earn from every closed introduction</div>
+              </div>
             </div>
-            <p class="section-copy" style="color: rgba(255,255,255,0.55);">Operational credibility, not agency polish.</p>
-          </div>
-
-          <div class="trust-grid">
-            <div class="trust-card">
-              <div class="trust-number">10<span>+ yrs</span></div>
-              <div class="trust-label">IT &amp; systems leadership across organisations in Ghana</div>
+            <div class="ref-card">
+              <div class="ref-card-icon" aria-hidden="true">🏗️</div>
+              <div class="ref-card-body">
+                <div class="ref-card-amount">GHS 4,500–22,500</div>
+                <div class="ref-card-label">Systems build project range</div>
+              </div>
             </div>
-            <div class="trust-card">
-              <div class="trust-number">SME<span> focus</span></div>
-              <div class="trust-label">Built specifically for Ghanaian businesses — not adapted from foreign templates</div>
+            <div class="ref-card">
+              <div class="ref-card-icon" aria-hidden="true">🔁</div>
+              <div class="ref-card-body">
+                <div class="ref-card-amount">GHS 675–1,200</div>
+                <div class="ref-card-label">Recurring monthly retainer</div>
+              </div>
             </div>
-            <div class="trust-card">
-              <div class="trust-number">Ops<span>-first</span></div>
-              <div class="trust-label">Every project starts with how your operation actually runs, not what looks good on screen</div>
-            </div>
-            <div class="trust-card">
-              <div class="trust-number">AI<span>-ready</span></div>
-              <div class="trust-label">Practical automation and AI workflows that work at Ghanaian business scale</div>
-            </div>
-          </div>
-
-          <div class="trust-bio">
-            <strong>I'm not an agency.</strong> I'm a systems operator who's spent over a decade inside organisations solving the same problems you're describing — workflows nobody controls, tools that don't talk to each other, and businesses that grind to a halt the moment the owner leaves the building. My approach is direct, practical, and scoped to what you can actually implement.
-          </div>
-        </div>
-      </section>
-
-      <!-- PARTNERS (collapsed) -->
-      <section class="section partners-section" id="partners">
-        <div class="container">
-          <button class="partners-toggle" aria-expanded="false" aria-controls="partners-content" id="partners-btn">
-            <div>
-              <p class="partners-toggle-label">For Partners</p>
-              <p class="partners-toggle-title">Referral &amp; Bounty Board</p>
-            </div>
-            <span class="partners-chevron" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 9l6 6 6-6"/>
-              </svg>
-            </span>
-          </button>
-
-          <div class="partners-body" id="partners-content" role="region" aria-labelledby="partners-btn">
-            <div class="opportunity-grid">
-              <article class="opportunity-card">
-                <span class="opp-label">Business web presence</span>
-                <div class="opp-amount"><span class="currency">GHS</span>1,500 – 5,250</div>
-                <p class="opp-copy">Landing pages and business websites that make a strong first impression.</p>
-                <div class="opp-foot">Typical project payout</div>
-              </article>
-
-              <article class="opportunity-card">
-                <span class="opp-label">Automation systems</span>
-                <div class="opp-amount"><span class="currency">GHS</span>4,500 – 22,500</div>
-                <p class="opp-copy">Custom tools and internal systems for inventory, operations, and growth.</p>
-                <div class="opp-foot">High-value build range</div>
-              </article>
-
-              <article class="opportunity-card">
-                <span class="opp-label">Monthly management</span>
-                <div class="opp-amount"><span class="currency">GHS</span>675 – 1,200</div>
-                <p class="opp-copy">A recurring retainer for clients who need steady support each month.</p>
-                <div class="opp-foot">Paid while the client stays active</div>
-              </article>
-
-              <article class="opportunity-card">
-                <span class="opp-label">Referral partner</span>
-                <div class="opp-amount">15%</div>
-                <p class="opp-copy">Introduce the right business and earn from the deal once it closes.</p>
-                <div class="opp-foot">Bounty Board referral share</div>
-              </article>
-            </div>
-
-            <div class="opportunity-cta-row">
-              <a
-                class="cta cta-primary"
-                href="https://wa.me/233201517382"
-                data-wa-message="Hi Joseph, I'd like to discuss a referral for the Bounty Board."
-              >
-                Discuss a Referral
-              </a>
-              <a class="cta cta-secondary" href="#doors">Back to the Four Doors</a>
+            <div class="ref-card">
+              <div class="ref-card-icon" aria-hidden="true">🌐</div>
+              <div class="ref-card-body">
+                <div class="ref-card-amount">GHS 1,500–5,250</div>
+                <div class="ref-card-label">Web presence &amp; digital setup</div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-    </main>
-
-    <footer class="footer">
+    <!-- ── PROBLEM ── -->
+    <section class="problem-section" id="problem">
       <div class="container">
-        <span>© <span id="year"></span> Joseph · </span>
-        <a href="mailto:devjozi59@gmail.com">devjozi59@gmail.com</a>
+        <span class="section-kicker">The Problem We Solve</span>
+        <h2 class="section-title">Sound familiar?</h2>
+        <p class="section-copy">This isn't about effort. It's about infrastructure. These are the operational gaps that quietly drain time, control, and revenue.</p>
+
+        <div class="problem-grid">
+          <div class="problem-card">
+            <span class="problem-num">01</span>
+            <div class="problem-body">
+              <p class="problem-hed">The business stops when you step away</p>
+              <p class="problem-txt">Decisions depend on your memory. Nothing moves unless you're physically present to direct it.</p>
+            </div>
+          </div>
+
+          <div class="problem-card">
+            <span class="problem-num">02</span>
+            <div class="problem-body">
+              <p class="problem-hed">Operations running on WhatsApp groups</p>
+              <p class="problem-txt">Orders, staff chases, supplier updates — all in one chat thread. It worked at first. It won't scale.</p>
+            </div>
+          </div>
+
+          <div class="problem-card">
+            <span class="problem-num">03</span>
+            <div class="problem-body">
+              <p class="problem-hed">No visibility into what's actually happening</p>
+              <p class="problem-txt">Stock levels are guesses. Fulfilment gaps appear without warning. Nobody is accountable because nothing is tracked.</p>
+            </div>
+          </div>
+
+          <div class="problem-card">
+            <span class="problem-num">04</span>
+            <div class="problem-body">
+              <p class="problem-hed">Revenue leaking through untracked processes</p>
+              <p class="problem-txt">Manual coordination between teams means errors, duplications, and gaps that cost money quietly every week.</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </footer>
-  </div>
+    </section>
+
+    <!-- ── OFFER LADDER ── -->
+    <section class="offer-section" id="offer">
+      <div class="container">
+        <span class="section-kicker">How We Work</span>
+        <h2 class="section-title">Three ways we engage.</h2>
+        <p class="section-copy">Every engagement starts with understanding how your operation actually runs. We build around that reality, not a template.</p>
+
+        <div class="offer-ladder">
+          <a
+            class="offer-card"
+            href="https://wa.me/233201517382"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-wa-message="Hi ApplyTech™, I'd like to book a Workflow Audit to identify where my operations are leaking."
+          >
+            <span class="offer-step">Step 01</span>
+            <h3 class="offer-name">Workflow Audit</h3>
+            <p class="offer-desc">Map your operation. Find the gaps. Establish a clear baseline before anything is built.</p>
+            <ul class="offer-list">
+              <li>Full process mapping</li>
+              <li>Accountability gap review</li>
+              <li>Leakage points identified</li>
+              <li>Written action report</li>
+            </ul>
+            <span class="offer-action">Book an Audit →</span>
+          </a>
+
+          <a
+            class="offer-card featured"
+            href="https://wa.me/233201517382"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-wa-message="Hi ApplyTech™, I'd like to talk about building operational systems for my business."
+          >
+            <span class="offer-step">Step 02</span>
+            <h3 class="offer-name">Systems Build</h3>
+            <p class="offer-desc">Phased deployment into your live operation. No long development cycles. Systems go in while the business keeps running.</p>
+            <ul class="offer-list">
+              <li>Workflow architecture</li>
+              <li>Inventory &amp; order systems</li>
+              <li>Digital infrastructure</li>
+              <li>Auditable processes</li>
+            </ul>
+            <span class="offer-action">Start a Build →</span>
+          </a>
+
+          <a
+            class="offer-card"
+            href="https://wa.me/233201517382"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-wa-message="Hi ApplyTech™, I'd like to discuss ongoing support and scaling infrastructure for my business."
+          >
+            <span class="offer-step">Step 03</span>
+            <h3 class="offer-name">Scale &amp; Support</h3>
+            <p class="offer-desc">Once the backbone holds, layer in reporting, automation, and growth infrastructure. Decisions move from instinct to evidence.</p>
+            <ul class="offer-list">
+              <li>Reporting &amp; dashboards</li>
+              <li>Automation workflows</li>
+              <li>Ongoing system support</li>
+              <li>Continuous optimisation</li>
+            </ul>
+            <span class="offer-action">Discuss Support →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROOF / CREDIBILITY ── -->
+    <section class="proof-section" id="proof">
+      <div class="container">
+        <span class="section-kicker">Why ApplyTech™</span>
+        <h2 class="section-title">Built from the inside out.</h2>
+        <p class="section-copy">Operational credibility earned inside real organisations — not adapted from foreign templates or agency playbooks.</p>
+
+        <div class="proof-stats">
+          <div class="proof-stat">
+            <div class="proof-stat-num">10<span>+ yrs</span></div>
+            <div class="proof-stat-label">IT &amp; systems leadership across enterprise and commercial organisations</div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-stat-num">Ops<span>-led</span></div>
+            <div class="proof-stat-label">Every project starts with your operation as it actually runs today</div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-stat-num">Live<span> &amp; running</span></div>
+            <div class="proof-stat-label">Systems deployed into active businesses — not staged demos</div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-stat-num">GH<span>-built</span></div>
+            <div class="proof-stat-label">Designed for Ghanaian business reality — WhatsApp, MoMo, and all</div>
+          </div>
+        </div>
+
+        <div class="proof-case">
+          <div class="proof-case-tag">Live Deployment · Reference Work</div>
+          <div class="proof-case-name">JX Distribution / JX Commerce</div>
+          <p class="proof-case-copy">A growing distribution business running on manual coordination — no unified system across inventory, orders, or fulfilment. Stock visibility was unreliable. Accountability gaps between the distribution arm and the online subsidiary caused repeated fulfilment failures.</p>
+          <ul class="proof-case-outcomes">
+            <li>End-to-end operational backbone deployed — workflow architecture, inventory control, order processing</li>
+            <li>Unified system across physical distribution and e-commerce (jxcshop)</li>
+            <li>Auditable workflows. Operations no longer dependent on individual knowledge or owner presence</li>
+          </ul>
+        </div>
+
+        <div class="proof-bio">
+          <strong>Joseph Omoruwou — Lead Architect &amp; Founder.</strong> 10+ years directing IT operations across enterprise and high-volume environments. Regional IT lead for a major West African transport and logistics network. Systems deployment for a royal institution. Prior IT management for large-scale hospitality. Software engineering trained (ALX); applied cybersecurity practitioner. ApplyTech™ is the operational infrastructure practice he built from that experience.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ── -->
+    <section class="how-section" id="how">
+      <div class="container">
+        <span class="section-kicker">The Process</span>
+        <h2 class="section-title">Clear from day one.</h2>
+        <p class="section-copy">No long proposals. No guesswork. You know exactly what's happening and why at every stage.</p>
+
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">01</span>
+            <div class="step-body">
+              <p class="step-name">Workflow Audit — Map before you build</p>
+              <p class="step-txt">We map your actual processes, identify accountability gaps, and establish a baseline. Nothing is assumed. You get a written picture of exactly where your operations are leaking before a single system is touched.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <div class="step-body">
+              <p class="step-name">Core System Deployment — Into your live operation</p>
+              <p class="step-txt">Phased implementation so the business keeps running. No extended build cycles. Systems are installed, tested, and handed over in stages — with your team trained to use them.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <div class="step-body">
+              <p class="step-name">Data-Driven Scaling — Build on what works</p>
+              <p class="step-txt">Once the core holds, we layer in reporting, automation, and growth infrastructure. The business moves from running on instinct to running on evidence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FINAL CTA ── -->
+    <section class="final-section" id="contact">
+      <div class="container final-inner">
+        <h2 class="final-title">Ready to stop being the bottleneck in your own business?</h2>
+        <p class="final-copy">Start with a free Workflow Audit. We'll map your operation, identify where control is breaking down, and show you exactly what a fix looks like.</p>
+        <div class="final-actions">
+          <a
+            class="btn btn-white"
+            href="https://wa.me/233201517382"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-wa-message="Hi ApplyTech™, I'd like to book a free Workflow Audit for my business."
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Book Free Audit on WhatsApp
+          </a>
+          <a
+            class="btn btn-outline-white-2"
+            href="https://wa.me/233201517382"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-wa-message="Hi ApplyTech™, I'd like to make a referral — I know a business that needs operational systems."
+          >
+            Refer a Business &amp; Earn
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">ApplyTech™</span>
+      <div class="footer-links">
+        <a href="mailto:devjozi59@gmail.com">devjozi59@gmail.com</a>
+        <a
+          href="https://wa.me/233201517382"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-wa-message="Hi ApplyTech™, I'd like to get in touch."
+        >+233 20 151 7382</a>
+        <span>© <span id="footer-year"></span> ApplyTech™ · Accra, Ghana</span>
+      </div>
+    </div>
+  </footer>
 
   <script>
     (function () {
-      const WA_NUMBER = '233201517382';
-
-      document.querySelectorAll('[data-wa-message]').forEach((link) => {
-        const message = link.getAttribute('data-wa-message');
-        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
-        link.setAttribute('href', url);
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
+      // Prefill WhatsApp links
+      const WA = '233201517382';
+      document.querySelectorAll('[data-wa-message]').forEach(function(el) {
+        const msg = el.getAttribute('data-wa-message');
+        const url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+        el.setAttribute('href', url);
+        if (!el.hasAttribute('target')) el.setAttribute('target', '_blank');
+        var existingRel = (el.getAttribute('rel') || '').split(/\s+/).filter(Boolean);
+        ['noopener', 'noreferrer'].forEach(function(token) {
+          if (existingRel.indexOf(token) === -1) existingRel.push(token);
+        });
+        el.setAttribute('rel', existingRel.join(' '));
       });
 
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Partners accordion
-      const btn = document.getElementById('partners-btn');
-      const body = document.getElementById('partners-content');
-      if (btn && body) {
-        const setAccordionState = function (open) {
-          btn.setAttribute('aria-expanded', String(open));
-          body.classList.toggle('is-open', open);
-          body.inert = !open;
-          body.style.maxHeight = open ? body.scrollHeight + 'px' : '0';
-        };
-
-        setAccordionState(btn.getAttribute('aria-expanded') === 'true');
-
-        btn.addEventListener('click', function () {
-          const isOpen = this.getAttribute('aria-expanded') === 'true';
-          setAccordionState(!isOpen);
-        });
-
-        window.addEventListener('resize', function () {
-          if (btn.getAttribute('aria-expanded') === 'true') {
-            body.style.maxHeight = body.scrollHeight + 'px';
-          }
-        });
-      }
+      // Footer year
+      var y = document.getElementById('footer-year');
+      if (y) y.textContent = new Date().getFullYear();
     }());
   </script>
 </body>
