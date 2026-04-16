@@ -57,11 +57,10 @@
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      touch-action: manipulation;
     }
 
-    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-    button { font: inherit; -webkit-tap-highlight-color: transparent; cursor: pointer; border: none; background: none; }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    button { font: inherit; -webkit-tap-highlight-color: transparent; cursor: pointer; border: none; background: none; touch-action: manipulation; }
 
     :focus-visible {
       outline: 3px solid rgba(15, 82, 217, 0.3);
@@ -377,6 +376,7 @@
       display: flex;
       gap: 0.7rem;
       flex-wrap: wrap;
+      margin-top: 1.25rem;
     }
 
     /* ── PROBLEM SECTION ── */
@@ -927,7 +927,7 @@
           <p class="referral-copy">
             Refer them to ApplyTech™ and earn 15% of the project value once the deal closes. No cap. No complicated process. Just introduce us, and we handle the rest.
           </p>
-          <div class="referral-cta-row" style="margin-top: 1.25rem;">
+          <div class="referral-cta-row">
             <a
               class="btn btn-primary"
               href="https://wa.me/233201517382"
@@ -952,28 +952,28 @@
         <div>
           <div class="referral-cards">
             <div class="ref-card">
-              <div class="ref-card-icon">💸</div>
+              <div class="ref-card-icon" aria-hidden="true">💸</div>
               <div class="ref-card-body">
                 <div class="ref-card-amount">15% Referral</div>
                 <div class="ref-card-label">Earn from every closed introduction</div>
               </div>
             </div>
             <div class="ref-card">
-              <div class="ref-card-icon">🏗️</div>
+              <div class="ref-card-icon" aria-hidden="true">🏗️</div>
               <div class="ref-card-body">
                 <div class="ref-card-amount">GHS 4,500–22,500</div>
                 <div class="ref-card-label">Systems build project range</div>
               </div>
             </div>
             <div class="ref-card">
-              <div class="ref-card-icon">🔁</div>
+              <div class="ref-card-icon" aria-hidden="true">🔁</div>
               <div class="ref-card-body">
                 <div class="ref-card-amount">GHS 675–1,200</div>
                 <div class="ref-card-label">Recurring monthly retainer</div>
               </div>
             </div>
             <div class="ref-card">
-              <div class="ref-card-icon">🌐</div>
+              <div class="ref-card-icon" aria-hidden="true">🌐</div>
               <div class="ref-card-body">
                 <div class="ref-card-amount">GHS 1,500–5,250</div>
                 <div class="ref-card-label">Web presence &amp; digital setup</div>
@@ -1228,7 +1228,11 @@
         const url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
         el.setAttribute('href', url);
         if (!el.hasAttribute('target')) el.setAttribute('target', '_blank');
-        el.setAttribute('rel', 'noopener noreferrer');
+        var existingRel = (el.getAttribute('rel') || '').split(/\s+/).filter(Boolean);
+        ['noopener', 'noreferrer'].forEach(function(token) {
+          if (existingRel.indexOf(token) === -1) existingRel.push(token);
+        });
+        el.setAttribute('rel', existingRel.join(' '));
       });
 
       // Footer year
